@@ -30,7 +30,7 @@ export default function Header() {
                     <img src={logoURL} alt="flipLogo" style={{ width: 75 }} />
                     <Box style={{ display: 'flex' }}>
                         <SubHeading>Explore&nbsp;
-                            <Box component="span" style={{ color: '#FFE500' }}>
+                            <Box component="span" style={{ color: '#b7450c' }}>
                                 Plus
                             </Box>
                         </SubHeading>
