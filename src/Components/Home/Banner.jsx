@@ -1,11 +1,8 @@
-import React from 'react';
-import {styled} from "@mui/material";
+import { styled } from '@mui/material';
+
+import { bannerData } from '../../Constant/data.js';
 import Carousel from 'react-multi-carousel';
-import {bannerData} from "../../Constant/data.js";
-const Image = styled('img')({
-       width:'100%',
-       height:280
-})
+import 'react-multi-carousel/lib/styles.css';
 const responsive = {
     desktop: {
         breakpoint: { max: 3000, min: 1024 },
@@ -20,18 +17,22 @@ const responsive = {
         items: 1,
     }
 };
+const Image = styled('img')({
+    width:'100%',
+    height:280
+})
 export default function Banner() {
   return (
     <Carousel 
     responsive={responsive}
-    // swipeable={false}
-    // draggable={false}
+    swipeable={false}
+    draggable={false}
     autoPlay={true}
-    // infinite={true}
-    // autoPlaySpeed={4000}
-    // keyBoardControl={true}
-    // showDots={false}
-    // slidesToSlide={1}
+    infinite={true}
+    autoPlaySpeed={4000}
+    keyBoardControl={true}
+    showDots={false}
+    slidesToSlide={1}
     containerClass="carousel-container"
     dotListClass="custom-dot-list-style"
     itemClass="carousel-item-padding-40-px"
