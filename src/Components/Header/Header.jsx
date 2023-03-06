@@ -19,7 +19,9 @@ const PlusImage = styled('img')({
     height: 10,
     marginLeft: 4
 })
-
+const CustomButtonWrapper = styled(Box)`
+     margin: 0 5% 0 auto;
+`
 export default function Header() {
     const logoURL = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/flipkart-plus_8d85f4.png';
     const subURL = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/plus_aef861.png';
@@ -38,7 +40,9 @@ export default function Header() {
                     </Box>
                 </Component>
                 <Search />
-                <CustomButton />
+                <CustomButtonWrapper>
+                    <CustomButton />
+                </CustomButtonWrapper>
             </Toolbar>
         </StyledHeader>
     )
