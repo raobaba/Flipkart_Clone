@@ -1,36 +1,38 @@
 import React, { useState } from 'react'
-import { Dialog, Box, TextField, Typography, Button, styled } from "@mui/material";
-const Component = styled(Box)`
+import { Dialog,DialogContent, Box, TextField, Typography, Button, styled } from "@mui/material";
+const Component = styled(DialogContent)`
     height: 70vh;
     width: 90vh;
-`
+    padding: 0;
+    padding-top: 0;
+`;
 const Image = styled(Box)`
     background: #2874f0 url(https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/login_img_c4a81e.png) center 85% no-repeat;
-    width: 30%;
-    height: 83%;
+    width: 40%;
+    height: 80.5%;
     padding: 45px 35px;
     & > p, & > h5 {
         color: #FFFFFF;
         font-weight: 600
     }
-`
+`;
 const Wrapper = styled(Box)`
+    padding: 25px 35px;
     display: flex;
-    flex-direction: column;
-    padding: 25px 25px;
     flex: 1;
-    &>div,& button,& p{
-       margin-top: 20px;
+    overflow: hidden;
+    flex-direction: column;
+    & > div, & > button, & > p {
+        margin-top: 20px;
     }
-
-`
+`;
 const LoginButton = styled(Button)`
     text-transform: none;
-    background-color: #FB641B;
+    background: #FB641B;
     color: #fff;
-    height: 60px;
-    border-radius: 2px; 
-`
+    height: 48px;
+    border-radius: 2px;
+`;
 const RequestOTP = styled(Button)`
     text-transform: none;
     background: #fff;
@@ -52,7 +54,7 @@ const CreateAccount = styled(Typography)`
     font-weight: 600;
     font-size: 14px;
     cursor: pointer
-`
+`;
 const accountInialValue = {
     login: {
         view: 'login',
