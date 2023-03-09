@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState} from 'react';
 import { ShoppingCart } from '@mui/icons-material';
 import { styled, Box, Button, Typography } from "@mui/material";
 import LoginDialog from '../Login/LoginDialog.jsx';
@@ -32,7 +32,10 @@ export default function CustomButton() {
     }
     return (
         <Wrapper>
-            <LogginButton variant='contained' onClick={()=>openDialog()}>Login</LogginButton>
+            
+                <LogginButton variant='contained' onClick={()=>openDialog()}>Login</LogginButton>
+            
+           
             <Typography style={{ marginTop: 3, width: 135 }}>Become a Seller</Typography>
             <Typography style={{ marginTop: 3 }}>More</Typography>
             <Container>
