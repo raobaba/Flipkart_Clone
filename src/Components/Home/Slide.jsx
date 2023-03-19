@@ -2,6 +2,7 @@ import React from 'react'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import Countdown from "react-countdown";
+import { Link } from "react-router-dom";
 import { Box, Typography, Button, Divider, styled } from '@mui/material';
 const responsive = {
     desktop: {
@@ -51,7 +52,8 @@ const Image = styled('img')({
     width: 'auto',
     height: 150
 })
-export default function Slide({ products,title,timer }) {
+export default function Slide({ products, title, timer }) {
+    console.log(products)
     const timerURL = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/timer_a73398.svg';
     const render = ({ hours, minutes, seconds }) => {
         return <Box variant="span">{hours}:{minutes}:{seconds}Left </Box>
@@ -62,9 +64,9 @@ export default function Slide({ products,title,timer }) {
                 <DealText>{title}</DealText>
                 {
                     timer && <Timer>
-                    <img src={timerURL} style={{ width: 24 }} alt='time clock' />
-                    <Countdown date={Date.now() + 5.04e+7} render={render} />
-                </Timer>
+                        <img src={timerURL} style={{ width: 24 }} alt='time clock' />
+                        <Countdown date={Date.now() + 5.04e+7} render={render} />
+                    </Timer>
                 }
                 <ViewAllButton variant='contained'>
                     View All
@@ -84,13 +86,15 @@ export default function Slide({ products,title,timer }) {
                 itemClass="carousel-item-padding-40-px"
             >
                 {
-                    products.map(ele =>
-                        <Box textAlign={'center'} style={{ padding: '25px 15px' }}>
-                            <Image src={ele.url} alt="products" />
-                            <Text style={{ fontWeight: 600, color: '#212121' }}>{ele.title.shortTitle}</Text>
-                            <Text style={{ color: 'green' }}>{ele.discount}</Text>
-                            <Text style={{ color: '#212121', opacity: '.6' }}>{ele.tagline}</Text>
-                        </Box>
+                    products.map(product =>
+                        <Link to={`product/${product.id}`} style={{textDecoration:'none'}}>
+                            <Box textAlign={'center'} style={{ padding: '25px 15px' }}>
+                                <Image src={product.url} alt="products" />
+                                <Text style={{ fontWeight: 600, color: '#212121' }}>{product.title.shortTitle}</Text>
+                                <Text style={{ color: 'green' }}>{product.discount}</Text>
+                                <Text style={{ color: '#212121', opacity: '.6' }}>{product.tagline}</Text>
+                            </Box>
+                        </Link>
                     )
                 }
             </Carousel>
