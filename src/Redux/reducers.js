@@ -7,27 +7,27 @@ import {
     GET_PRODUCT_DETAILS_RESET
 } from "./actionTypes.js";
 
-export const getProductReducer = (state = {products: []},action)=>{
-      switch(action.type){
+export const getProductReducer = (state = { products: [] }, action) => {
+    switch (action.type) {
         case GET_PRODUCTS_SUCCESS:
-            return {products:action.payload};
+            return { products: action.payload };
         case GET_PRODUCTS_FAILURE:
-            return {error:action.payload};
+            return { error: action.payload };
         default:
             return state;
-      }
+    }
 }
-export const getProductDetailsReducer = (state={product:{}},action)=>{
-     switch(action.type){
+export const getProductDetailsReducer = (state = { product: {} }, action) => {
+    switch (action.type) {
         case GET_PRODUCTS_DETAILS_REQUEST:
-            return {loading:true};
+            return { loading: true };
         case GET_PRODUCTS_DETAILS_SUCCESS:
-            return {loading:false,product:action.payload};
+            return { loading: false, product: action.payload };
         case GET_PRODUCTS_DETAILS_FAILURE:
-            return {loading:false,error:action.payload};
+            return { loading: false, error: action.payload };
         case GET_PRODUCT_DETAILS_RESET:
-            return {product:{}}
+            return { product: {} }
         default:
             return state;
-     }
+    }
 }

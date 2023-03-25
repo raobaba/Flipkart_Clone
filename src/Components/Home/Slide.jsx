@@ -86,7 +86,7 @@ export default function Slide({ products, title, timer }) {
                 itemClass="carousel-item-padding-40-px"
             >
                 {
-                    products.map(product =>
+                    products.map(product => (
                         <Link to={`product/${product.id}`} style={{textDecoration:'none'}}>
                             <Box textAlign={'center'} style={{ padding: '25px 15px' }}>
                                 <Image src={product.url} alt="products" />
@@ -95,7 +95,7 @@ export default function Slide({ products, title, timer }) {
                                 <Text style={{ color: '#212121', opacity: '.6' }}>{product.tagline}</Text>
                             </Box>
                         </Link>
-                    )
+                    ))
                 }
             </Carousel>
         </Component>

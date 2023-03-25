@@ -10,7 +10,7 @@ function App() {
       <Box style={{ marginTop: 54 }}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="product/:id" element={<DetailsView />} />
+          <Route path="/product/:id" element={<DetailsView />} />
         </Routes>
       </Box>
     </div>
