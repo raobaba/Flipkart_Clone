@@ -4,15 +4,20 @@ import { ShoppingCart } from '@mui/icons-material';
 import { styled, Box, Button, Typography } from "@mui/material";
 import LoginDialog from '../Login/LoginDialog.jsx';
 import Profile from './Profile';
-const Wrapper = styled(Box)`
-     display: flex;
-     margin: 0 3% 0 auto;
-     &>button,&>p,&>div{
-        margin-right: 40px;
-        font-size: 16px;
-        align-items: center;
-     }
-`
+const Wrapper = styled(Box)(({theme})=>({
+    display: 'flex',
+    margin: '0 3% 0 auto',
+    '& > * ':{
+        marginRight: '40px !important',
+        textDecoration: 'none',
+        fontSize: 16,
+        alignItems: 'center',
+        cursor:'pointer'
+    },
+    [theme.breakpoints.down('md')]:{
+        display:'block'
+    }
+}))
 const LogginButton = styled(Button)`
     color: #2874f0;
     background-color:#FFFFFF;
@@ -23,10 +28,12 @@ const LogginButton = styled(Button)`
     height: 32px;
     box-shadow: 'none';
 `
-const Container = styled(Box)`
-     display:flex;
-
-`
+const Container = styled(Box)(({theme})=>({
+    display:'flex',
+    [theme.breakpoints.down('md')]:{
+        display:'block'
+    }
+}))
 export default function CustomButton() {
     const [open, setOpen] = useState(false);
     const { account,setAccount } = useContext(DataContext)

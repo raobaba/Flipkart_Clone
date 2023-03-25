@@ -1,5 +1,6 @@
-import React from 'react'
-import { AppBar, Toolbar, Typography, Box, styled } from "@mui/material";
+import React, {useState} from 'react'
+import { AppBar, Toolbar, Typography,IconButton,Drawer,List, Box, styled } from "@mui/material";
+import { Menu } from '@mui/icons-material';
 import Search from './Search';
 import CustomButton from './CustomButton';
 import { Link } from "react-router-dom";
@@ -22,15 +23,48 @@ const PlusImage = styled('img')({
     height: 10,
     marginLeft: 4
 })
-const CustomButtonWrapper = styled(Box)`
-     margin: 0 5% 0 auto;
-`
+const CustomButtonWrapper = styled(Box)(({theme})=>({
+    margin: '0 5% 0 auto',
+    [theme.breakpoints.down('sm')]:{
+        display:'none'
+    }
+}))
+const MenuButton = styled(IconButton)(({theme})=>({
+       display:'none',
+       [theme.breakpoints.down('sm')]:{
+        display:'block'
+       }
+}))
 export default function Header() {
+    const [open,setOpen] = useState(false);
     const logoURL = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/flipkart-plus_8d85f4.png';
     const subURL = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/plus_aef861.png';
+    const handleClose = () => {
+        setOpen(false);
+    }
+
+    const handleOpen = () => {
+        setOpen(true);
+    }
+
+    const ListFunction = () => (
+        <Box style={{ width: 250 }} onClick={handleClose}>
+            <List>
+                <listItem button>
+                    <CustomButton />
+                </listItem>
+            </List>
+        </Box>
+    );
     return (
         <StyledHeader>
             <Toolbar style={{ minHeight: 55 }}>
+                <MenuButton color='inherit' onClick={handleOpen}>
+                    <Menu />
+                </MenuButton>
+                <Drawer open={open} onClose={handleClose} >
+                    {ListFunction()}
+                </Drawer>
                 <Component to='/'>
                     <img src={logoURL} alt="flipLogo" style={{ width: 75 }} />
                     <Box style={{ display: 'flex' }}>
