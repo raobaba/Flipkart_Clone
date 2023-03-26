@@ -4,3 +4,7 @@ export const GET_PRODUCTS_DETAILS_REQUEST = "getProductDetailRequest";
 export const GET_PRODUCTS_DETAILS_SUCCESS = "getProductDetailSuccess";
 export const GET_PRODUCTS_DETAILS_FAILURE = "getProductDetailsFailure";
 export const GET_PRODUCT_DETAILS_RESET = "getProductDetailsReset";
+export const ADD_TO_CART = "addToCart";
+export const ADD_TO_CART_ERROR = "addToCartError";
+export const REMOVE_FROM_CART = "removeFromCart";
+export const RESET_CART = "resetCart";

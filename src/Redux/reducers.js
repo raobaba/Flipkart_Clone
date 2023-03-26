@@ -4,7 +4,9 @@ import {
     GET_PRODUCTS_DETAILS_REQUEST,
     GET_PRODUCTS_DETAILS_SUCCESS,
     GET_PRODUCTS_DETAILS_FAILURE,
-    GET_PRODUCT_DETAILS_RESET
+    GET_PRODUCT_DETAILS_RESET,
+    ADD_TO_CART,
+    REMOVE_FROM_CART
 } from "./actionTypes.js";
 
 export const getProductReducer = (state = { products: [] }, action) => {
@@ -30,4 +32,22 @@ export const getProductDetailsReducer = (state = { product: {} }, action) => {
         default:
             return state;
     }
+}
+
+export const cartReducer = (state = {cartItems:[]},action) => {
+      switch(action.type){
+        case ADD_TO_CART:
+            const item = action.payload;
+            const exist = state.cartItems.find(product => product.id === item.id);
+            if(exist){
+                return {...state,cartItems:state.cartItems.map(data=>data.product === exist.product ? item: data)};
+            }else{
+                return {...state,cartItems:[...state.cartItems,item]};
+            }
+
+        case REMOVE_FROM_CART:
+            return {...state,cartItems:state.cartItems.filter(product => product.id!==action.payload)};
+        default:
+            return state;
+      }
 }

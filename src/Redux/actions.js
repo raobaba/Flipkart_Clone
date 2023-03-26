@@ -4,7 +4,10 @@ import {
     GET_PRODUCTS_FAILURE,
     GET_PRODUCTS_DETAILS_REQUEST,
     GET_PRODUCTS_DETAILS_SUCCESS,
-    GET_PRODUCTS_DETAILS_FAILURE
+    GET_PRODUCTS_DETAILS_FAILURE,
+    ADD_TO_CART,ADD_TO_CART_ERROR,
+    REMOVE_FROM_CART,
+    // RESET_CART
 
 } from "./actionTypes.js";
 const URL = "http://localhost:8000";
@@ -24,4 +27,17 @@ export const getProductDetails = (id) => async (dispatch) => {
     } catch (error) {
         dispatch({ type: GET_PRODUCTS_DETAILS_FAILURE, payload: error.response });
     }
+}
+
+export const addToCart = (id,quantity) => async (dispatch)=> {
+       try {
+        const {data } = await axios.get(`${URL}/product/${id}`)
+        dispatch({type:ADD_TO_CART,payload:{...data,quantity}});
+       } catch (error) {
+        dispatch({type:ADD_TO_CART_ERROR,payload:error.message})
+       }
+}
+
+export const removeFromCart = (id) => async (dispatch)=> {
+       dispatch({type:REMOVE_FROM_CART,payload:id})
 }
