@@ -53,7 +53,6 @@ const Image = styled('img')({
     height: 150
 })
 export default function Slide({ products, title, timer }) {
-    console.log(products)
     const timerURL = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/timer_a73398.svg';
     const render = ({ hours, minutes, seconds }) => {
         return <Box variant="span">{hours}:{minutes}:{seconds}Left </Box>
