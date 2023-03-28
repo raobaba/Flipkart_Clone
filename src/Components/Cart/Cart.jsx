@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import {Grid,Typography,Box, styled,Button} from "@mui/material";
+import {Link} from "react-router-dom"
 import CartItem from "./CartItem.jsx";
 import TotalView from "./TotalView.jsx";
 import EmptyCart from './EmptyCart';
@@ -51,8 +52,8 @@ export default function Cart() {
                       <CartItem item={item}/>
                     ))
                   }
-                  <ButtonWrapper>
-                    <StyleButton>Place Order</StyleButton>
+                  <ButtonWrapper >
+                    <StyleButton><Link style={{textDecoration:'none'}} to={'/payment'}>Place Order</Link></StyleButton>
                   </ButtonWrapper>
               </LeftComponent>
               <Grid item lg={3} md={3} sm={12} xs={12}>

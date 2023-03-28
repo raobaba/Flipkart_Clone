@@ -4,6 +4,7 @@ import Cart from "./Components/Cart/Cart.jsx"
 import DetailsView from './Components/Details/DetailsView.jsx';
 import { Box } from "@mui/material";
 import { Routes, Route } from "react-router-dom";
+import Payment from './Components/Cart/Payment';
 function App() {
   return (
     <div className="App">
@@ -13,6 +14,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/product/:id" element={<DetailsView />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/payment" element={<Payment />} />
         </Routes>
       </Box>
     </div>

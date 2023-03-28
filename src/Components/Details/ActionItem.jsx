@@ -4,8 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { ShoppingCart as Cart, FlashOn as Flash } from '@mui/icons-material';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../Redux/actions.js';
-import { payUsingPaytm } from '../../Services/api.js';
-import { post } from '../../utils/Paytm.js';
+
 const LeftContainer = styled(Box)(({ theme }) => ({
   minWidth: '40%',
   padding: '40px 0 0 80px',
@@ -38,12 +37,8 @@ export default function ActionItem({ product }) {
   }
   console.log(setQuanity);
   const buyNow =async () => {
-    let response = await payUsingPaytm({ amount: 500, email: 'raoababa@gmail.com'});
-    var information = {
-        action: 'https://securegw-stage.paytm.in/order/process',
-        params: response    
-    }
-    post(information);
+    dispatch(addToCart(id,quantity))
+    navigate('/payment')
   }
   return (
     <LeftContainer>
