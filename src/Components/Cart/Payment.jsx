@@ -43,6 +43,9 @@ export default function Payment() {
         e.preventDefault();
         setTimeout(()=>{
             setLoader(true);
+            setTimeout(()=>{
+
+            },4000)
         },3000)
     }
 
