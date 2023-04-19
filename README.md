@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+# flipkart-clone
+This is our Second individual project . Myntra is an Ecommerce webpage, where clothing prodcuts electronics and accessories are sold 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# My Agendas -
+Breaking the whole website into the smallest divisions according to our strong zone.
 
-## Available Scripts
+Setting up the deadline for every individual.
 
-In the project directory, you can run:
+Review the code when someone is unable to make the part prominently.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+If some flaws are found in the original website, try to solve them as well.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Technologies used -
+FRONTEND :-> HTML5, CSS3, JAVASCRIPT, REACTJS, REDUX, MATERIAL-UI, 
+BACKEND :-> EXPRESS.JS NODE.JS 
+DATABSE :-> MONGODB
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This is our home page were we tried to build the same page as it is visible in the main website and also adding some styles to look better, and linking the other pages to the home page.
 
-### `npm run build`
+# Home Page
+<a href='https://postimg.cc/f3CzbSWr' target='_blank'><img src='https://drive.google.com/file/d/1l1TkmdN0Xv1I1BZo4sxdLEclEXwsjvzP/view' border='0' alt='Screenshot-2022-07-02-124942'/></a>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Deals part
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<a href='https://postimg.cc/f3CzbSWr' target='_blank'><img src='https://miro.medium.com/max/700/1*EO9dK-G7C6P-W2JTUm82lQ.png' border='0' alt='Screenshot-2022-07-02-124942'/></a>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Womens Page
 
-### `npm run eject`
+<a href='https://postimg.cc/f3CzbSWr' target='_blank'><img src='https://miro.medium.com/max/700/1*Duv-aF_Vq7uYBCQc3hPBHg.png' border='0' alt='Screenshot-2022-07-02-124942'/></a>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Kids Page
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<a href='https://postimg.cc/f3CzbSWr' target='_blank'><img src='https://miro.medium.com/max/700/1*HqZhWMN5E6tJA6hiBZiUxA.png' border='0' alt='Screenshot-2022-07-02-124942'/></a>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Products Page
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<a href='https://postimg.cc/f3CzbSWr' target='_blank'><img src='https://miro.medium.com/max/700/1*o65uk5wcP8BHwUpSx23YFw.png' border='0' alt='Screenshot-2022-07-02-124942'/></a>
 
-## Learn More
+Footer Part
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<a href='https://postimg.cc/f3CzbSWr' target='_blank'><img src='https://miro.medium.com/max/700/1*8oJgYklY2lkgvMV6-oJmqA.png' border='0' alt='Screenshot-2022-07-02-124942'/></a>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Cart Page
 
-### Code Splitting
+<a href='https://postimg.cc/f3CzbSWr' target='_blank'><img src='https://miro.medium.com/max/700/1*hz7-WOGy_vjxRJFg5lhrvQ.png' border='0' alt='Screenshot-2022-07-02-124942'/></a>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Payment Page
 
-### Analyzing the Bundle Size
+<a href='https://postimg.cc/f3CzbSWr' target='_blank'><img src='https://miro.medium.com/max/700/1*dpKdvnEKm2PS1p9WPkRrfw.png' border='0' alt='Screenshot-2022-07-02-124942'/></a>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# Rajan Kumar:
 
-### Making a Progressive Web App
+Myself Rajan Kumar, This is my Second collaborative team project at Masai school. I’m going to tell you my contribution in this project.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Here’s my LinkedIn profile:-http://www.linkedin.com/in/rajan-kumar-9627a0237
 
-### Advanced Configuration
+My contributions in this projects starts from the Footer Part, and Continues with some major parts like,
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Carts Page
 
-### Deployment
+Payment Page
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+And also using some parts like LocalStorage, Html, Css, JS, etc…
 
-### `npm run build` fails to minify
+___________________________________________________________________
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Challenges -
+1. Communication
+
+Distance always matters for group work. As we are from different parts of India, miscommunications were the common challenges for us. But, we make it happen with the help of slack and WhatsApp
+
+
+As we are using Git collaboration, initially we were facing some technical issues, but continuously co-ordinations, make things easier
+
+These two challenges improve our abilities to be a good Team Player
+
+And we all thank every single team member for contributing and giving there 100% , and completing on time, and making thing simple….
+
