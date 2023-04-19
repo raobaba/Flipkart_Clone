@@ -20,7 +20,7 @@ DATABSE :-> MONGODB
 This is our home page were we tried to build the same page as it is visible in the main website and also adding some styles to look better, and linking the other pages to the home page.
 
 # Home Page
-<a href='https://postimg.cc/f3CzbSWr' target='_blank'><img src='https://drive.google.com/file/d/1l1TkmdN0Xv1I1BZo4sxdLEclEXwsjvzP/view' border='0' alt='Screenshot-2022-07-02-124942'/></a>
+<a href='https://postimg.cc/f3CzbSWr' target='_blank'><img src='https://miro.medium.com/max/700/1*EO9dK-G7C6P-W2JTUm82lQ.png' border='0' alt='Screenshot-2022-07-02-124942'/></a>
 
 Deals part
 
