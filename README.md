@@ -2,9 +2,8 @@
 This is our Second individual project . Myntra is an Ecommerce webpage, where clothing prodcuts electronics and accessories are sold 
 
 # My Agendas -
-Breaking the whole website into the smallest divisions according to our strong zone.
+Breaking the whole website into the smallest divisions according to my strong zone.
 
-Setting up the deadline for every individual.
 
 Review the code when someone is unable to make the part prominently.
 
@@ -19,45 +18,59 @@ DATABSE :-> MONGODB
 
 This is our home page were we tried to build the same page as it is visible in the main website and also adding some styles to look better, and linking the other pages to the home page.
 
-# Home Page
-<a href='https://postimg.cc/f3CzbSWr' target='_blank'><img src='https://miro.medium.com/max/700/1*EO9dK-G7C6P-W2JTUm82lQ.png' border='0' alt='Screenshot-2022-07-02-124942'/></a>
 # Home Page 
 ![Screenshot (1)](https://user-images.githubusercontent.com/99542983/232956588-5f817427-90e3-436a-a884-8316fe117a13.png)
-Deals part
 
-<a href='https://postimg.cc/f3CzbSWr' target='_blank'><img src='https://miro.medium.com/max/700/1*EO9dK-G7C6P-W2JTUm82lQ.png' border='0' alt='Screenshot-2022-07-02-124942'/></a>
+# Login Page
 
-Womens Page
+![Screenshot (2)](https://user-images.githubusercontent.com/99542983/232957366-898a6c1e-0288-4181-a7d4-6951137dd9df.png)
 
-<a href='https://postimg.cc/f3CzbSWr' target='_blank'><img src='https://miro.medium.com/max/700/1*Duv-aF_Vq7uYBCQc3hPBHg.png' border='0' alt='Screenshot-2022-07-02-124942'/></a>
 
-Kids Page
+# SignUp Page
 
-<a href='https://postimg.cc/f3CzbSWr' target='_blank'><img src='https://miro.medium.com/max/700/1*HqZhWMN5E6tJA6hiBZiUxA.png' border='0' alt='Screenshot-2022-07-02-124942'/></a>
+![Screenshot (3)](https://user-images.githubusercontent.com/99542983/232957502-58f7d3ca-5862-4db5-a7d0-726ec1dbd6f8.png)
 
-Products Page
+# Products Page
 
-<a href='https://postimg.cc/f3CzbSWr' target='_blank'><img src='https://miro.medium.com/max/700/1*o65uk5wcP8BHwUpSx23YFw.png' border='0' alt='Screenshot-2022-07-02-124942'/></a>
+![Screenshot (9)](https://user-images.githubusercontent.com/99542983/232957673-d3ff83a0-9286-4fae-8b4b-e586766fb456.png)
 
-Footer Part
 
-<a href='https://postimg.cc/f3CzbSWr' target='_blank'><img src='https://miro.medium.com/max/700/1*8oJgYklY2lkgvMV6-oJmqA.png' border='0' alt='Screenshot-2022-07-02-124942'/></a>
+# Detailed Page
 
-Cart Page
+![Screenshot (5)](https://user-images.githubusercontent.com/99542983/232957898-d701f6ff-a89e-4cc5-a28f-4d770d2f4326.png)
 
-<a href='https://postimg.cc/f3CzbSWr' target='_blank'><img src='https://miro.medium.com/max/700/1*hz7-WOGy_vjxRJFg5lhrvQ.png' border='0' alt='Screenshot-2022-07-02-124942'/></a>
 
-Payment Page
+# Cart Page
 
-<a href='https://postimg.cc/f3CzbSWr' target='_blank'><img src='https://miro.medium.com/max/700/1*dpKdvnEKm2PS1p9WPkRrfw.png' border='0' alt='Screenshot-2022-07-02-124942'/></a>
+![Screenshot (6)](https://user-images.githubusercontent.com/99542983/232957991-e1e1590c-e272-4868-9e29-67b1d754cb3b.png)
+
+
+# Payment Page
+
+![Screenshot (7)](https://user-images.githubusercontent.com/99542983/232958050-685787d6-289a-4f73-abb3-f04173a50ed1.png)
+
+# Progress Payment
+
+![Screenshot (8)](https://user-images.githubusercontent.com/99542983/232958159-8df31067-acd7-46a1-be92-bf35b7034503.png)
+
+# Empty Cart Page
+ 
+ ![Screenshot (4)](https://user-images.githubusercontent.com/99542983/232958319-04b63e56-301f-4425-bd8e-cddbda979216.png)
+
 
 # Rajan Kumar:
 
-Myself Rajan Kumar, This is my Second collaborative team project at Masai school. I’m going to tell you my contribution in this project.
+Myself Rajan Kumar, This is my Second individual project.
 
 Here’s my LinkedIn profile:-http://www.linkedin.com/in/rajan-kumar-9627a0237
 
-My contributions in this projects starts from the Footer Part, and Continues with some major parts like,
+Here's is the my portfolio link:- https://raobaba.github.io/
+ 
+Landing Page
+
+SignUp Page 
+
+Login Page
 
 Carts Page
 
@@ -68,14 +81,6 @@ And also using some parts like LocalStorage, Html, Css, JS, etc…
 ___________________________________________________________________
 
 Challenges -
-1. Communication
+Redux 
 
-Distance always matters for group work. As we are from different parts of India, miscommunications were the common challenges for us. But, we make it happen with the help of slack and WhatsApp
-
-
-As we are using Git collaboration, initially we were facing some technical issues, but continuously co-ordinations, make things easier
-
-These two challenges improve our abilities to be a good Team Player
-
-And we all thank every single team member for contributing and giving there 100% , and completing on time, and making thing simple….
 
