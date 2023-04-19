@@ -22,7 +22,7 @@ This is our home page were we tried to build the same page as it is visible in t
 # Home Page
 <a href='https://postimg.cc/f3CzbSWr' target='_blank'><img src='https://miro.medium.com/max/700/1*EO9dK-G7C6P-W2JTUm82lQ.png' border='0' alt='Screenshot-2022-07-02-124942'/></a>
 # Home Page 
-<img src="https://drive.google.com/file/d/1l1TkmdN0Xv1I1BZo4sxdLEclEXwsjvzP/view?usp=share_link"/>
+![Screenshot (1)](https://user-images.githubusercontent.com/99542983/232956588-5f817427-90e3-436a-a884-8316fe117a13.png)
 Deals part
 
 <a href='https://postimg.cc/f3CzbSWr' target='_blank'><img src='https://miro.medium.com/max/700/1*EO9dK-G7C6P-W2JTUm82lQ.png' border='0' alt='Screenshot-2022-07-02-124942'/></a>
