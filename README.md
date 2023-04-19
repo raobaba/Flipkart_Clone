@@ -1,8 +1,5 @@
 # flipkart-clone
-This is our Second individual project . Myntra is an Ecommerce webpage, where clothing prodcuts electronics and accessories are sold 
-
-# My Agendas -
-Breaking the whole website into the smallest divisions according to my strong zone.
+This is my Second individual project . Myntra is an Ecommerce webpage, where clothing prodcuts electronics and accessories are sold.
 
 
 Review the code when someone is unable to make the part prominently.
@@ -11,12 +8,9 @@ Review the code when someone is unable to make the part prominently.
 If some flaws are found in the original website, try to solve them as well.
 
 # Technologies used -
-FRONTEND :-> HTML5, CSS3, JAVASCRIPT, REACTJS, REDUX, MATERIAL-UI, 
-BACKEND :-> EXPRESS.JS NODE.JS 
-DATABSE :-> MONGODB
-
-
-This is our home page were we tried to build the same page as it is visible in the main website and also adding some styles to look better, and linking the other pages to the home page.
+# FRONTEND :-> HTML5, CSS3, JAVASCRIPT, REACTJS, REDUX, MATERIAL-UI, 
+# BACKEND :-> EXPRESS.JS NODE.JS 
+# DATABSE :-> MONGODB
 
 # Home Page 
 ![Screenshot (1)](https://user-images.githubusercontent.com/99542983/232956588-5f817427-90e3-436a-a884-8316fe117a13.png)
