@@ -10,7 +10,7 @@ import {
     // RESET_CART
 
 } from "./actionTypes.js";
-const URL = "http://localhost:8000";
+const URL = "https://flipkart-server-o8zi.onrender.com";
 export const getProducts = () => async (dispatch) => {
     try {
         let { data } = await axios.get(`${URL}/products`);
