@@ -14,8 +14,8 @@ const BigCont = styled(Box)`
   margin-top: 10px;
   justify-content: space-between;
   @media (max-width: 768px) {
-    flex-direction: row;
-    height: 65%;
+    display: grid;
+    gap:10px
   }
 `;
 
@@ -23,13 +23,8 @@ const SmallCont = styled(Box)`
   width: 100%;
   display: flex;
   justify-content: space-around;
-  
   margin-bottom: 20px;
-
-  @media (max-width: 768px) {
-    width: 25%;
-    margin-bottom: 0;
-  }
+ 
 `;
 
 const TypoWord = styled(Typography)`
@@ -48,36 +43,27 @@ const FooterPart = styled(Box)`
   display: flex;
   justify-content: space-around;
   align-items: center;
-
-  @media (max-width: 768px) {
-    flex-direction: row;
-    height: 15%;
-  }
 `;
 
 const Flex = styled(Box)`
   display: flex;
   align-items: center;
   margin-bottom: 10px;
-
-  @media (max-width: 768px) {
-    margin-bottom: 0;
-  }
 `;
 const TopGap = styled(Typography)`
-  margin-top: 8px;
+  margin-top: 1px;
   font-size: 14px;
 `;
 const HorizontalLine = styled(Box)`
   width: 100%;
-  border-top: 1px solid black; /* Horizontal line styling */
+  border-top: 1px solid black;
   margin: 10px 0;
 `;
 
 const VerticalLine = styled(Box)`
   width: 1px;
   height: 100%;
-  background-color: black; /* Vertical line styling */
+  background-color: black; 
   margin: 0 20px;
 `;
 
@@ -129,7 +115,7 @@ function Footer() {
             <TypoWord>
               Flipkart Internet Private Limited,
               <br />
-              Building Alyssa, Bagonia & Clove <br />
+              Building Alyssa, Begonia & Clove <br />
               Embassy Tech village, Outer ring <br />
               road,Deverabeeshanhalli, village,
               <br />
