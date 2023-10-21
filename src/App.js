@@ -5,6 +5,7 @@ import DetailsView from './Components/Details/DetailsView.jsx';
 import { Box } from "@mui/material";
 import { Routes, Route } from "react-router-dom";
 import Payment from './Components/Cart/Payment';
+ 
 function App() {
   return (
     <div className="App">

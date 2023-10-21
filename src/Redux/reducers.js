@@ -9,6 +9,7 @@ import {
   REMOVE_FROM_CART,
   INCREASE_QUANTITY,
   DECREASE_QUANTITY,
+  RESET_CART,
 } from "./actionTypes.js";
 
 export const getProductReducer = (state = { products: [] }, action) => {
@@ -58,23 +59,28 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
           (product) => product.id !== action.payload
         ),
       };
-      case INCREASE_QUANTITY:
+    case INCREASE_QUANTITY:
+      return {
+        ...state,
+        cartItems: state.cartItems.map((product) =>
+          product.id === action.payload
+            ? { ...product, quantity: product.quantity + 1 }
+            : product
+        ),
+      };
+    case DECREASE_QUANTITY:
+      return {
+        ...state,
+        cartItems: state.cartItems.map((product) =>
+          product.id === action.payload && product.quantity > 1
+            ? { ...product, quantity: product.quantity - 1 }
+            : product
+        ),
+      };
+      case RESET_CART:
         return {
           ...state,
-          cartItems: state.cartItems.map((product) =>
-            product.id === action.payload
-              ? { ...product, quantity: product.quantity + 1 }
-              : product
-          ),
-        };
-      case DECREASE_QUANTITY:
-        return {
-          ...state,
-          cartItems: state.cartItems.map((product) =>
-            product.id === action.payload && product.quantity > 1
-              ? { ...product, quantity: product.quantity - 1 }
-              : product
-          ),
+          cartItems: [], // Reset the cart by clearing all items
         };
     default:
       return state;

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Box, Input, Button, Typography, styled } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { resetCart } from '../../Redux/actions';
 import { AccountCircle, Phone, AccountBalance, CreditCard } from '@mui/icons-material';
 
 const Component = styled(Box)`
@@ -45,6 +47,7 @@ export default function Payment() {
   const [loader, setLoader] = useState(false);
   const { cartItems } = useSelector(state => state.cart);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   let sum = 0;
   cartItems.forEach((ele) => {
@@ -58,7 +61,8 @@ export default function Payment() {
       setTimeout(() => {
         // Add logic for payment processing
         // Navigate to a confirmation page on success
-        navigate('/confirmation');
+        dispatch(resetCart());
+        navigate('/cart');
       }, 4000);
     }, 3000);
   };

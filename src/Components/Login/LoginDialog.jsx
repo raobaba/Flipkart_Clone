@@ -1,13 +1,15 @@
-import React, { useState,useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { DataContext } from '../../Context/DataProvider.jsx';
 import { Dialog, DialogContent, Box, TextField, Typography, Button, styled } from "@mui/material";
 import { authenticateSignup, authenticateLogin } from '../../Services/api.js';
+
 const Component = styled(DialogContent)`
     height: 70vh;
     width: 90vh;
     padding: 0;
     padding-top: 0;
 `;
+
 const Image = styled(Box)`
     background: #2874f0 url(https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/login_img_c4a81e.png) center 85% no-repeat;
     width: 40%;
@@ -18,6 +20,7 @@ const Image = styled(Box)`
         font-weight: 600
     }
 `;
+
 const Wrapper = styled(Box)`
     padding: 1px 35px;
     display: flex;
@@ -28,6 +31,7 @@ const Wrapper = styled(Box)`
         margin-top: 15px;
     }
 `;
+
 const LoginButton = styled(Button)`
     text-transform: none;
     background: #FB641B;
@@ -35,6 +39,7 @@ const LoginButton = styled(Button)`
     height: 48px;
     border-radius: 2px;
 `;
+
 const RequestOTP = styled(Button)`
     text-transform: none;
     background: #fff;
@@ -55,15 +60,18 @@ const CreateAccount = styled(Typography)`
     color: #2874f0;
     font-weight: 600;
     font-size: 14px;
-    cursor: pointer
+    cursor: pointer;
 `;
+
 const Error = styled(Typography)`
     font-size: 10px;
     color: #ff6161;
     line-height: 0;
+    width:200px;
     margin-top: 10px;
     font-weight: 600;
-`
+`;
+
 const accountInialValue = {
     login: {
         view: 'login',
@@ -75,7 +83,8 @@ const accountInialValue = {
         heading: "Looks like you're new here",
         subHeading: 'Signup to get started'
     }
-}
+};
+
 const signupInitialValues = {
     firstname: '',
     lastname: '',
@@ -84,46 +93,60 @@ const signupInitialValues = {
     password: '',
     phone: ''
 };
-const loginInitialValues={
-    email:"",
-    password:""
-}
+
+const loginInitialValues = {
+    email: "",
+    password: ""
+};
+
 export default function LoginDialog({ open, setOpen }) {
     const [account, toggleAccount] = useState(accountInialValue.login);
     const [signup, setSignup] = useState(signupInitialValues);
-    const [login,setLogin] = useState(loginInitialValues);
-    const [error,setError] = useState(false);
-    const {setAccount} = useContext(DataContext);
+    const [login, setLogin] = useState(loginInitialValues);
+    const [error, setError] = useState(false);
+    const [loginLoading, setLoginLoading] = useState(false);
+    const [signupLoading, setSignupLoading] = useState(false);
+    const { setAccount } = useContext(DataContext);
+
     const handleClose = () => {
         setOpen(false);
         toggleAccount(accountInialValue.login);
         setError(false);
     }
+
     const toggleSignup = () => {
         toggleAccount(accountInialValue.signup);
     }
+
     const onInputChange = (e) => {
         setSignup({ ...signup, [e.target.name]: e.target.value });
     }
+
     const signupUser = async () => {
+        setSignupLoading(true);
         let response = await authenticateSignup(signup);
         if (!response) return;
         handleClose();
         setAccount(signup.firstname);
+        setSignupLoading(false);
     }
-    const onValueChange=(e)=>{
-       setLogin({...login,[e.target.name]:e.target.value});
+
+    const onValueChange = (e) => {
+        setLogin({ ...login, [e.target.name]: e.target.value });
     }
-    const loginUser = async ()=>{
+
+    const loginUser = async () => {
+        setLoginLoading(true);
         let response = await authenticateLogin(login);
-        console.log(response)
-        if(response.status===200){
+        if (response.status === 200) {
             handleClose();
             setAccount(response.data.data.firstname);
-        }else{
+        } else {
             setError(true);
         }
+        setLoginLoading(false);
     }
+
     return (
         <Dialog open={open} onClose={handleClose} PaperProps={{ sx: { maxWidth: 'unset' } }}>
             <Component>
@@ -135,11 +158,13 @@ export default function LoginDialog({ open, setOpen }) {
                     {
                         account.view === "login" ?
                             <Wrapper>
-                                <TextField variant='standard' onChange={(e) => onValueChange(e)} name='username' label="Enter Username" />
-                                {error && <Error>Please enter valid username or password</Error> }
+                                <TextField variant='standard' onChange={(e) => onValueChange(e)} name='email' label="Enter Email" />
+                                {error && <Error>Please enter a valid email or password</Error>}
                                 <TextField variant='standard' onChange={(e) => onValueChange(e)} name='password' label="Enter Password" />
-                                <Text>By continuing,you agree to Flipkart's Terms of use and Privacy Policy</Text>
-                                <LoginButton onClick={() => loginUser()}>Login</LoginButton>
+                                <Text>By continuing, you agree to Flipkart's Terms of use and Privacy Policy</Text>
+                                <LoginButton onClick={() => loginUser()}>
+                                    {loginLoading ? 'Logging In...' : 'Login'}
+                                </LoginButton>
                                 <Text style={{ textAlign: 'center' }}>OR</Text>
                                 <RequestOTP>Request OTP</RequestOTP>
                                 <CreateAccount onClick={() => toggleSignup()}>New to Flipkart? Create an account</CreateAccount>
@@ -151,7 +176,9 @@ export default function LoginDialog({ open, setOpen }) {
                                 <TextField variant="standard" onChange={(e) => onInputChange(e)} name='email' label='Enter Email' />
                                 <TextField variant="standard" onChange={(e) => onInputChange(e)} name='password' label='Enter Password' />
                                 <TextField variant="standard" onChange={(e) => onInputChange(e)} name='phone' label='Enter Phone' />
-                                <LoginButton onClick={() => signupUser()} >Continue</LoginButton>
+                                <LoginButton onClick={() => signupUser()}>
+                                    {signupLoading ? 'Signing Up...' : 'Continue'}
+                                </LoginButton>
                             </Wrapper>
                     }
                 </Box>
