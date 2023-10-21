@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { FadeLoader } from "react-spinners";
 import { Box, Input, Button, Typography, styled } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
 import { AccountCircle, Phone, AccountBalance, CreditCard } from '@mui/icons-material';

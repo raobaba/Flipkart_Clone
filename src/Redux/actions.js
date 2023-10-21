@@ -7,6 +7,8 @@ import {
     GET_PRODUCTS_DETAILS_FAILURE,
     ADD_TO_CART,ADD_TO_CART_ERROR,
     REMOVE_FROM_CART,
+    INCREASE_QUANTITY,
+    DECREASE_QUANTITY
     // RESET_CART
 
 } from "./actionTypes.js";
@@ -41,3 +43,11 @@ export const addToCart = (id,quantity) => async (dispatch)=> {
 export const removeFromCart = (id) => async (dispatch)=> {
        dispatch({type:REMOVE_FROM_CART,payload:id})
 }
+
+export const increaseQuantity = (id) => {
+    return { type: INCREASE_QUANTITY, payload: id };
+  };
+  
+  export const decreaseQuantity = (id) => {
+    return { type: DECREASE_QUANTITY, payload: id };
+  }
