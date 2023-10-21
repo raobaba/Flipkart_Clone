@@ -7,6 +7,7 @@ import { styled, Box } from "@mui/material";
 import { getProducts } from '../../Redux/actions.js';
 import { useDispatch, useSelector } from 'react-redux';
 import MidSlide from './MidSlide';
+import Footer from './Footer';
 const Component = styled(Box)`
    padding: 10px;
    background-color: #f2f2f2;
@@ -27,10 +28,11 @@ export default function Home() {
         <Slide products={products} title="Discount for You" timer={false} />
         <Slide products={products} title="Suggesting Items" timer={false} />
         <Slide products={products} title="Top Selections" timer={false} />
-        <Slide products={products} title="Recommendated Items" timer={false} />
+        <Slide products={products} title="Recommended Items" timer={false} />
         <Slide products={products} title="Trending Offers" timer={false} />
         <Slide products={products} title="Season Top's picks" timer={false} />
         <Slide products={products} title="Top deals of Accessories" timer={false} />
+        <Footer/>
       </Component>
     </>
   )
