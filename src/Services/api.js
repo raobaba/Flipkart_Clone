@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'https://flipkart-server-o8zi.onrender.com';
+const url = 'http://localhost:8000';
 
 export const authenticateSignup = async (user) => {
   try {
