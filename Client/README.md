@@ -1,80 +1,70 @@
-# flipkart-clone
-This is my Second individual project . Myntra is an Ecommerce webpage, where clothing prodcuts electronics and accessories are sold.
+# Getting Started with Create React App
 
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Review the code when someone is unable to make the part prominently.
+## Available Scripts
 
+In the project directory, you can run:
 
-If some flaws are found in the original website, try to solve them as well.
+### `npm start`
 
-# Technologies used -
-# FRONTEND :-> HTML5, CSS3, JAVASCRIPT, REACTJS, REDUX, MATERIAL-UI, 
-# BACKEND :-> EXPRESS.JS NODE.JS 
-# DATABSE :-> MONGODB
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-# Home Page 
-![Screenshot (1)](https://user-images.githubusercontent.com/99542983/232956588-5f817427-90e3-436a-a884-8316fe117a13.png)
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-# Login Page
+### `npm test`
 
-![Screenshot (2)](https://user-images.githubusercontent.com/99542983/232957366-898a6c1e-0288-4181-a7d4-6951137dd9df.png)
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
+### `npm run build`
 
-# SignUp Page
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-![Screenshot (3)](https://user-images.githubusercontent.com/99542983/232957502-58f7d3ca-5862-4db5-a7d0-726ec1dbd6f8.png)
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-# Products Page
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-![Screenshot (9)](https://user-images.githubusercontent.com/99542983/232957673-d3ff83a0-9286-4fae-8b4b-e586766fb456.png)
+### `npm run eject`
 
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-# Detailed Page
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-![Screenshot (5)](https://user-images.githubusercontent.com/99542983/232957898-d701f6ff-a89e-4cc5-a28f-4d770d2f4326.png)
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-# Cart Page
+## Learn More
 
-![Screenshot (6)](https://user-images.githubusercontent.com/99542983/232957991-e1e1590c-e272-4868-9e29-67b1d754cb3b.png)
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-# Payment Page
+### Code Splitting
 
-![Screenshot (7)](https://user-images.githubusercontent.com/99542983/232958050-685787d6-289a-4f73-abb3-f04173a50ed1.png)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-# Progress Payment
+### Analyzing the Bundle Size
 
-![Screenshot (8)](https://user-images.githubusercontent.com/99542983/232958159-8df31067-acd7-46a1-be92-bf35b7034503.png)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-# Empty Cart Page
- 
- ![Screenshot (4)](https://user-images.githubusercontent.com/99542983/232958319-04b63e56-301f-4425-bd8e-cddbda979216.png)
+### Making a Progressive Web App
 
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-# Rajan Kumar:
+### Advanced Configuration
 
-Myself Rajan Kumar, This is my Second individual project.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-Here’s my LinkedIn profile:-http://www.linkedin.com/in/rajan-kumar-9627a0237
+### Deployment
 
-Here's is the my portfolio link:- https://raobaba.github.io/
- 
-Landing Page
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-SignUp Page 
+### `npm run build` fails to minify
 
-Login Page
-
-Carts Page
-
-Payment Page
-
-And also using some parts like LocalStorage, Html, Css, JS, etc…
-
-___________________________________________________________________
-
-Challenges -
-Redux 
-
-
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
