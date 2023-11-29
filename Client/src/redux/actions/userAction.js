@@ -74,7 +74,7 @@ export const registerUser = (userData) => async (dispatch) => {
     try {
 
         dispatch({ type: REGISTER_USER_REQUEST });
-
+        console.log('User Data before API call:', userData);
         const config = {
             headers: {
                 "Content-Type": "multipart/form-data",
@@ -86,7 +86,7 @@ export const registerUser = (userData) => async (dispatch) => {
             userData,
             config
         );
-
+        console.log('Data after API call:', data);
         dispatch({
             type: REGISTER_USER_SUCCESS,
             payload: data.user,

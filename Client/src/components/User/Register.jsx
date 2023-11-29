@@ -54,11 +54,13 @@ const Register = () => {
         formData.set("gender", gender);
         formData.set("password", password);
         formData.set("avatar", avatar);
-
+        console.log('Data going for API execution:', formData);
         dispatch(registerUser(formData));
     }
 
     const handleDataChange = (e) => {
+        const { name, value, files } = e.target;
+        console.log(files)
         if (e.target.name === "avatar") {
             const reader = new FileReader();
 
@@ -68,7 +70,6 @@ const Register = () => {
                     setAvatar(reader.result);
                 }
             };
-
             reader.readAsDataURL(e.target.files[0]);
 
         } else {
