@@ -40,7 +40,7 @@ import {
     DELETE_USER_RESET,
     DELETE_USER_FAIL,
     REMOVE_USER_DETAILS,
-} from '../constants/userConstants';
+} from '../actionTypes/userConstants';
 
 export const userReducer = (state = { user: {} }, { type, payload }) => {
     switch (type) {

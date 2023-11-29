@@ -31,7 +31,7 @@ import {
     SLIDER_PRODUCTS_REQUEST,
     SLIDER_PRODUCTS_SUCCESS,
     SLIDER_PRODUCTS_FAIL,
-} from "../constants/productConstants";
+} from "../actionTypes/productConstants";
 
 // Get All Products --- Filter/Search/Sort
 export const getProducts =

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ADD_TO_WISHLIST, REMOVE_FROM_WISHLIST } from "../constants/wishlistConstants";
+import { ADD_TO_WISHLIST, REMOVE_FROM_WISHLIST } from "../actionTypes/wishlistConstants";
 
 // Add To Wishlist
 export const addToWishlist = (id) => async (dispatch, getState) => {

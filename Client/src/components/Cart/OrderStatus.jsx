@@ -2,8 +2,8 @@ import { useSnackbar } from 'notistack';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { emptyCart } from '../../actions/cartAction';
-import { clearErrors, getPaymentStatus, newOrder } from '../../actions/orderAction';
+import { emptyCart } from '../../redux/actions/cartAction';
+import { clearErrors, getPaymentStatus, newOrder } from '../../redux/actions/orderAction';
 import Loader from '../Layouts/Loader';
 
 const OrderStatus = () => {

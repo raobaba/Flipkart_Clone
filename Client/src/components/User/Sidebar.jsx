@@ -8,7 +8,7 @@ import FolderSharedIcon from '@mui/icons-material/FolderShared';
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
-import { logoutUser } from '../../actions/userAction';
+import { logoutUser } from '../../redux/actions/userAction';
 
 const Sidebar = ({ activeTab }) => {
 

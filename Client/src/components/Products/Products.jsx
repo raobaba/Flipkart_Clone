@@ -8,7 +8,7 @@ import { useSnackbar } from 'notistack';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { clearErrors, getProducts } from '../../actions/productAction';
+import { clearErrors, getProducts } from '../../redux/actions/productAction';
 import Loader from '../Layouts/Loader';
 import MinCategory from '../Layouts/MinCategory';
 import Product from './Product';

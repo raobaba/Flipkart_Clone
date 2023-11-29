@@ -35,7 +35,7 @@ import {
     ALL_USERS_FAIL,
     ALL_USERS_SUCCESS,
     ALL_USERS_REQUEST,
-} from '../constants/userConstants';
+} from '../actionTypes/userConstants';
 import axios from 'axios';
 
 // Login User

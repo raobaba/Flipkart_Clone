@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSnackbar } from 'notistack';
-import { clearErrors, deleteReview, getAllReviews } from '../../actions/productAction';
+import { clearErrors, deleteReview, getAllReviews } from '../../redux/actions/productAction';
 import Rating from '@mui/material/Rating';
 import Actions from './Actions';
-import { DELETE_REVIEW_RESET } from '../../constants/productConstants';
+import { DELETE_REVIEW_RESET } from '../../redux/actionTypes/productConstants';
 import MetaData from '../Layouts/MetaData';
 import BackdropLoader from '../Layouts/BackdropLoader';
 

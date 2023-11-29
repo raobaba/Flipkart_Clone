@@ -1,4 +1,4 @@
-import { ADD_TO_WISHLIST, REMOVE_FROM_WISHLIST } from "../constants/wishlistConstants";
+import { ADD_TO_WISHLIST, REMOVE_FROM_WISHLIST } from "../actionTypes/wishlistConstants";
 
 export const wishlistReducer = (state = { wishlistItems: [] }, { type, payload }) => {
     switch (type) {

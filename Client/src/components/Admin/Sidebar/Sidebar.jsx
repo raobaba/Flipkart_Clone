@@ -12,7 +12,7 @@ import Avatar from '@mui/material/Avatar';
 import { useDispatch, useSelector } from 'react-redux';
 import './Sidebar.css';
 import { useSnackbar } from 'notistack';
-import { logoutUser } from '../../../actions/userAction';
+import { logoutUser } from '../../../redux/actions/userAction';
 
 const navMenu = [
     {

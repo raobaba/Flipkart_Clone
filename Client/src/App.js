@@ -4,7 +4,7 @@ import Header from './components/Layouts/Header/Header';
 import Login from './components/User/Login';
 import Register from './components/User/Register';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { loadUser } from './actions/userAction';
+import { loadUser } from './redux/actions/userAction';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import UpdateProfile from './components/User/UpdateProfile';

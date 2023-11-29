@@ -13,7 +13,7 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSnackbar } from 'notistack';
-import { logoutUser } from '../../../actions/userAction';
+import { logoutUser } from '../../../redux/actions/userAction';
 
 const PrimaryDropDownMenu = ({ setTogglePrimaryDropDown, user }) => {
 

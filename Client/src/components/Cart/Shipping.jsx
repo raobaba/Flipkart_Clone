@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import PriceSidebar from './PriceSidebar';
 import Stepper from './Stepper';
 import { useSnackbar } from 'notistack';
-import { saveShippingInfo } from '../../actions/cartAction';
+import { saveShippingInfo } from '../../redux/actions/cartAction';
 import { useNavigate } from 'react-router-dom';
 import MetaData from '../Layouts/MetaData';
 import states from '../../utils/states';

@@ -3,8 +3,8 @@ import TextField from '@mui/material/TextField'
 import { useSnackbar } from 'notistack';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { clearErrors, loadUser, updatePassword } from '../../actions/userAction';
-import { UPDATE_PASSWORD_RESET } from '../../constants/userConstants';
+import { clearErrors, loadUser, updatePassword } from '../../redux/actions/userAction';
+import { UPDATE_PASSWORD_RESET } from '../../redux/actionTypes/userConstants';
 import BackdropLoader from '../Layouts/BackdropLoader';
 import MetaData from '../Layouts/MetaData';
 import FormSidebar from './FormSidebar';

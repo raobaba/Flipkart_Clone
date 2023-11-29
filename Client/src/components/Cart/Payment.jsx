@@ -10,7 +10,7 @@ import Stepper from './Stepper';
 //     useStripe,
 //     useElements,
 // } from '@stripe/react-stripe-js';
-import { clearErrors } from '../../actions/orderAction';
+import { clearErrors } from '../../redux/actions/orderAction';
 import { useSnackbar } from 'notistack';
 import { post } from '../../utils/paytmForm';
 import FormControl from '@mui/material/FormControl';

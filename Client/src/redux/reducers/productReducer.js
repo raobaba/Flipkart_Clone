@@ -36,7 +36,7 @@ import {
     SLIDER_PRODUCTS_FAIL,
     SLIDER_PRODUCTS_REQUEST,
     SLIDER_PRODUCTS_SUCCESS,
-} from "../constants/productConstants";
+} from "../actionTypes/productConstants";
 
 export const productsReducer = (state = { products: [] }, { type, payload }) => {
 

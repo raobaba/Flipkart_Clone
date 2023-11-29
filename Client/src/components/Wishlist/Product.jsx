@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { getDiscount } from '../../utils/functions';
 import DeleteIcon from '@mui/icons-material/Delete';
 import StarIcon from '@mui/icons-material/Star';
-import { removeFromWishlist } from '../../actions/wishlistAction';
+import { removeFromWishlist } from '../../redux/actions/wishlistAction';
 import { useDispatch } from 'react-redux';
 
 const Product = (props) => {

@@ -3,7 +3,7 @@ import StarIcon from '@mui/icons-material/Star';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToWishlist, removeFromWishlist } from '../../../actions/wishlistAction';
+import { addToWishlist, removeFromWishlist } from '../../../redux/actions/wishlistAction';
 import { useSnackbar } from 'notistack';
 
 const Product = (props) => {
