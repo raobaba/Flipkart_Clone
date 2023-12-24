@@ -101,6 +101,7 @@ function Routing() {
             <Payment />
             {/* // </Elements> */}
             {/* ) */}
+            
           </ProtectedRoute>
         } ></Route>
 
