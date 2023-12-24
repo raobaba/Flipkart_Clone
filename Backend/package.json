@@ -1,0 +1,33 @@
+{
+  "name": "Flipkart_Backend",
+  "version": "1.0.0",
+  "description": "tyring to make complete backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "Rajan Kumar",
+  "license": "ISC",
+  "dependencies": {
+    "@sendgrid/mail": "^7.7.0",
+    "bcryptjs": "^2.4.3",
+    "cloudinary": "^1.41.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-fileupload": "^1.4.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^7.0.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.6",
+    "nodemon": "^2.0.21",
+    "paytmchecksum": "^1.5.1",
+    "stripe": "^14.1.0",
+    "uuid": "^9.0.1",
+    "validator": "^13.11.0"
+  }
+}
