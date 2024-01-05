@@ -3,7 +3,6 @@ const asyncErrorHandler = require("../Middlewares/asyncErrorHandler");
 const sendToken = require("../utils/sendToken");
 const ErrorHandler = require("../utils/errorHandler");
 const jwt = require("jsonwebtoken");
-var nodemailer = require("nodemailer");
 const crypto = require("crypto");
 const cloudinary = require("cloudinary");
 
@@ -16,8 +15,6 @@ const registerUser = asyncErrorHandler(async (req, res, next) => {
     width: 150,
     crop: "scale",
   });
-  console.log(myCloud);
-
   const user = await User.create({
     name,
     email,
@@ -28,7 +25,6 @@ const registerUser = asyncErrorHandler(async (req, res, next) => {
       url: myCloud.secure_url,
     },
   });
-  console.log(user)
   sendToken(user, 200, res);
 });
 
