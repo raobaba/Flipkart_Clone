@@ -7,14 +7,16 @@ const crypto = require("crypto");
 const cloudinary = require("cloudinary");
 
 const registerUser = asyncErrorHandler(async (req, res, next) => {
-  
   const { name, email, gender, password } = req.body;
 
-  const myCloud = await cloudinary.uploader.upload(req.files.avatar.tempFilePath, {
-    folder: "avatars",
-    width: 150,
-    crop: "scale",
-  });
+  const myCloud = await cloudinary.uploader.upload(
+    req.files.avatar.tempFilePath,
+    {
+      folder: "avatars",
+      width: 150,
+      crop: "scale",
+    }
+  );
   const user = await User.create({
     name,
     email,
@@ -56,7 +58,11 @@ const logoutUser = asyncErrorHandler(async (req, res, next) => {
 });
 
 const getUserDetails = asyncErrorHandler(async (req, res, next) => {
-  const user = await User.findById(req.user.id);
+  const userId = req.params.id;
+  const user = await User.findById(userId);
+  if (!user) {
+    return res.status(404).json({ success: false, message: "User not found" });
+  }
   res.status(200).json({
     success: true,
     user,
@@ -65,10 +71,9 @@ const getUserDetails = asyncErrorHandler(async (req, res, next) => {
 
 const forgotPassword = asyncErrorHandler(async (req, res, next) => {
   try {
-    const user = await User.findOne({email: req.body.email});
-
-    if(!user) {
-        return next(new ErrorHandler("User Not Found", 404));
+    const user = await User.findOne({ email: req.body.email });
+    if (!user) {
+      return next(new ErrorHandler("User Not Found", 404));
     }
     const resetToken = await user.getResetPasswordToken();
 
@@ -99,8 +104,6 @@ const updatePassword = asyncErrorHandler(async (req, res, next) => {
   sendToken(user, 201, res);
 });
 
-
-
 const updateProfile = asyncErrorHandler(async (req, res, next) => {
   const newUserData = {
     name: req.body.name,
@@ -129,15 +132,11 @@ const updateProfile = asyncErrorHandler(async (req, res, next) => {
       url: myCloud.secure_url,
     };
   }
-  const updatedUser = await User.findByIdAndUpdate(
-    req.user.id,
-    newUserData,
-    {
-      new: true,
-      runValidators: true,
-      useFindAndModify: false, 
-    }
-  );
+  const updatedUser = await User.findByIdAndUpdate(req.user.id, newUserData, {
+    new: true,
+    runValidators: true,
+    useFindAndModify: false,
+  });
   if (!updatedUser) {
     return res.status(404).json({
       success: false,
@@ -150,48 +149,47 @@ const updateProfile = asyncErrorHandler(async (req, res, next) => {
 });
 
 const getAllUsers = asyncErrorHandler(async (req, res, next) => {
-
   const users = await User.find();
 
   res.status(200).json({
-      success: true,
-      users,
+    success: true,
+    users,
   });
 });
 
 // Get Single User Details --ADMIN
 const getSingleUser = asyncErrorHandler(async (req, res, next) => {
-
   const user = await User.findById(req.params.id);
 
-  if(!user) {
-      return next(new ErrorHandler(`User doesn't exist with id: ${req.params.id}`, 404));
+  if (!user) {
+    return next(
+      new ErrorHandler(`User doesn't exist with id: ${req.params.id}`, 404)
+    );
   }
 
   res.status(200).json({
-      success: true,
-      user,
+    success: true,
+    user,
   });
 });
 
 // Update User Role --ADMIN
 const updateUserRole = asyncErrorHandler(async (req, res, next) => {
-
   const newUserData = {
-      name: req.body.name,
-      email: req.body.email,
-      gender: req.body.gender,
-      role: req.body.role,
-  }
+    name: req.body.name,
+    email: req.body.email,
+    gender: req.body.gender,
+    role: req.body.role,
+  };
 
   await User.findByIdAndUpdate(req.params.id, newUserData, {
-      new: true,
-      runValidators: true,
-      useFindAndModify: false,
+    new: true,
+    runValidators: true,
+    useFindAndModify: false,
   });
 
   res.status(200).json({
-      success: true,
+    success: true,
   });
 });
 
@@ -199,7 +197,9 @@ const deleteUser = asyncErrorHandler(async (req, res, next) => {
   const user = await User.findById(req.params.id);
 
   if (!user) {
-    return next(new ErrorHandler(`User doesn't exist with id: ${req.params.id}`, 404));
+    return next(
+      new ErrorHandler(`User doesn't exist with id: ${req.params.id}`, 404)
+    );
   }
 
   const deletedUser = await User.deleteOne({ _id: req.params.id });
@@ -209,11 +209,11 @@ const deleteUser = asyncErrorHandler(async (req, res, next) => {
       success: true,
     });
   } else {
-    return next(new ErrorHandler(`Failed to delete user with id: ${req.params.id}`, 500));
+    return next(
+      new ErrorHandler(`Failed to delete user with id: ${req.params.id}`, 500)
+    );
   }
 });
-
-
 
 module.exports = {
   registerUser,
@@ -227,5 +227,5 @@ module.exports = {
   getAllUsers,
   getSingleUser,
   updateUserRole,
-  deleteUser
+  deleteUser,
 };

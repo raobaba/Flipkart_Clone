@@ -11,15 +11,18 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import { Link, useNavigate } from "react-router-dom";
-
+import { useDispatch } from "react-redux";
+import { logoutUser } from "../../../redux/actions/user.actions";
 import { useSnackbar } from "notistack";
 
-const PrimaryDropDownMenu = ({ setTogglePrimaryDropDown, user }) => {
-
+const PrimaryDropDownMenu = ({ setTogglePrimaryDropDown }) => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    dispatch(logoutUser());
+    setTogglePrimaryDropDown(false);
     navigate("/login");
     enqueueSnackbar("Logout Successfully", { variant: "success" });
   };

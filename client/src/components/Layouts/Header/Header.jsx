@@ -6,9 +6,27 @@ import Searchbar from "./Searchbar";
 import logo from "../../../assets/images/logo.png";
 import PrimaryDropDownMenu from "./PrimaryDropDownMenu";
 import SecondaryDropDownMenu from "./SecondaryDropDownMenu";
+import {
+  setAuthenticated,
+  logoutUser,
+} from "../../../redux/actions/user.actions";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const { isAuthenticated, user } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    const userData = Cookies.get("userData");
+
+    if (userData) {
+      const parsedUserData = JSON.parse(userData);
+      dispatch(setAuthenticated(parsedUserData));
+    }
+  }, [dispatch]);
+
   const [togglePrimaryDropDown, setTogglePrimaryDropDown] = useState(false);
   const [toggleSecondaryDropDown, setToggleSecondaryDropDown] = useState(false);
 
@@ -32,7 +50,6 @@ const Header = () => {
     };
 
     document.addEventListener("mousedown", handleOutsideClick);
-
     return () => {
       document.removeEventListener("mousedown", handleOutsideClick);
     };
@@ -54,32 +71,36 @@ const Header = () => {
         </div>
 
         <div className="flex items-center justify-between ml-1 sm:ml-0 gap-0.5 sm:gap-7 relative">
-          <Link
-            to="/login"
-            className="px-3 sm:px-9 py-0.5 text-primary-blue bg-white border font-medium rounded-sm cursor-pointer"
-          >
-            Login
-          </Link>
-
-          <div ref={primaryDropdownRef}>
-            <span
-              className="userDropDown flex items-center text-white font-medium gap-1 cursor-pointer"
-              onClick={() => setTogglePrimaryDropDown(!togglePrimaryDropDown)}
+          {isAuthenticated === false ? (
+            <Link
+              to="/login"
+              className="px-3 sm:px-9 py-0.5 text-primary-blue bg-white border font-medium rounded-sm cursor-pointer"
             >
-              <span>
-                {togglePrimaryDropDown ? (
-                  <ExpandLessIcon sx={{ fontSize: "16px" }} />
-                ) : (
-                  <ExpandMoreIcon sx={{ fontSize: "16px" }} />
-                )}
+              Login
+            </Link>
+          ) : (
+            <div ref={primaryDropdownRef}>
+              <span
+                className="userDropDown flex items-center text-white font-medium gap-1 cursor-pointer"
+                onClick={() => setTogglePrimaryDropDown(!togglePrimaryDropDown)}
+              >
+                {user.name && user.name.split(" ", 1)}
+                <span>
+                  {togglePrimaryDropDown ? (
+                    <ExpandLessIcon sx={{ fontSize: "16px" }} />
+                  ) : (
+                    <ExpandMoreIcon sx={{ fontSize: "16px" }} />
+                  )}
+                </span>
               </span>
-            </span>
-            {togglePrimaryDropDown && (
-              <PrimaryDropDownMenu
+              {togglePrimaryDropDown && (
+                <PrimaryDropDownMenu
                 setTogglePrimaryDropDown={setTogglePrimaryDropDown}
-              />
-            )}
-          </div>
+                logoutUser={logoutUser}
+                />
+              )}
+            </div>
+          )}
 
           <div ref={secondaryDropdownRef}>
             <span

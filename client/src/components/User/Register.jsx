@@ -6,13 +6,21 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import { useSnackbar } from "notistack";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { clearErrors, registerUser } from "../../redux/actions/user.actions";
 import BackdropLoader from "../Layouts/BackdropLoader";
 import MetaData from "../Layouts/MetaData";
 import FormSidebar from "./FormSidebar";
 
 const Register = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
+
+  const { loading, isAuthenticated, error } = useSelector(
+    (state) => state.user
+  );
+
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -48,6 +56,8 @@ const Register = () => {
     formData.append("gender", gender);
     formData.append("password", password);
     formData.append("avatar", avatar);
+
+    dispatch(registerUser(formData));
   };
 
   const handleDataChange = (e) => {
@@ -69,13 +79,20 @@ const Register = () => {
   };
 
   useEffect(() => {
-    enqueueSnackbar({ variant: "error" });
-  }, [navigate, enqueueSnackbar]);
+    if (error) {
+      enqueueSnackbar(error, { variant: "error" });
+      dispatch(clearErrors());
+    }
+    if (isAuthenticated) {
+      navigate("/");
+    }
+  }, [dispatch, error, isAuthenticated, navigate, enqueueSnackbar]);
 
   return (
     <>
       <MetaData title="Register | Flipkart" />
 
+      {loading && <BackdropLoader />}
       <main className="w-full mt-12 sm:pt-20 sm:mt-0">
         {/* <!-- row --> */}
         <div className="flex sm:w-4/6 sm:mt-4 m-auto mb-7 bg-white shadow-lg">

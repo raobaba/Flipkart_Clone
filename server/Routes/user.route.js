@@ -21,7 +21,7 @@ userRouter.route("/register").post(registerUser);
 userRouter.route("/login").post(loginUser);
 userRouter.route("/logout").get(logoutUser);
 
-userRouter.route("/me").get(isAuthenticatedUser, getUserDetails);
+userRouter.route("/me/:id").get(isAuthenticatedUser, getUserDetails);
 userRouter.route('/password/forgot').post(forgotPassword);
 userRouter.route('/password/reset/:id/:token').put(resetPassword);
 userRouter.route('/password/update').put(isAuthenticatedUser, updatePassword);

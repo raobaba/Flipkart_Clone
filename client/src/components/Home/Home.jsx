@@ -7,15 +7,6 @@ import { useSnackbar } from 'notistack';
 import MetaData from '../Layouts/MetaData';
 
 const Home = () => {
-
-  const { enqueueSnackbar } = useSnackbar();
-
-  useEffect(() => {
-   
-      enqueueSnackbar({ variant: "error" });
-    
-  }, [enqueueSnackbar]);
-
   return (
     <>
       <MetaData title="Online Shopping Site for Mobiles, Electronics, Furniture, Grocery, Lifestyle, Books & More. Best Offers!" />

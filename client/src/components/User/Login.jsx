@@ -1,39 +1,46 @@
 import TextField from "@mui/material/TextField";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { clearErrors, loginUser } from "../../redux/actions/user.actions";
 import { useSnackbar } from "notistack";
 import BackdropLoader from "../Layouts/BackdropLoader";
 import MetaData from "../Layouts/MetaData";
 
 const Login = () => {
- 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
   const location = useLocation();
 
-
+  const { loading, isAuthenticated, error } = useSelector(
+    (state) => state.user
+  );
+  console.log(isAuthenticated)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = (e) => {
     e.preventDefault();
-
+    dispatch(loginUser(email, password));
   };
 
   const redirect = location.search ? location.search.split("=")[1] : "account";
 
   useEffect(() => {
-  
-      enqueueSnackbar( { variant: "error" });
-   
-   
-  }, [ redirect, navigate, enqueueSnackbar]);
-
+    if (error) {
+      enqueueSnackbar(error, { variant: "error" });
+      dispatch(clearErrors());
+    }
+    if (isAuthenticated) {
+      enqueueSnackbar("Login successful!", { variant: "success" });
+      navigate(`/`);
+    }
+  }, [dispatch, error, isAuthenticated, redirect, navigate, enqueueSnackbar]);
   return (
     <>
       <MetaData title="Login | Flipkart" />
-
-      
+      {loading && <BackdropLoader />}
       <main className="w-full mt-12 sm:pt-20 sm:mt-0">
         {/* <!-- row --> */}
         <div className="flex sm:w-4/6 sm:mt-4 m-auto mb-7 bg-white shadow-lg">
