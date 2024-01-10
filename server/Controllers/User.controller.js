@@ -46,7 +46,6 @@ const loginUser = asyncErrorHandler(async (req, res, next) => {
   sendToken(user, 201, res);
 });
 
-
 const logoutUser = asyncErrorHandler(async (req, res, next) => {
   res.cookie("token", null, {
     expires: new Date(Date.now()),
@@ -59,11 +58,7 @@ const logoutUser = asyncErrorHandler(async (req, res, next) => {
 });
 
 const getUserDetails = asyncErrorHandler(async (req, res, next) => {
-  const userId = req.params.id;
-  const user = await User.findById(userId);
-  if (!user) {
-    return res.status(404).json({ success: false, message: "User not found" });
-  }
+  const user = await User.findById(req.user.id);
   res.status(200).json({
     success: true,
     user,

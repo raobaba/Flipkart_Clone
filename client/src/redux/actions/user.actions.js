@@ -53,11 +53,13 @@ export const loginUser = (email, password) => async (dispatch) => {
       { email, password },
       config
     );
+    Cookies.set("token", data.token);
     Cookies.set("userId", data.user._id);
     dispatch({
       type: LOGIN_USER_SUCCESS,
       payload: data.user,
     });
+    dispatch(getUserDetails());
   } catch (error) {
     dispatch({
       type: LOGIN_USER_FAIL,
@@ -66,10 +68,17 @@ export const loginUser = (email, password) => async (dispatch) => {
   }
 };
 
-export const getUserDetails = (userId) => async (dispatch) => {
+export const getUserDetails = () => async (dispatch) => {
   try {
     dispatch({ type: USER_DETAILS_REQUEST });
-    const { data } = await axios.get(`http://localhost:8000/api/v1/${userId}`);
+    const token = Cookies.get("token");
+    console.log("Token", token);
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    const { data } = await axios.get(`http://localhost:8000/api/v1/me`, config);
     dispatch({
       type: USER_DETAILS_SUCCESS,
       payload: data.user,

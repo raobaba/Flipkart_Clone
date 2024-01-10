@@ -12,19 +12,16 @@ import {
 } from "../../../redux/actions/user.actions";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import Cookies from "js-cookie";
 
 const Header = () => {
   const dispatch = useDispatch();
   const { isAuthenticated, user } = useSelector((state) => state.user);
 
   useEffect(() => {
-    const userId = Cookies.get("userId");
-    console.log("userId", userId);
-    if (userId) {
-      dispatch(getUserDetails(userId));
+    if (isAuthenticated) {
+      dispatch(getUserDetails());
     }
-  }, [dispatch]);
+  }, [dispatch, isAuthenticated]);
 
   const [togglePrimaryDropDown, setTogglePrimaryDropDown] = useState(false);
   const [toggleSecondaryDropDown, setToggleSecondaryDropDown] = useState(false);

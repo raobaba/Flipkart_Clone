@@ -1,35 +1,38 @@
-const ErrorHandler = require("../utils/errorHandler");;
+const ErrorHandler = require("../utils/errorHandler");
 
-module.exports = (err, req, res, next) => {
-    err.statusCode = err.statusCode || 500;
-    err.message = err.message || "Internal Server Error";
+const errorHandler = (err, req, res, next) => {
+    let error = { ...err };
+    error.statusCode = err.statusCode || 500;
+    error.message = err.message || "Internal Server Error";
 
-    // mongodb id error
-    if (err.name === "CastError") {
-        const message = `Resource Not Found. Invalid: ${err.path}`;
-        err = new ErrorHandler(message, 400)
+    if (error.name === "CastError") {
+        const message = `Resource Not Found. Invalid: ${error.path}`;
+        error = new ErrorHandler(message, 400);
     }
 
-    // mongoose duplicate key error
-    if (err.code === 11000) {
-        const message = `Duplicate ${Object.keys(err.keyValue)} entered`;
-        err = new ErrorHandler(message, 400);
+    if (error.code === 11000) {
+        const message = `Duplicate ${Object.keys(error.keyValue)} entered`;
+        error = new ErrorHandler(message, 400);
     }
 
-    // wrong jwt error
-    if (err.code === "JsonWebTokenError") {
-        const message = 'JWT Error';
-        err = new ErrorHandler(message, 400);
+    if (error.name === "JsonWebTokenError") {
+        if (error.message === "jwt expired") {
+            error = new ErrorHandler("JWT has expired", 401);
+        } else {
+            error = new ErrorHandler("Invalid JWT", 401);
+        }
     }
 
-    // jwt expire error
-    if (err.code === "JsonWebTokenError") {
-        const message = 'JWT is Expired';
-        err = new ErrorHandler(message, 400);
+    if (error.name === "ValidationError") {
+        // Mongoose validation error handling
+        const message = Object.values(error.errors).map((val) => val.message);
+        error = new ErrorHandler(message, 400);
     }
 
-    res.status(err.statusCode).json({
+    res.status(error.statusCode).json({
         success: false,
-        message: err.message,
+        error: error.message || "Server Error",
     });
-}
+};
+
+module.exports = errorHandler;
