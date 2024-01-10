@@ -53,8 +53,12 @@ export const loginUser = (email, password) => async (dispatch) => {
       { email, password },
       config
     );
-    Cookies.set("token", data.token);
-    Cookies.set("userId", data.user._id);
+
+    const token = data.token;
+    console.log(data.token);
+    Cookies.set("token", token);
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+
     dispatch({
       type: LOGIN_USER_SUCCESS,
       payload: data.user,
@@ -72,13 +76,17 @@ export const getUserDetails = () => async (dispatch) => {
   try {
     dispatch({ type: USER_DETAILS_REQUEST });
     const token = Cookies.get("token");
-    console.log("Token", token);
+    if (!token) {
+      throw new Error("No token available");
+    }
     const config = {
       headers: {
+        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     };
-    const { data } = await axios.get(`http://localhost:8000/api/v1/me`, config);
+    console.log("config",config);
+    const { data } = await axios.get("http://localhost:8000/api/v1/me", config);
     dispatch({
       type: USER_DETAILS_SUCCESS,
       payload: data.user,

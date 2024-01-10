@@ -10,7 +10,7 @@ import poco from "../../../assets/images/Banners/poco-m4-pro.webp";
 import realme from "../../../assets/images/Banners/realme-9-pro.webp";
 import fashionSale from "../../../assets/images/Banners/fashionsale.jpg";
 import oppo from "../../../assets/images/Banners/oppo-reno7.webp";
-import Flight from '../../assets/images/Banners/Flight.png';
+
 
 export const PreviousBtn = ({ className, onClick }) => {
   return (

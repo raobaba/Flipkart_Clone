@@ -16,7 +16,7 @@ const Login = () => {
   const { loading, isAuthenticated, error } = useSelector(
     (state) => state.user
   );
-  console.log(isAuthenticated)
+  console.log("isAuth",isAuthenticated)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 

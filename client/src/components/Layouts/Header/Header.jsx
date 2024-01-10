@@ -18,10 +18,8 @@ const Header = () => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
 
   useEffect(() => {
-    if (isAuthenticated) {
-      dispatch(getUserDetails());
-    }
-  }, [dispatch, isAuthenticated]);
+    dispatch(getUserDetails());
+  }, [dispatch]);
 
   const [togglePrimaryDropDown, setTogglePrimaryDropDown] = useState(false);
   const [toggleSecondaryDropDown, setToggleSecondaryDropDown] = useState(false);
