@@ -7,7 +7,7 @@ import logo from "../../../assets/images/logo.png";
 import PrimaryDropDownMenu from "./PrimaryDropDownMenu";
 import SecondaryDropDownMenu from "./SecondaryDropDownMenu";
 import {
-  setAuthenticated,
+  getUserDetails,
   logoutUser,
 } from "../../../redux/actions/user.actions";
 import { useSelector, useDispatch } from "react-redux";
@@ -19,11 +19,10 @@ const Header = () => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
 
   useEffect(() => {
-    const userData = Cookies.get("userData");
-
-    if (userData) {
-      const parsedUserData = JSON.parse(userData);
-      dispatch(setAuthenticated(parsedUserData));
+    const userId = Cookies.get("userId");
+    console.log("userId", userId);
+    if (userId) {
+      dispatch(getUserDetails(userId));
     }
   }, [dispatch]);
 
@@ -95,8 +94,8 @@ const Header = () => {
               </span>
               {togglePrimaryDropDown && (
                 <PrimaryDropDownMenu
-                setTogglePrimaryDropDown={setTogglePrimaryDropDown}
-                logoutUser={logoutUser}
+                  setTogglePrimaryDropDown={setTogglePrimaryDropDown}
+                  logoutUser={logoutUser}
                 />
               )}
             </div>

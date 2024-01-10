@@ -37,14 +37,15 @@ const loginUser = asyncErrorHandler(async (req, res, next) => {
   }
   const user = await User.findOne({ email }).select("+password");
   if (!user) {
-    return next(new ErrorHandler("Invalid Email or Password", 401));
+    return next(new ErrorHandler("Invalid Email", 401));
   }
   const isPasswordMatched = await user.comparePassword(password);
   if (!isPasswordMatched) {
-    return next(new ErrorHandler("Invalid Email or Password", 401));
+    return next(new ErrorHandler("Incorrect Password", 401));
   }
   sendToken(user, 201, res);
 });
+
 
 const logoutUser = asyncErrorHandler(async (req, res, next) => {
   res.cookie("token", null, {
