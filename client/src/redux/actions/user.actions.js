@@ -53,21 +53,17 @@ export const loginUser = (email, password) => async (dispatch) => {
       { email, password },
       config
     );
-
     const token = data.token;
-    console.log(data.token);
-    Cookies.set("token", token);
-    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-
+    console.log("Login Data", data);
+    Cookies.set("token", token, { expires: 60 });
     dispatch({
       type: LOGIN_USER_SUCCESS,
       payload: data.user,
     });
-    dispatch(getUserDetails());
   } catch (error) {
     dispatch({
       type: LOGIN_USER_FAIL,
-      payload: error.response.data.message,
+      payload: error.response.data.error,
     });
   }
 };
@@ -76,25 +72,23 @@ export const getUserDetails = () => async (dispatch) => {
   try {
     dispatch({ type: USER_DETAILS_REQUEST });
     const token = Cookies.get("token");
-    if (!token) {
-      throw new Error("No token available");
-    }
-    const config = {
+    console.log("token", token);
+    const { data } = await axios.get("http://localhost:8000/api/v1/me", {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        Authorization: `${token}`,
       },
-    };
-    console.log("config",config);
-    const { data } = await axios.get("http://localhost:8000/api/v1/me", config);
+    });
+    console.log("User Details data:", data);
     dispatch({
       type: USER_DETAILS_SUCCESS,
       payload: data.user,
     });
   } catch (error) {
+    console.error("Error fetching user details:", error);
     dispatch({
       type: USER_DETAILS_FAIL,
-      payload: error.response.data.message,
+      payload: error.response ? error.response.data.message : "Unknown error",
     });
   }
 };
@@ -103,7 +97,6 @@ export const logoutUser = () => async (dispatch) => {
   try {
     const response = await axios.get("http://localhost:8000/api/v1/logout");
     dispatch({ type: LOGOUT_USER_SUCCESS });
-    Cookies.remove("userData");
   } catch (error) {
     dispatch({
       type: LOGOUT_USER_FAIL,

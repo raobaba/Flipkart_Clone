@@ -58,12 +58,23 @@ const logoutUser = asyncErrorHandler(async (req, res, next) => {
 });
 
 const getUserDetails = asyncErrorHandler(async (req, res, next) => {
-  const user = await User.findById(req.user.id);
-  res.status(200).json({
-    success: true,
-    user,
-  });
+  try {
+    console.log("getUserDetails", req.user.id)
+    const user = await User.findById(req.user.id);
+    res.status(200).json({
+      success: true,
+      user,
+    });
+  } catch (error) {
+    // Handle the error here
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      error: "Internal Server Error",
+    });
+  }
 });
+
 
 const forgotPassword = asyncErrorHandler(async (req, res, next) => {
   try {

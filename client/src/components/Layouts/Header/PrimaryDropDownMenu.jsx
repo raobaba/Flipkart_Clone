@@ -21,7 +21,12 @@ const PrimaryDropDownMenu = ({ setTogglePrimaryDropDown }) => {
   const { enqueueSnackbar } = useSnackbar();
 
   const handleLogout = async () => {
- 
+    dispatch(logoutUser());
+    console.log("Navigate calling")
+    localStorage.setItem('isAuth', false);
+    navigate("/login");
+    enqueueSnackbar("Logout Successfully", { variant: "success" });
+    setTogglePrimaryDropDown(false);
   };
 
   const navs = [

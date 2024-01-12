@@ -1,25 +1,36 @@
-const jwt = require('jsonwebtoken');
-const User = require('../Models/user.model');
-const ErrorHandler = require('../utils/errorHandler');
-const asyncErrorHandler = require('./asyncErrorHandler');
+const jwt = require("jsonwebtoken");
+const User = require("../Models/user.model");
+const ErrorHandler = require("../utils/errorHandler");
+const asyncErrorHandler = require("./asyncErrorHandler");
 
 exports.isAuthenticatedUser = asyncErrorHandler(async (req, res, next) => {
-    const { token } = req.cookies;
-
-    if (!token) {
-        return next(new ErrorHandler("Please login to access", 401));
+  const token = req.header("Authorization");
+  console.log("authentication token", token);
+  if (!token) {
+    return res.status(401).json({ error: "Authorization token missing" });
+  }
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    console.log("decoded",decoded)
+    const user = await User.findById(decoded.id);
+    console.log("user",user)
+    if (!user) {
+      return res.status(401).json({ error: "Invalid token" });
     }
-
-    const decodedData = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = await User.findById(decodedData.id);
-    next();
+    req.user = user;
+  } catch (error) {
+    res.status(401).json({ error: "Invalid token" });
+  }
+  next();
 });
 
 exports.authorizeRoles = (...roles) => {
-    return (req, res, next) => {
-        if (!roles.includes(req.user.role)) {
-            return next(new ErrorHandler(`Role: ${req.user.role} is not allowed`, 403));
-        }
-        next();
-    };
+  return (req, res, next) => {
+    if (!roles.includes(req.user.role)) {
+      return next(
+        new ErrorHandler(`Role: ${req.user.role} is not allowed`, 403)
+      );
+    }
+    next();
+  };
 };

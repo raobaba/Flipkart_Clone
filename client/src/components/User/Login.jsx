@@ -16,7 +16,9 @@ const Login = () => {
   const { loading, isAuthenticated, error } = useSelector(
     (state) => state.user
   );
-  console.log("isAuth",isAuthenticated)
+
+  console.log("isAuth in Login",isAuthenticated)
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -28,6 +30,7 @@ const Login = () => {
   const redirect = location.search ? location.search.split("=")[1] : "account";
 
   useEffect(() => {
+
     if (error) {
       enqueueSnackbar(error, { variant: "error" });
       dispatch(clearErrors());

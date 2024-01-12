@@ -15,7 +15,7 @@ import {
 
 const initialState = {
   user: {},
-  isAuthenticated: false,
+  isAuthenticated: JSON.parse(localStorage.getItem('isAuth')) || false,
   loading: false,
   error: null,
 };
@@ -31,6 +31,7 @@ export const userReducer = (state = initialState, { type, payload }) => {
       };
     case LOGIN_USER_SUCCESS:
     case REGISTER_USER_SUCCESS:
+      localStorage.setItem('isAuth', true);
       return {
         ...state,
         loading: false,
@@ -39,6 +40,7 @@ export const userReducer = (state = initialState, { type, payload }) => {
         error: null,
       };
     case LOGOUT_USER_SUCCESS:
+      localStorage.setItem('isAuth', false);
       return {
         ...state,
         loading: false,
@@ -50,6 +52,7 @@ export const userReducer = (state = initialState, { type, payload }) => {
     case REGISTER_USER_FAIL:
     case USER_DETAILS_FAIL:
     case LOGOUT_USER_FAIL:
+      localStorage.setItem('isAuth', false);
       return {
         ...state,
         loading: false,

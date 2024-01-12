@@ -13,10 +13,13 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
+
 const Header = () => {
   const dispatch = useDispatch();
-  const { isAuthenticated, user } = useSelector((state) => state.user);
 
+  const {isAuthenticated, user } = useSelector((state) => state.user);
+  console.log("isAuth in Header",isAuthenticated)
+ 
   useEffect(() => {
     dispatch(getUserDetails());
   }, [dispatch]);
