@@ -25,12 +25,14 @@ export const userReducer = (state = initialState, { type, payload }) => {
     case LOGIN_USER_REQUEST:
     case REGISTER_USER_REQUEST:
     case USER_DETAILS_REQUEST:
+      console.log("Requesting...");
       return {
         ...state,
         loading: true,
       };
     case LOGIN_USER_SUCCESS:
     case REGISTER_USER_SUCCESS:
+      console.log("Success:", payload);
       localStorage.setItem('isAuth', true);
       return {
         ...state,
@@ -40,6 +42,7 @@ export const userReducer = (state = initialState, { type, payload }) => {
         error: null,
       };
     case LOGOUT_USER_SUCCESS:
+      console.log("Logout Success");
       localStorage.setItem('isAuth', false);
       return {
         ...state,
@@ -52,6 +55,7 @@ export const userReducer = (state = initialState, { type, payload }) => {
     case REGISTER_USER_FAIL:
     case USER_DETAILS_FAIL:
     case LOGOUT_USER_FAIL:
+      console.error("Error:", payload);
       localStorage.setItem('isAuth', false);
       return {
         ...state,
@@ -61,6 +65,7 @@ export const userReducer = (state = initialState, { type, payload }) => {
         error: payload,
       };
     case USER_DETAILS_SUCCESS:
+      console.log("User Details:", payload);
       return {
         ...state,
         loading: false,
@@ -68,6 +73,7 @@ export const userReducer = (state = initialState, { type, payload }) => {
         error: null,
       };
     case CLEAR_ERRORS:
+      console.log("Clearing Errors");
       return {
         ...state,
         error: null,

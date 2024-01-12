@@ -22,9 +22,7 @@ const PrimaryDropDownMenu = ({ setTogglePrimaryDropDown }) => {
 
   const handleLogout = async () => {
     dispatch(logoutUser());
-    console.log("Navigate calling")
-    localStorage.setItem('isAuth', false);
-    navigate("/login");
+    console.log("Navigate calling");
     enqueueSnackbar("Logout Successfully", { variant: "success" });
     setTogglePrimaryDropDown(false);
   };
@@ -98,7 +96,7 @@ const PrimaryDropDownMenu = ({ setTogglePrimaryDropDown }) => {
         const { title, icon, redirect } = item;
 
         return (
-          <>
+          <div key={i}>
             {title === "Wishlist" ? (
               <Link
                 className="pl-3 py-3.5 border-b flex gap-3 items-center hover:bg-gray-50"
@@ -121,7 +119,7 @@ const PrimaryDropDownMenu = ({ setTogglePrimaryDropDown }) => {
                 {title}
               </Link>
             )}
-          </>
+          </div>
         );
       })}
 

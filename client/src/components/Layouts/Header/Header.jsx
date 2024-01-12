@@ -6,23 +6,23 @@ import Searchbar from "./Searchbar";
 import logo from "../../../assets/images/logo.png";
 import PrimaryDropDownMenu from "./PrimaryDropDownMenu";
 import SecondaryDropDownMenu from "./SecondaryDropDownMenu";
-import {
-  getUserDetails,
-  logoutUser,
-} from "../../../redux/actions/user.actions";
+import { getUserDetails } from "../../../redux/actions/user.actions";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-
+import { Link,useNavigate } from "react-router-dom";
 
 const Header = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { isAuthenticated, loading, user } = useSelector((state) => state.user);
 
-  const {isAuthenticated, user } = useSelector((state) => state.user);
-  console.log("isAuth in Header",isAuthenticated)
- 
+  console.log("inHeader isAuthenticated at the beginning:", isAuthenticated);
   useEffect(() => {
+    console.log("inLogin isAuthenticated inside useEffect:", isAuthenticated);
     dispatch(getUserDetails());
-  }, [dispatch]);
+    if(!isAuthenticated){
+      navigate('/')
+    }
+  }, [dispatch,isAuthenticated]);
 
   const [togglePrimaryDropDown, setTogglePrimaryDropDown] = useState(false);
   const [toggleSecondaryDropDown, setToggleSecondaryDropDown] = useState(false);
@@ -31,6 +31,7 @@ const Header = () => {
   const secondaryDropdownRef = useRef(null);
 
   useEffect(() => {
+    console.log("inLogin isAuthenticated inside useEffect:", isAuthenticated);
     const handleOutsideClick = (event) => {
       if (
         primaryDropdownRef.current &&
@@ -68,7 +69,11 @@ const Header = () => {
         </div>
 
         <div className="flex items-center justify-between ml-1 sm:ml-0 gap-0.5 sm:gap-7 relative">
-          {isAuthenticated === false ? (
+          {loading ? (
+            <div className="h-8 w-28 text-center flex p-1 justify-center text-primary-blue bg-white border font-medium rounded-sm">
+              Loading...
+            </div>
+          ) : isAuthenticated === false ? (
             <Link
               to="/login"
               className="px-3 sm:px-9 py-0.5 text-primary-blue bg-white border font-medium rounded-sm cursor-pointer"
@@ -78,7 +83,7 @@ const Header = () => {
           ) : (
             <div ref={primaryDropdownRef}>
               <span
-                className="userDropDown flex items-center text-white font-medium gap-1 cursor-pointer"
+                className="userDropDown px-3 sm:px-9 py-0.5 flex items-center text-white font-medium gap-1 cursor-pointer"
                 onClick={() => setTogglePrimaryDropDown(!togglePrimaryDropDown)}
               >
                 {user.name && user.name.split(" ", 1)}
@@ -93,7 +98,6 @@ const Header = () => {
               {togglePrimaryDropDown && (
                 <PrimaryDropDownMenu
                   setTogglePrimaryDropDown={setTogglePrimaryDropDown}
-                  logoutUser={logoutUser}
                 />
               )}
             </div>

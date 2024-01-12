@@ -20,7 +20,7 @@ const Register = () => {
   const { loading, isAuthenticated, error } = useSelector(
     (state) => state.user
   );
-
+  console.log("inSignup isAuthenticated at the beginning:", isAuthenticated);
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -79,6 +79,7 @@ const Register = () => {
   };
 
   useEffect(() => {
+    console.log("inSignup isAuthenticated inside useEffect:", isAuthenticated);
     if (error) {
       enqueueSnackbar(error, { variant: "error" });
       dispatch(clearErrors());
