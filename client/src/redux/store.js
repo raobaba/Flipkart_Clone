@@ -14,6 +14,14 @@ import {
 import { wishlistReducer } from "./reducers/wishlist.reducers";
 import { cartReducer } from "./reducers/cart.reducers";
 import { saveForLaterReducer } from "./reducers/saveForLater.reducers";
+import {
+  allOrdersReducer,
+  myOrdersReducer,
+  newOrderReducer,
+  orderDetailsReducer,
+  orderReducer,
+  paymentStatusReducer,
+} from "./reducers/order.reducers";
 
 const reducer = combineReducers({
   user: userReducer,
@@ -27,6 +35,11 @@ const reducer = combineReducers({
   cart: cartReducer,
   saveForLater: saveForLaterReducer,
   wishlist: wishlistReducer,
+  newOrder: newOrderReducer,
+  myOrders: myOrdersReducer,
+  orderDetails: orderDetailsReducer,
+  allOrders: allOrdersReducer,
+  order: orderReducer,
 });
 
 let initialState = {};

@@ -11,7 +11,7 @@ import {
   useStripe,
   useElements,
 } from "@stripe/react-stripe-js";
-import { clearErrors, newOrder } from "../../redux/actions/orderAction";
+import { clearErrors, newOrder } from "../../redux/actions/order.actions";
 import { useSnackbar } from "notistack";
 import { post } from "../../utils/paytmForm";
 import FormControl from "@mui/material/FormControl";
@@ -20,7 +20,7 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import MetaData from "../Layouts/MetaData";
 
-import { emptyCart } from "../../redux/actions/cartAction";
+import { emptyCart } from "../../redux/actions/cart.actions";
 import { loadStripe } from "@stripe/stripe-js";
 
 const Payment = ({ stripeApiKey }) => {

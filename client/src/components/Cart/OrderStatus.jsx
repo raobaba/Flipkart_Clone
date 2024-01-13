@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { emptyCart } from '../../redux/actions/cart.actions';
-import { clearErrors, getPaymentStatus, newOrder } from '../../redux/actions/orderAction';
+import { clearErrors, getPaymentStatus, newOrder } from '../../redux/actions/order.actions';
 import Loader from '../Layouts/Loader';
 
 const OrderStatus = () => {
