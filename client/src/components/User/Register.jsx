@@ -85,6 +85,8 @@ const Register = () => {
       dispatch(clearErrors());
     }
     if (isRegistered) {
+      enqueueSnackbar("SignUp successful!", { variant: "success" });
+      dispatch(clearErrors());
       navigate("/login");
     }
   }, [dispatch, error, isRegistered, navigate, enqueueSnackbar]);

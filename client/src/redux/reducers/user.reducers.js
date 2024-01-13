@@ -11,6 +11,7 @@ import {
   LOGOUT_USER_SUCCESS,
   LOGOUT_USER_FAIL,
   CLEAR_ERRORS,
+  CLEAR_REGISTER_STATUS,
 } from "../actionTypes/user.actionTypes";
 
 const initialState = {
@@ -40,7 +41,6 @@ export const userReducer = (state = initialState, { type, payload }) => {
         user: payload,
         error: null,
       };
-
     case LOGIN_USER_SUCCESS:
       console.log("Success:", payload);
       localStorage.setItem("isAuth", true);
@@ -58,6 +58,7 @@ export const userReducer = (state = initialState, { type, payload }) => {
         ...state,
         loading: false,
         user: {},
+        isAuthenticated: false,
         isAuthenticated: false,
         error: null,
       };
@@ -87,6 +88,7 @@ export const userReducer = (state = initialState, { type, payload }) => {
       console.log("Clearing Errors");
       return {
         ...state,
+        isRegistered: false,
         error: null,
       };
     default:
