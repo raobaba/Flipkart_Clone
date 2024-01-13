@@ -17,10 +17,10 @@ const Register = () => {
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
 
-  const { loading, isAuthenticated, error } = useSelector(
+  const { loading, isRegistered, error } = useSelector(
     (state) => state.user
   );
-  console.log("inSignup isAuthenticated at the beginning:", isAuthenticated);
+  console.log("inSignup isRegistered at the beginning:", isRegistered);
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -79,15 +79,15 @@ const Register = () => {
   };
 
   useEffect(() => {
-    console.log("inSignup isAuthenticated inside useEffect:", isAuthenticated);
+    console.log("inSignup isRegistered inside useEffect:", isRegistered);
     if (error) {
       enqueueSnackbar(error, { variant: "error" });
       dispatch(clearErrors());
     }
-    if (isAuthenticated) {
-      navigate("/");
+    if (isRegistered) {
+      navigate("/login");
     }
-  }, [dispatch, error, isAuthenticated, navigate, enqueueSnackbar]);
+  }, [dispatch, error, isRegistered, navigate, enqueueSnackbar]);
 
   return (
     <>

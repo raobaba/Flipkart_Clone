@@ -14,6 +14,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isAuthenticated, loading, user } = useSelector((state) => state.user);
+  console.log("There is value",user)
 
   console.log("inHeader isAuthenticated at the beginning:", isAuthenticated);
   useEffect(() => {
@@ -69,11 +70,7 @@ const Header = () => {
         </div>
 
         <div className="flex items-center justify-between ml-1 sm:ml-0 gap-0.5 sm:gap-7 relative">
-          {loading ? (
-            <div className="h-8 w-28 text-center flex p-1 justify-center text-primary-blue bg-white border font-medium rounded-sm">
-              Loading...
-            </div>
-          ) : isAuthenticated === false ? (
+          { isAuthenticated === false ? (
             <Link
               to="/login"
               className="px-3 sm:px-9 py-0.5 text-primary-blue bg-white border font-medium rounded-sm cursor-pointer"

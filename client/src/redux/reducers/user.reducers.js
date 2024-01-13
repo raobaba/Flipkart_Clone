@@ -15,8 +15,9 @@ import {
 
 const initialState = {
   user: {},
-  isAuthenticated: JSON.parse(localStorage.getItem('isAuth')) || false,
+  isAuthenticated: JSON.parse(localStorage.getItem("isAuth")) || false,
   loading: false,
+  isRegistered: false,
   error: null,
 };
 
@@ -30,10 +31,19 @@ export const userReducer = (state = initialState, { type, payload }) => {
         ...state,
         loading: true,
       };
-    case LOGIN_USER_SUCCESS:
     case REGISTER_USER_SUCCESS:
       console.log("Success:", payload);
-      localStorage.setItem('isAuth', true);
+      return {
+        ...state,
+        loading: false,
+        isRegistered: true,
+        user: payload,
+        error: null,
+      };
+
+    case LOGIN_USER_SUCCESS:
+      console.log("Success:", payload);
+      localStorage.setItem("isAuth", true);
       return {
         ...state,
         loading: false,
@@ -43,7 +53,7 @@ export const userReducer = (state = initialState, { type, payload }) => {
       };
     case LOGOUT_USER_SUCCESS:
       console.log("Logout Success");
-      localStorage.setItem('isAuth', false);
+      localStorage.setItem("isAuth", false);
       return {
         ...state,
         loading: false,
@@ -56,11 +66,12 @@ export const userReducer = (state = initialState, { type, payload }) => {
     case USER_DETAILS_FAIL:
     case LOGOUT_USER_FAIL:
       console.error("Error:", payload);
-      localStorage.setItem('isAuth', false);
+      localStorage.setItem("isAuth", false);
       return {
         ...state,
         loading: false,
         isAuthenticated: false,
+        isRegistered: false,
         user: null,
         error: payload,
       };
