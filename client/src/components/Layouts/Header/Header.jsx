@@ -8,13 +8,13 @@ import PrimaryDropDownMenu from "./PrimaryDropDownMenu";
 import SecondaryDropDownMenu from "./SecondaryDropDownMenu";
 import { getUserDetails } from "../../../redux/actions/user.actions";
 import { useSelector, useDispatch } from "react-redux";
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isAuthenticated, loading, user } = useSelector((state) => state.user);
-  console.log("There is value",user)
+  console.log("There is value", user);
 
   const { cartItems } = useSelector((state) => state.cart);
 
@@ -22,10 +22,10 @@ const Header = () => {
   useEffect(() => {
     console.log("inLogin isAuthenticated inside useEffect:", isAuthenticated);
     dispatch(getUserDetails());
-    if(!isAuthenticated){
-      navigate('/')
+    if (!isAuthenticated) {
+      navigate("/");
     }
-  }, [dispatch,isAuthenticated]);
+  }, [dispatch, isAuthenticated]);
 
   const [togglePrimaryDropDown, setTogglePrimaryDropDown] = useState(false);
   const [toggleSecondaryDropDown, setToggleSecondaryDropDown] = useState(false);
@@ -72,7 +72,7 @@ const Header = () => {
         </div>
 
         <div className="flex items-center justify-between ml-1 sm:ml-0 gap-0.5 sm:gap-7 relative">
-          { isAuthenticated === false ? (
+          {isAuthenticated === false ? (
             <Link
               to="/login"
               className="px-3 sm:px-9 py-0.5 text-primary-blue bg-white border font-medium rounded-sm cursor-pointer"

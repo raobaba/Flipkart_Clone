@@ -4,9 +4,9 @@ import { Routes, Route } from "react-router-dom";
 import Home from "../components/Home/Home.jsx";
 import Login from "../components/User/Login.jsx";
 import Register from "../components/User/Register.jsx";
-import Product from "../components/Products/Product.jsx";
 import ProductDetails from "../components/ProductDetails/ProductDetails.jsx";
 import Products from "../components/Products/Products.jsx"; 
+import Cart from '../components/Cart/Cart.jsx'
 
 function Routing() {
   useEffect(() => {
@@ -24,6 +24,7 @@ function Routing() {
       <Route path="/product/:id" element={<ProductDetails />} />
       <Route path="/products" element={<Products />} />
       <Route path="/products/:keyword" element={<Products />} />
+      <Route path="/cart" element={<Cart />} />
     </Routes>
   );
 }

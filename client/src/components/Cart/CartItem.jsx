@@ -2,7 +2,7 @@ import { useSnackbar } from 'notistack';
 import { useDispatch } from 'react-redux';
 import { addItemsToCart, removeItemsFromCart } from '../../redux/actions/cart.actions';
 import { getDeliveryDate, getDiscount } from '../../utils/functions';
-import { saveForLater } from '../../redux/actions/saveForLaterAction';
+import { saveForLater } from '../../redux/actions/saveForLater.actions';
 
 import { Link } from 'react-router-dom';
 

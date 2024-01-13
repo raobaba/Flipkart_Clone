@@ -54,6 +54,7 @@ const ProductDetails = () => {
   const { success, error: reviewError } = useSelector(
     (state) => state.newReview
   );
+
   const { cartItems } = useSelector((state) => state.cart);
   const { wishlistItems } = useSelector((state) => state.wishlist);
 
@@ -91,7 +92,7 @@ const ProductDetails = () => {
     formData.set("rating", rating);
     formData.set("comment", comment);
     formData.set("productId", productId);
-    dispatch(newReview(formData));
+    console.log("Formdata",formData)
     setOpen(false);
   };
 
@@ -135,7 +136,6 @@ const ProductDetails = () => {
   useEffect(() => {
     dispatch(getSimilarProducts(product?.category));
   }, [dispatch, product, product.category]);
-  console.log("ProductDetails",product)
 
   return (
     <>

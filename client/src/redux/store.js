@@ -13,6 +13,7 @@ import {
 } from "./reducers/product.reducers";
 import { wishlistReducer } from "./reducers/wishlist.reducers";
 import { cartReducer } from "./reducers/cart.reducers";
+import { saveForLaterReducer } from "./reducers/saveForLater.reducers";
 
 const reducer = combineReducers({
   user: userReducer,
@@ -24,6 +25,7 @@ const reducer = combineReducers({
   reviews: productReviewsReducer,
   review: reviewReducer,
   cart: cartReducer,
+  saveForLater: saveForLaterReducer,
   wishlist: wishlistReducer,
 });
 
