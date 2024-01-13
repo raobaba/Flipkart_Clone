@@ -16,6 +16,8 @@ const Header = () => {
   const { isAuthenticated, loading, user } = useSelector((state) => state.user);
   console.log("There is value",user)
 
+  const { cartItems } = useSelector((state) => state.cart);
+
   console.log("inHeader isAuthenticated at the beginning:", isAuthenticated);
   useEffect(() => {
     console.log("inLogin isAuthenticated inside useEffect:", isAuthenticated);
@@ -126,9 +128,11 @@ const Header = () => {
             <span>
               <ShoppingCartIcon />
             </span>
-            <div className="w-5 h-5 p-2 bg-red-500 text-xs rounded-full absolute -top-2 left-3 flex justify-center items-center border">
-              1
-            </div>
+            {cartItems.length > 0 && (
+              <div className="w-5 h-5 p-2 bg-red-500 text-xs rounded-full absolute -top-2 left-3 flex justify-center items-center border">
+                {cartItems.length}
+              </div>
+            )}
             Cart
           </Link>
         </div>

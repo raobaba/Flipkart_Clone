@@ -11,7 +11,6 @@ import {
   LOGOUT_USER_SUCCESS,
   LOGOUT_USER_FAIL,
   CLEAR_ERRORS,
-  CLEAR_REGISTER_STATUS,
 } from "../actionTypes/user.actionTypes";
 
 const initialState = {
@@ -27,13 +26,13 @@ export const userReducer = (state = initialState, { type, payload }) => {
     case LOGIN_USER_REQUEST:
     case REGISTER_USER_REQUEST:
     case USER_DETAILS_REQUEST:
-      console.log("Requesting...");
+      // console.log("Requesting...");
       return {
         ...state,
         loading: true,
       };
     case REGISTER_USER_SUCCESS:
-      console.log("Success:", payload);
+      // console.log("Success:", payload);
       return {
         ...state,
         loading: false,
@@ -42,7 +41,7 @@ export const userReducer = (state = initialState, { type, payload }) => {
         error: null,
       };
     case LOGIN_USER_SUCCESS:
-      console.log("Success:", payload);
+      // console.log("Success:", payload);
       localStorage.setItem("isAuth", true);
       return {
         ...state,
@@ -52,7 +51,7 @@ export const userReducer = (state = initialState, { type, payload }) => {
         error: null,
       };
     case LOGOUT_USER_SUCCESS:
-      console.log("Logout Success");
+      // console.log("Logout Success");
       localStorage.setItem("isAuth", false);
       return {
         ...state,
@@ -66,7 +65,7 @@ export const userReducer = (state = initialState, { type, payload }) => {
     case REGISTER_USER_FAIL:
     case USER_DETAILS_FAIL:
     case LOGOUT_USER_FAIL:
-      console.error("Error:", payload);
+      // console.error("Error:", payload);
       localStorage.setItem("isAuth", false);
       return {
         ...state,
@@ -77,7 +76,7 @@ export const userReducer = (state = initialState, { type, payload }) => {
         error: payload,
       };
     case USER_DETAILS_SUCCESS:
-      console.log("User Details:", payload);
+      // console.log("User Details:", payload);
       return {
         ...state,
         loading: false,
@@ -85,7 +84,7 @@ export const userReducer = (state = initialState, { type, payload }) => {
         error: null,
       };
     case CLEAR_ERRORS:
-      console.log("Clearing Errors");
+      // console.log("Clearing Errors");
       return {
         ...state,
         isRegistered: false,

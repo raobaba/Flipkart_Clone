@@ -1,15 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import WebFont from "webfontloader";
 import { Routes, Route } from "react-router-dom";
 import Home from "../components/Home/Home.jsx";
 import Login from "../components/User/Login.jsx";
 import Register from "../components/User/Register.jsx";
+import Product from "../components/Products/Product.jsx";
+import ProductDetails from "../components/ProductDetails/ProductDetails.jsx";
+import Products from "../components/Products/Products.jsx"; 
 
 function Routing() {
+  useEffect(() => {
+    WebFont.load({
+      google: {
+        families: ["Roboto:300,400,500,600,700"],
+      },
+    });
+  });
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/login" element={<Login/>} />
-      <Route path="/register" element={<Register/>} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/product/:id" element={<ProductDetails />} />
+      <Route path="/products" element={<Products />} />
+      <Route path="/products/:keyword" element={<Products />} />
     </Routes>
   );
 }

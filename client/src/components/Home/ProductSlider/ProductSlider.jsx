@@ -6,6 +6,9 @@ import { settings } from "../DealSlider/DealSlider";
 import Product from "./Product";
 
 const ProductSlider = ({ title, tagline }) => {
+  const { loading, products } = useSelector((state) => state.products);
+  console.log("products", products);
+
   return (
     <section className="bg-white w-full shadow overflow-hidden">
       {/* <!-- header --> */}
@@ -22,11 +25,14 @@ const ProductSlider = ({ title, tagline }) => {
         </Link>
       </div>
       <hr />
-
-      <Slider
-        {...settings}
-        className="flex items-center justify-between p-1"
-      ></Slider>
+      {loading ? null : (
+        <Slider {...settings} className="flex items-center justify-between p-1">
+          {products &&
+            getRandomProducts(products, 12).map((product) => (
+              <Product {...product} key={product._id} />
+            ))}
+        </Slider>
+      )}
     </section>
   );
 };
