@@ -53,6 +53,7 @@ const Payment = ({ stripeApiKey }) => {
     orderItems: cartItems,
     totalPrice,
   };
+  console.log("order in Payment", order);
 
   const makePayment = async () => {
     const stripe = await loadStripe(stripeApiKey);
@@ -74,10 +75,10 @@ const Payment = ({ stripeApiKey }) => {
     const result = stripe.redirectToCheckout({
       sessionId: session.id,
     });
-    // console.log(result);
+    console.log(result);
     dispatch(newOrder(order));
     dispatch(emptyCart());
-    navigate("/order/success");
+    navigate("/or/success");
     if (result.error) {
       enqueueSnackbar(result.error.message, { variant: "error" });
       console.log(result.error);

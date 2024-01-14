@@ -23,24 +23,25 @@ import {
   UPDATE_ORDER_REQUEST,
   UPDATE_ORDER_SUCCESS,
 } from "../actionTypes/order.actionTypes";
+import Cookies from "js-cookie";
 
 // New Order
 export const newOrder = (order) => async (dispatch) => {
   try {
     dispatch({ type: NEW_ORDER_REQUEST });
-
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-
+    const token = Cookies.get("token");
+    console.log(order)
     const { data } = await axios.post(
       "http://localhost:8000/api/v1/order/new",
       order,
-      config
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `${token}`,
+        },
+      }
     );
-
+    console.log(data);
     dispatch({
       type: NEW_ORDER_SUCCESS,
       payload: data,
@@ -57,8 +58,13 @@ export const newOrder = (order) => async (dispatch) => {
 export const myOrders = () => async (dispatch) => {
   try {
     dispatch({ type: MY_ORDERS_REQUEST });
-
-    const { data } = await axios.get("http://localhost:8000/api/v1/orders/me");
+    const token = Cookies.get("token");
+    const { data } = await axios.get("http://localhost:8000/api/v1/orders/me", {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `${token}`,
+      },
+    });
 
     dispatch({
       type: MY_ORDERS_SUCCESS,
@@ -76,9 +82,15 @@ export const myOrders = () => async (dispatch) => {
 export const getOrderDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: ORDER_DETAILS_REQUEST });
-
+    const token = Cookies.get("token");
     const { data } = await axios.get(
-      `http://localhost:8000/api/v1/order/${id}`
+      `http://localhost:8000/api/v1/order/${id}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `${token}`,
+        },
+      }
     );
 
     dispatch({
@@ -97,9 +109,15 @@ export const getOrderDetails = (id) => async (dispatch) => {
 export const getPaymentStatus = (id) => async (dispatch) => {
   try {
     dispatch({ type: PAYMENT_STATUS_REQUEST });
-
+    const token = Cookies.get("token");
     const { data } = await axios.get(
-      `http://localhost:8000/api/v1/payment/status/${id}`
+      `http://localhost:8000/api/v1/payment/status/${id}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `${token}`,
+        },
+      }
     );
 
     dispatch({
@@ -118,9 +136,15 @@ export const getPaymentStatus = (id) => async (dispatch) => {
 export const getAllOrders = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_ORDERS_REQUEST });
-
+    const token = Cookies.get("token");
     const { data } = await axios.get(
-      "http://localhost:8000/api/v1/admin/orders"
+      "http://localhost:8000/api/v1/admin/orders",
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `${token}`,
+        },
+      }
     );
 
     dispatch({
@@ -139,17 +163,16 @@ export const getAllOrders = () => async (dispatch) => {
 export const updateOrder = (id, order) => async (dispatch) => {
   try {
     dispatch({ type: UPDATE_ORDER_REQUEST });
-
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-
+    const token = Cookies.get("token");
     const { data } = await axios.put(
       `http://localhost:8000/api/v1/admin/order/${id}`,
       order,
-      config
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `${token}`,
+        },
+      }
     );
 
     dispatch({
@@ -168,9 +191,15 @@ export const updateOrder = (id, order) => async (dispatch) => {
 export const deleteOrder = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_ORDER_REQUEST });
-
+   const token = Cookies.get('token')
     const { data } = await axios.delete(
-      `http://localhost:8000/api/v1/admin/order/${id}`
+      `http://localhost:8000/api/v1/admin/order/${id}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `${token}`,
+        },
+      }
     );
 
     dispatch({
