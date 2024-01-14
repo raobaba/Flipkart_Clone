@@ -92,7 +92,7 @@ const ProductDetails = () => {
     formData.set("rating", rating);
     formData.set("comment", comment);
     formData.set("productId", productId);
-    console.log("Formdata",formData)
+    // console.log("Formdata",formData)
     setOpen(false);
   };
 

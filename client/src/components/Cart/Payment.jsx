@@ -48,8 +48,6 @@ const Payment = ({ stripeApiKey }) => {
     phoneNo: shippingInfo.phoneNo,
   };
 
-  console.log(cartItems);
-
   const order = {
     shippingInfo,
     orderItems: cartItems,
@@ -76,7 +74,7 @@ const Payment = ({ stripeApiKey }) => {
     const result = stripe.redirectToCheckout({
       sessionId: session.id,
     });
-    console.log(result);
+    // console.log(result);
     dispatch(newOrder(order));
     dispatch(emptyCart());
     navigate("/order/success");

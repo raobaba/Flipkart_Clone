@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const Product = ({ image, name, offer, tag }) => {
-  console.log("DealSlider/Product Page", name);
+
   return (
     <Link
       to="/products"

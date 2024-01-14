@@ -46,7 +46,7 @@ export const getProducts =
         url = `http://localhost:8000/api/v1/products?keyword=${keyword}&category=${category}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}&page=${currentPage}`;
       }
       const { data } = await axios.get(url);
-      console.log("getProducts", data);
+      // console.log("getProducts", data);
       dispatch({
         type: ALL_PRODUCTS_SUCCESS,
         payload: data,
@@ -117,7 +117,7 @@ export const newReview = (reviewData) => async (dispatch) => {
       reviewData,
       config
     );
-    console.log("review written", data);
+    // console.log("review written", data);
     dispatch({
       type: NEW_REVIEW_SUCCESS,
       payload: data.success,
@@ -138,15 +138,16 @@ export const getSliderProducts = () => async (dispatch) => {
     const { data } = await axios.get(
       "http://localhost:8000/api/v1/products/all"
     );
-
+    console.log(data);
     dispatch({
       type: SLIDER_PRODUCTS_SUCCESS,
       payload: data.products,
     });
   } catch (error) {
+    console.log(error)
     dispatch({
       type: SLIDER_PRODUCTS_FAIL,
-      payload: error.response.data.message,
+      payload: error.response.data.message
     });
   }
 };

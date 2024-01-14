@@ -36,8 +36,7 @@ const Login = () => {
       dispatch(clearErrors());
     }
     if (isAuthenticated) {
-      enqueueSnackbar("Login successful!", { variant: "success" });
-      navigate(`/`);
+      navigate(`/${redirect}`);
     }
   }, [dispatch, error, isAuthenticated, redirect, navigate, enqueueSnackbar]);
   return (

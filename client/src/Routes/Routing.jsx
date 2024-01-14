@@ -7,6 +7,8 @@ import Register from "../components/User/Register.jsx";
 import ProductDetails from "../components/ProductDetails/ProductDetails.jsx";
 import Products from "../components/Products/Products.jsx"; 
 import Cart from '../components/Cart/Cart.jsx'
+import ProtectedRoute from "./ProtectedRoute.js";
+import Shipping from "../components/Cart/Shipping.jsx";
 
 function Routing() {
   useEffect(() => {
@@ -25,6 +27,9 @@ function Routing() {
       <Route path="/products" element={<Products />} />
       <Route path="/products/:keyword" element={<Products />} />
       <Route path="/cart" element={<Cart />} />
+      <Route path="/shipping" element={<ProtectedRoute>
+        <Shipping/>
+      </ProtectedRoute>} />
     </Routes>
   );
 }

@@ -18,7 +18,7 @@ const Product = ({
   price,
   cuttedPrice,
 }) => {
-  console.log("name value in product page", name);
+  // console.log("name value in product page", name);
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
   const { wishlistItems } = useSelector((state) => state.wishlist);

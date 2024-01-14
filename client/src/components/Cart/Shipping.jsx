@@ -14,7 +14,7 @@ import MetaData from '../Layouts/MetaData';
 import states from '../../utils/states';
 
 const Shipping = () => {
-
+ console.log("Shipping")
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { enqueueSnackbar } = useSnackbar();

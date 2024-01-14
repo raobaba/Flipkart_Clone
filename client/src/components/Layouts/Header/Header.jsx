@@ -14,7 +14,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isAuthenticated, loading, user } = useSelector((state) => state.user);
-  console.log("There is value", user);
+  // console.log("There is value", user);
 
   const { cartItems } = useSelector((state) => state.cart);
 
