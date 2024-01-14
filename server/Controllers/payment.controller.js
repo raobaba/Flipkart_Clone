@@ -19,8 +19,8 @@ const {products} = req.body
      payment_method_types:["card"],
      line_items:lineItems,
      mode:"payment",
-     success_url:"http://localhost:3000/order/sucess",
-     cancel_url:"http://localhost:3000/order/failed",
+     success_url:"http://localhost:3000/orders/success",
+     cancel_url:"http://localhost:3000/orders/failed",
  });
  res.json({id:session.id})
 });
