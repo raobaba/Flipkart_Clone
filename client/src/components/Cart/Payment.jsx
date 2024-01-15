@@ -1,19 +1,11 @@
-import axios from "axios";
 import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import PriceSidebar from "./PriceSidebar";
 import Stepper from "./Stepper";
-import {
-  CardNumberElement,
-  CardCvcElement,
-  CardExpiryElement,
-  useStripe,
-  useElements,
-} from "@stripe/react-stripe-js";
+import { useStripe, useElements } from "@stripe/react-stripe-js";
 import { clearErrors, newOrder } from "../../redux/actions/order.actions";
 import { useSnackbar } from "notistack";
-import { post } from "../../utils/paytmForm";
 import FormControl from "@mui/material/FormControl";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
@@ -51,13 +43,13 @@ const Payment = ({ stripeApiKey }) => {
   const order = {
     shippingInfo,
     orderItems: cartItems,
+    paymentInfo: paymentData,
     totalPrice,
   };
   console.log("order in Payment", order);
 
   const makePayment = async () => {
     const stripe = await loadStripe(stripeApiKey);
-
     const body = {
       products: cartItems,
     };
@@ -78,7 +70,6 @@ const Payment = ({ stripeApiKey }) => {
     console.log(result);
     dispatch(newOrder(order));
     dispatch(emptyCart());
-    navigate("/or/success");
     if (result.error) {
       enqueueSnackbar(result.error.message, { variant: "error" });
       console.log(result.error);

@@ -44,9 +44,9 @@ const MyOrders = () => {
 
   useEffect(() => {
     setSearch("");
-    console.log(status);
-    console.log(typeof orderTime);
-    console.log(orderTime);
+    console.log("status",status);
+    console.log("typeof orderTime",typeof orderTime);
+    console.log("orderTime",orderTime);
 
     if (!status && +orderTime === 0) {
       setFilteredOrders(orders);

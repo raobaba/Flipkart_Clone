@@ -7,6 +7,7 @@ const sendEmails = require("../utils/sendEmail");
 // Create New Order
 const newOrder = asyncErrorHandler(async (req, res, next) => {
   const { shippingInfo, orderItems, paymentInfo, totalPrice } = req.body;
+  console.log(req.body)
 
   const orderExist = await Order.findOne({ paymentInfo });
 

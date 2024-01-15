@@ -19,7 +19,8 @@ import { Elements } from "@stripe/react-stripe-js";
 import { getUserDetails } from "../redux/actions/user.actions.js";
 import OrderSuccess from "../components/Cart/OrderSuccess.jsx";
 import MyOrders from "../components/Order/MyOrders.jsx";
-
+import Account from "../components/User/Account.jsx";
+import Wishlist from "../components/Wishlist/Wishlist.jsx";
 
 function Routing() {
   const dispatch = useDispatch();
@@ -101,10 +102,22 @@ function Routing() {
         }
       ></Route>
 
-
-
-
-     
+      <Route
+        path="/account"
+        element={
+          <ProtectedRoute>
+            <Account />
+          </ProtectedRoute>
+        }
+      ></Route>
+       <Route
+          path="/wishlist"
+          element={
+            <ProtectedRoute>
+              <Wishlist />
+            </ProtectedRoute>
+          }
+        ></Route>
     </Routes>
   );
 }

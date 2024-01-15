@@ -16,9 +16,10 @@ const Sidebar = ({ activeTab }) => {
   const { enqueueSnackbar } = useSnackbar();
 
   const { user } = useSelector((state) => state.user);
-
+  console.log("User/Sidebar.jsx",user)
   const handleLogout = () => {
     dispatch(logoutUser());
+    console.log("Navigate calling");
     enqueueSnackbar("Logout Successfully", { variant: "success" });
     navigate("/login");
   };
