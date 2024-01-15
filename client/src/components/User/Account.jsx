@@ -10,12 +10,12 @@ const Account = () => {
   const navigate = useNavigate();
 
   const { user, loading, isAuthenticated } = useSelector((state) => state.user);
-  console.log("user", user);
   useEffect(() => {
-    if (isAuthenticated === false) {
+    console.log("inAccount isAuthenticated inside useEffect:", isAuthenticated);
+    if (!isAuthenticated) {
       navigate("/login");
     }
-  }, [isAuthenticated, navigate]);
+  }, [isAuthenticated]);
 
   const getLastName = () => {
     console.log(user.name);

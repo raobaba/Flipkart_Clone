@@ -22,10 +22,7 @@ const Header = () => {
   useEffect(() => {
     console.log("inLogin isAuthenticated inside useEffect:", isAuthenticated);
     dispatch(getUserDetails());
-    if (!isAuthenticated) {
-      navigate("/");
-    }
-  }, [dispatch, isAuthenticated]);
+  }, [dispatch]);
 
   const [togglePrimaryDropDown, setTogglePrimaryDropDown] = useState(false);
   const [toggleSecondaryDropDown, setToggleSecondaryDropDown] = useState(false);
