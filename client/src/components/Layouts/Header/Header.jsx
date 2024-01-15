@@ -8,11 +8,11 @@ import PrimaryDropDownMenu from "./PrimaryDropDownMenu";
 import SecondaryDropDownMenu from "./SecondaryDropDownMenu";
 import { getUserDetails } from "../../../redux/actions/user.actions";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+
   const { isAuthenticated, loading, user } = useSelector((state) => state.user);
   // console.log("There is value", user);
 
