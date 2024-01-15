@@ -144,10 +144,10 @@ export const getSliderProducts = () => async (dispatch) => {
       payload: data.products,
     });
   } catch (error) {
-    console.log(error)
+    console.log(error);
     dispatch({
       type: SLIDER_PRODUCTS_FAIL,
-      payload: error.response.data.message
+      payload: error.response.data.message,
     });
   }
 };

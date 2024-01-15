@@ -26,7 +26,7 @@ const MyOrders = () => {
   const [filteredOrders, setFilteredOrders] = useState([]);
 
   const { orders, loading, error } = useSelector((state) => state.myOrders);
-  console.log('Orders',orders)
+  console.log("Orders", orders);
 
   useEffect(() => {
     if (error) {
@@ -44,9 +44,9 @@ const MyOrders = () => {
 
   useEffect(() => {
     setSearch("");
-    console.log("status",status);
-    console.log("typeof orderTime",typeof orderTime);
-    console.log("orderTime",orderTime);
+    console.log("status", status);
+    console.log("typeof orderTime", typeof orderTime);
+    console.log("orderTime", orderTime);
 
     if (!status && +orderTime === 0) {
       setFilteredOrders(orders);

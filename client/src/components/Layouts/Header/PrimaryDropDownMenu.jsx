@@ -70,12 +70,16 @@ const PrimaryDropDownMenu = ({ setTogglePrimaryDropDown }) => {
       redirect: "/",
     },
   ];
+  const handleDropdownItemClick = () => {
+    setTogglePrimaryDropDown(false);
+  };
 
   return (
     <div className="absolute w-60 -left-24 ml-2 top-9 bg-white shadow-2xl rounded flex-col text-sm">
       <Link
         className="pl-3 py-3.5 border-b flex gap-3 items-center hover:bg-gray-50 rounded-t"
         to="/admin/dashboard"
+        onClick={handleDropdownItemClick}
       >
         <span className="text-primary-blue">
           <DashboardIcon sx={{ fontSize: "18px" }} />
@@ -86,6 +90,7 @@ const PrimaryDropDownMenu = ({ setTogglePrimaryDropDown }) => {
       <Link
         className="pl-3 py-3.5 border-b flex gap-3 items-center hover:bg-gray-50 rounded-t"
         to="/account"
+        onClick={() => setTogglePrimaryDropDown(false)}
       >
         <span className="text-primary-blue">
           <AccountCircleIcon sx={{ fontSize: "18px" }} />
@@ -102,6 +107,7 @@ const PrimaryDropDownMenu = ({ setTogglePrimaryDropDown }) => {
               <Link
                 className="pl-3 py-3.5 border-b flex gap-3 items-center hover:bg-gray-50"
                 to={redirect}
+                onClick={() => setTogglePrimaryDropDown(false)}
                 key={i}
               >
                 <span className="text-primary-blue">{icon}</span>
@@ -114,6 +120,7 @@ const PrimaryDropDownMenu = ({ setTogglePrimaryDropDown }) => {
               <Link
                 className="pl-3 py-3.5 border-b flex gap-3 items-center hover:bg-gray-50"
                 to={redirect}
+                onClick={() => setTogglePrimaryDropDown(false)}
                 key={i}
               >
                 <span className="text-primary-blue">{icon}</span>

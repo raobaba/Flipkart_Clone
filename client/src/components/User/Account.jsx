@@ -17,12 +17,6 @@ const Account = () => {
     }
   }, [isAuthenticated]);
 
-  const getLastName = () => {
-    console.log(user.name);
-    const nameArray = user.name.split(" ");
-    return nameArray[nameArray.length - 1];
-  };
-
   return (
     <>
       <MetaData title="My Profile" />
@@ -74,7 +68,7 @@ const Account = () => {
                         </label>
                         <input
                           type="text"
-                          value={getLastName()}
+                          value={user?.name?.split(" ").pop() || ""}
                           className="text-sm outline-none border-none cursor-not-allowed text-gray-500"
                           disabled
                         />

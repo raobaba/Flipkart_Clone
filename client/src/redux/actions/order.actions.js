@@ -30,7 +30,7 @@ export const newOrder = (order) => async (dispatch) => {
   try {
     dispatch({ type: NEW_ORDER_REQUEST });
     const token = Cookies.get("token");
-    console.log(order)
+    console.log(order);
     const { data } = await axios.post(
       "http://localhost:8000/api/v1/order/new",
       order,
@@ -191,7 +191,7 @@ export const updateOrder = (id, order) => async (dispatch) => {
 export const deleteOrder = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_ORDER_REQUEST });
-   const token = Cookies.get('token')
+    const token = Cookies.get("token");
     const { data } = await axios.delete(
       `http://localhost:8000/api/v1/admin/order/${id}`,
       {
