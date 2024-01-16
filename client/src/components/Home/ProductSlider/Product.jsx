@@ -10,7 +10,8 @@ import {
 import { useSnackbar } from "notistack";
 
 const Product = (props) => {
-  const { _id, name, images, ratings, numOfReviews, price, cuttedPrice } = props;
+  const { _id, name, images, ratings, numOfReviews, price, cuttedPrice } =
+    props;
 
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();

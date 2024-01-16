@@ -11,7 +11,6 @@ import realme from "../../../assets/images/Banners/realme-9-pro.webp";
 import fashionSale from "../../../assets/images/Banners/fashionsale.jpg";
 import oppo from "../../../assets/images/Banners/oppo-reno7.webp";
 
-
 export const PreviousBtn = ({ className, onClick }) => {
   return (
     <div className={className} onClick={onClick}>

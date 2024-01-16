@@ -11,7 +11,7 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../../../redux/actions/user.actions";
 import { useSnackbar } from "notistack";
 
@@ -113,7 +113,7 @@ const PrimaryDropDownMenu = ({ setTogglePrimaryDropDown }) => {
                 <span className="text-primary-blue">{icon}</span>
                 {title}
                 <span className="ml-auto mr-3 bg-gray-100 p-0.5 px-2 text-gray-600 rounded">
-                {wishlistItems.length}
+                  {wishlistItems.length}
                 </span>
               </Link>
             ) : (

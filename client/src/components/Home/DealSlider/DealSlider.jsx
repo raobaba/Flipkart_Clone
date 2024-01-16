@@ -41,7 +41,6 @@ export const settings = {
 };
 
 const DealSlider = ({ title }) => {
-
   return (
     <section className="bg-white w-full shadow overflow-hidden">
       {/* <!-- header --> */}

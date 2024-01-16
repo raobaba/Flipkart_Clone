@@ -18,6 +18,7 @@ const initialState = {
   isAuthenticated: JSON.parse(localStorage.getItem("isAuth")) || false,
   loading: false,
   isRegistered: false,
+  isLogin:false,
   error: null,
 };
 
@@ -47,6 +48,7 @@ export const userReducer = (state = initialState, { type, payload }) => {
         ...state,
         loading: false,
         isAuthenticated: true,
+        isLogin:true,
         user: payload,
         error: null,
       };
@@ -58,6 +60,7 @@ export const userReducer = (state = initialState, { type, payload }) => {
         loading: false,
         user: {},
         isAuthenticated: false,
+        isLogin:false,
         isRegistered: false,
         error: null,
       };
@@ -72,6 +75,7 @@ export const userReducer = (state = initialState, { type, payload }) => {
         loading: false,
         isAuthenticated: false,
         isRegistered: false,
+        isLogin:false,
         user: null,
         error: payload,
       };
@@ -80,6 +84,7 @@ export const userReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         loading: false,
+        isLogin:false,
         user: payload,
         error: null,
       };
@@ -88,6 +93,7 @@ export const userReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         isRegistered: false,
+        isLogin:false,
         error: null,
       };
     default:

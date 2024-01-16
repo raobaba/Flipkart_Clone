@@ -1,8 +1,8 @@
+import React from 'react';
 import { useSelector } from 'react-redux';
 import CheckIcon from '@mui/icons-material/Check';
 
 const Stepper = ({ activeStep, children }) => {
-
     const { user } = useSelector((state) => state.user);
     const { shippingInfo, cartItems } = useSelector((state) => state.cart);
 
@@ -25,36 +25,31 @@ const Stepper = ({ activeStep, children }) => {
             label: "PAYMENT OPTIONS",
             desc: <p className="font-medium text-sm">Paytm</p>
         }
-    ]
+    ];
 
     return (
         <div className="flex flex-col gap-4">
-
-            {steps.map((step, index) => {
-
-                return (
-                    <>
-                        {activeStep === index ? (
-                            <div className="flex flex-col shadow rounded-sm">
-                                <div className="flex items-center rounded-t-sm bg-primary-blue px-6 py-2 gap-4">
-                                    <span className="h-5 w-5 flex items-center justify-center text-xs font-medium bg-white rounded-sm text-primary-blue">{index + 1}</span>
-                                    <h2 className="font-medium text-white">{step.label}</h2>
-                                </div>
-                                {children}
+            {steps.map((step, index) => (
+                <React.Fragment key={index}>
+                    {activeStep === index ? (
+                        <div className="flex flex-col shadow rounded-sm">
+                            <div className="flex items-center rounded-t-sm bg-primary-blue px-6 py-2 gap-4">
+                                <span className="h-5 w-5 flex items-center justify-center text-xs font-medium bg-white rounded-sm text-primary-blue">{index + 1}</span>
+                                <h2 className="font-medium text-white">{step.label}</h2>
                             </div>
-                        ) : (
-                            <>
-                                {activeStep > index ? (
-                                    <Step isDesc={true} {...step} index={index} />
-                                ) : (
-                                    <Step isDesc={false} {...step} index={index} />
-                                )}
-                            </>
-                        )}
-                    </>
-                )
-            })}
-
+                            {children}
+                        </div>
+                    ) : (
+                        <>
+                            {activeStep > index ? (
+                                <Step isDesc={true} {...step} index={index} />
+                            ) : (
+                                <Step isDesc={false} {...step} index={index} />
+                            )}
+                        </>
+                    )}
+                </React.Fragment>
+            ))}
         </div>
     );
 };
@@ -72,7 +67,7 @@ const Step = ({ isDesc, label, desc, index }) => {
                 {isDesc && desc}
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default Stepper;

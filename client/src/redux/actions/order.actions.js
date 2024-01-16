@@ -29,9 +29,10 @@ import Cookies from "js-cookie";
 export const newOrder = (order) => async (dispatch) => {
   try {
     dispatch({ type: NEW_ORDER_REQUEST });
+
     const token = Cookies.get("token");
-    console.log(order);
-    const { data } = await axios.post(
+
+    const response = await axios.post(
       "http://localhost:8000/api/v1/order/new",
       order,
       {
@@ -41,15 +42,18 @@ export const newOrder = (order) => async (dispatch) => {
         },
       }
     );
-    console.log(data);
     dispatch({
       type: NEW_ORDER_SUCCESS,
-      payload: data,
+      payload: response.data,
     });
+
+    console.log("newOrder API response:", response);
   } catch (error) {
+    console.error("Error in newOrder API request:", error);
+
     dispatch({
       type: NEW_ORDER_FAIL,
-      payload: error.response.data.message,
+      payload: error.response ? error.response.data.message : "Internal Server Error",
     });
   }
 };
@@ -73,7 +77,7 @@ export const myOrders = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: MY_ORDERS_FAIL,
-      payload: error.response.data.message,
+      payload: error.response.data.error,  
     });
   }
 };

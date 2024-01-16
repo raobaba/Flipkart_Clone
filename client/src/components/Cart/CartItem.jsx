@@ -20,7 +20,6 @@ const CartItem = ({
   quantity,
   inCart,
 }) => {
-
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
 

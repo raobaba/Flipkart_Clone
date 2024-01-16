@@ -13,9 +13,10 @@ const Login = () => {
   const { enqueueSnackbar } = useSnackbar();
   const location = useLocation();
 
-  const { loading, isAuthenticated, error } = useSelector(
+  const { loading, isAuthenticated, isLogin, error } = useSelector(
     (state) => state.user
-  )
+  );
+  console.log("isLogin",isLogin)
 
   console.log("inLogin isAuthenticated at the beginning:", isAuthenticated);
 
@@ -35,10 +36,13 @@ const Login = () => {
       enqueueSnackbar(error, { variant: "error" });
       dispatch(clearErrors());
     }
-    if (isAuthenticated) {
-      enqueueSnackbar("Login Successfully", { variant: "success" });
-      navigate(`/${redirect}`);
+    if(isLogin) {
+      enqueueSnackbar("Login successful!", { variant: "success" });
     }
+    if (isAuthenticated) {
+      navigate(`/${redirect}`);
+    } 
+  
   }, [dispatch, error, isAuthenticated, redirect, navigate, enqueueSnackbar]);
   return (
     <>

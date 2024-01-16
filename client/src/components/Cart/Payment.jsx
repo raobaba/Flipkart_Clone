@@ -1,9 +1,7 @@
-import { useEffect, useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PriceSidebar from "./PriceSidebar";
 import Stepper from "./Stepper";
-import { useStripe, useElements } from "@stripe/react-stripe-js";
 import { clearErrors, newOrder } from "../../redux/actions/order.actions";
 import { useSnackbar } from "notistack";
 import FormControl from "@mui/material/FormControl";
@@ -11,17 +9,12 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import MetaData from "../Layouts/MetaData";
-
 import { emptyCart } from "../../redux/actions/cart.actions";
 import { loadStripe } from "@stripe/stripe-js";
 
 const Payment = ({ stripeApiKey }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
-  const stripe = useStripe();
-  const elements = useElements();
-  const paymentBtn = useRef(null);
 
   const [payDisable, setPayDisable] = useState(false);
 
@@ -34,19 +27,18 @@ const Payment = ({ stripeApiKey }) => {
     0
   );
 
-  const paymentData = {
-    amount: Math.round(totalPrice),
-    email: user.email,
-    phoneNo: shippingInfo.phoneNo,
-  };
+  // const paymentData = {
+  //   amount: Math.round(totalPrice),
+  //   email: user.email,
+  //   phoneNo: shippingInfo.phoneNo,
+  // };
 
   const order = {
     shippingInfo,
     orderItems: cartItems,
-    paymentInfo: paymentData,
     totalPrice,
   };
-  console.log("order in Payment", order);
+  console.log("order in Payment.jsx", order);
 
   const makePayment = async () => {
     const stripe = await loadStripe(stripeApiKey);
@@ -67,9 +59,11 @@ const Payment = ({ stripeApiKey }) => {
     const result = stripe.redirectToCheckout({
       sessionId: session.id,
     });
-    console.log(result);
+
+   
     dispatch(newOrder(order));
     dispatch(emptyCart());
+
     if (result.error) {
       enqueueSnackbar(result.error.message, { variant: "error" });
       console.log(result.error);

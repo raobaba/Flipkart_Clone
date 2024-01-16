@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 const Product = ({ image, name, offer, tag }) => {
-
   return (
     <Link
       to="/products"
