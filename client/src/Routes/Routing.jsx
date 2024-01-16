@@ -21,6 +21,8 @@ import OrderSuccess from "../components/Cart/OrderSuccess.jsx";
 import MyOrders from "../components/Order/MyOrders.jsx";
 import Account from "../components/User/Account.jsx";
 import Wishlist from "../components/Wishlist/Wishlist.jsx";
+import OrderStatus from "../components/Cart/OrderStatus.jsx";
+import OrderDetails from "../components/Order/OrderDetails.jsx";
 
 function Routing() {
   const dispatch = useDispatch();
@@ -62,6 +64,7 @@ function Routing() {
       <Route path="/products" element={<Products />} />
       <Route path="/products/:keyword" element={<Products />} />
       <Route path="/cart" element={<Cart />} />
+
       <Route
         path="/shipping"
         element={
@@ -70,6 +73,7 @@ function Routing() {
           </ProtectedRoute>
         }
       />
+
       <Route
         path="/order/confirm"
         element={
@@ -78,6 +82,7 @@ function Routing() {
           </ProtectedRoute>
         }
       />
+
       <Route
         path="/process/payment"
         element={
@@ -90,14 +95,34 @@ function Routing() {
           </ProtectedRoute>
         }
       ></Route>
+
       <Route path="/orders/success" element={<OrderSuccess success={true} />} />
       <Route path="/orders/failed" element={<OrderSuccess success={false} />} />
       {/* order process */}
+
+      <Route
+        path="/order/:id"
+        element={
+          <ProtectedRoute>
+            <OrderStatus />
+          </ProtectedRoute>
+        }
+      ></Route>
+
       <Route
         path="/orders"
         element={
           <ProtectedRoute>
             <MyOrders />
+          </ProtectedRoute>
+        }
+      ></Route>
+
+      <Route
+        path="/order_details/:id"
+        element={
+          <ProtectedRoute>
+            <OrderDetails />
           </ProtectedRoute>
         }
       ></Route>
@@ -110,14 +135,17 @@ function Routing() {
           </ProtectedRoute>
         }
       ></Route>
-       <Route
-          path="/wishlist"
-          element={
-            <ProtectedRoute>
-              <Wishlist />
-            </ProtectedRoute>
-          }
-        ></Route>
+
+   
+
+      <Route
+        path="/wishlist"
+        element={
+          <ProtectedRoute>
+            <Wishlist />
+          </ProtectedRoute>
+        }
+      ></Route>
     </Routes>
   );
 }
