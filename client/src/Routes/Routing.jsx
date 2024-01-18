@@ -20,7 +20,10 @@ import { getUserDetails } from "../redux/actions/user.actions.js";
 import OrderSuccess from "../components/Cart/OrderSuccess.jsx";
 import MyOrders from "../components/Order/MyOrders.jsx";
 import Account from "../components/User/Account.jsx";
-import UpdateProfile from '../components/User/UpdateProfile.jsx'
+import UpdateProfile from '../components/User/UpdateProfile.jsx';
+import UpdatePassword from '../components/User/UpdatePassword.jsx';
+import ForgotPassword from '../components/User/ForgotPassword.jsx';
+import ResetPassword from '../components/User/ResetPassword.jsx';
 import Wishlist from "../components/Wishlist/Wishlist.jsx";
 import OrderStatus from "../components/Cart/OrderStatus.jsx";
 import OrderDetails from "../components/Order/OrderDetails.jsx";
@@ -145,6 +148,19 @@ function Routing() {
           </ProtectedRoute>
         }
       ></Route>
+              <Route
+          path="/password/update"
+          element={
+            <ProtectedRoute>
+              <UpdatePassword />
+            </ProtectedRoute>
+          }
+        ></Route>
+
+        <Route path="/password/forgot" element={<ForgotPassword />} />
+
+        <Route path="/password/reset/:token" element={<ResetPassword />} />
+
 
       <Route
         path="/wishlist"

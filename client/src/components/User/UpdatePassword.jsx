@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField'
 import { useSnackbar } from 'notistack';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { clearErrors, loadUser, updatePassword } from '../../redux/actions/user.actions';
+import { clearErrors, getUserDetails, updatePassword } from '../../redux/actions/user.actions';
 import { UPDATE_PASSWORD_RESET } from '../../redux/actionTypes/user.actionTypes';
 import BackdropLoader from '../Layouts/BackdropLoader';
 import MetaData from '../Layouts/MetaData';
@@ -48,7 +48,7 @@ const UpdatePassword = () => {
         }
         if (isUpdated) {
             enqueueSnackbar("Password Updated Successfully", { variant: "success" });
-            dispatch(loadUser());
+            dispatch(getUserDetails());
             navigate('/account');
 
             dispatch({ type: UPDATE_PASSWORD_RESET });
