@@ -20,6 +20,7 @@ import { getUserDetails } from "../redux/actions/user.actions.js";
 import OrderSuccess from "../components/Cart/OrderSuccess.jsx";
 import MyOrders from "../components/Order/MyOrders.jsx";
 import Account from "../components/User/Account.jsx";
+import UpdateProfile from '../components/User/UpdateProfile.jsx'
 import Wishlist from "../components/Wishlist/Wishlist.jsx";
 import OrderStatus from "../components/Cart/OrderStatus.jsx";
 import OrderDetails from "../components/Order/OrderDetails.jsx";
@@ -136,7 +137,14 @@ function Routing() {
         }
       ></Route>
 
-   
+      <Route
+        path="/account/update"
+        element={
+          <ProtectedRoute>
+            <UpdateProfile />
+          </ProtectedRoute>
+        }
+      ></Route>
 
       <Route
         path="/wishlist"
