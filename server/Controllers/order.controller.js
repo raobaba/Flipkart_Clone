@@ -10,6 +10,7 @@ const newOrder = asyncErrorHandler(async (req, res, next) => {
   console.log("newOrder",req.body)
 
   const orderExist = await Order.findOne({ paymentInfo });
+  console.log("orderExit",orderExist)
 
   if (orderExist) {
     return next(new ErrorHandler("Order Already Placed", 400));

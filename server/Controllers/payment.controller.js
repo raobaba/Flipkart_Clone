@@ -2,7 +2,7 @@ const asyncErrorHandler = require("../Middlewares/asyncErrorHandler");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 const processPayment = asyncErrorHandler(async (req, res, next) => {
-  const { products } = req.body;
+  const { products, address } = req.body;
   const lineItems = products.map((product) => ({
     price_data: {
       currency: "inr",
@@ -21,8 +21,10 @@ const processPayment = asyncErrorHandler(async (req, res, next) => {
     mode: "payment",
     success_url: "http://localhost:3000/orders/success",
     cancel_url: "http://localhost:3000/orders/failed",
+ 
   });
-  res.json({ id: session.id });
+  console.log("session", session);
+  res.json({ id: session.id, payment_status: session.status });
 });
 
 const sendStripeApiKey = asyncErrorHandler(async (req, res, next) => {

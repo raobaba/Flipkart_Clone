@@ -21,6 +21,7 @@ const Header = () => {
   console.log("inHeader isAuthenticated at the beginning:", isAuthenticated);
   useEffect(() => {
     console.log("inLogin isAuthenticated inside useEffect:", isAuthenticated);
+
     dispatch(getUserDetails());
   }, [dispatch]);
 

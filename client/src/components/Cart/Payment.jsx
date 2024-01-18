@@ -26,12 +26,7 @@ const Payment = ({ stripeApiKey }) => {
     (sum, item) => sum + item.price * item.quantity,
     0
   );
-
-  // const paymentData = {
-  //   amount: Math.round(totalPrice),
-  //   email: user.email,
-  //   phoneNo: shippingInfo.phoneNo,
-  // };
+ 
 
   const order = {
     shippingInfo,
@@ -60,8 +55,7 @@ const Payment = ({ stripeApiKey }) => {
       sessionId: session.id,
     });
 
-   
-    dispatch(newOrder(order));
+
     dispatch(emptyCart());
 
     if (result.error) {
@@ -71,6 +65,7 @@ const Payment = ({ stripeApiKey }) => {
   };
 
   useEffect(() => {
+    dispatch(newOrder(order));
     if (error) {
       dispatch(clearErrors());
       enqueueSnackbar(error, { variant: "error" });

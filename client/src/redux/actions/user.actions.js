@@ -40,6 +40,7 @@ import {
 export const registerUser = (userData) => async (dispatch) => {
   try {
     // console.log("Registering user...");
+    console.log(userData)
     dispatch({ type: REGISTER_USER_REQUEST });
     const config = {
       headers: {
@@ -56,6 +57,7 @@ export const registerUser = (userData) => async (dispatch) => {
       type: REGISTER_USER_SUCCESS,
       payload: data.user,
     });
+    console.log(data)
   } catch (error) {
     // console.error("Registration failed:", error);
     dispatch({

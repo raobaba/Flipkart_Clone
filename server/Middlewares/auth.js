@@ -5,21 +5,19 @@ const asyncErrorHandler = require("./asyncErrorHandler");
 
 exports.isAuthenticatedUser = asyncErrorHandler(async (req, res, next) => {
   const token = req.header("Authorization");
-  console.log("authentication token", token);
+  // console.log("authentication token", token);
   if (!token) {
     return res.status(401).json({ error: "Authorization token missing" });
   }
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    console.log("decoded",decoded)
     const user = await User.findById(decoded.id);
-    console.log("user",user)
     if (!user) {
       return res.status(401).json({ error: "Invalid token" });
     }
     req.user = user;
   } catch (error) {
-    res.status(401).json({ error: "Invalid token" });
+    return res.status(401).json({ error: "Invalid token" });
   }
   next();
 });
