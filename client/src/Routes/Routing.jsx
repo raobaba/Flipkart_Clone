@@ -35,7 +35,7 @@ function Routing() {
 
   async function getStripeApiKey() {
     const { data } = await axios.get(
-      "http://localhost:8000/api/v1/stripeapikey"
+      "https://flipkart-backend-server.onrender.com/api/v1/stripeapikey"
     );
     setStripeApiKey(data.stripeApiKey);
   }

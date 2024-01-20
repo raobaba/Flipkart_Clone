@@ -11,7 +11,7 @@ export const addItemsToCart =
   (id, quantity = 1) =>
   async (dispatch, getState) => {
     const { data } = await axios.get(
-      `http://localhost:8000/api/v1/product/${id}`
+      `https://successful-jade-hippopotamus.cyclic.app/api/v1/product/${id}`
     );
 
     dispatch({

@@ -41,9 +41,9 @@ export const getProducts =
     try {
       dispatch({ type: ALL_PRODUCTS_REQUEST });
 
-      let url = `http://localhost:8000/api/v1/products?keyword=${keyword}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}&page=${currentPage}`;
+      let url = `https://flipkart-backend-server.onrender.com/api/v1/products?keyword=${keyword}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}&page=${currentPage}`;
       if (category) {
-        url = `http://localhost:8000/api/v1/products?keyword=${keyword}&category=${category}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}&page=${currentPage}`;
+        url = `https://flipkart-backend-server.onrender.com/api/v1/products?keyword=${keyword}&category=${category}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}&page=${currentPage}`;
       }
       const { data } = await axios.get(url);
       // console.log("getProducts", data);
@@ -65,7 +65,7 @@ export const getSimilarProducts = (category) => async (dispatch) => {
     dispatch({ type: ALL_PRODUCTS_REQUEST });
 
     const { data } = await axios.get(
-      `http://localhost:8000/api/v1/products?category=${category}`
+      `https://flipkart-backend-server.onrender.com/api/v1/products?category=${category}`
     );
 
     dispatch({
@@ -86,7 +86,7 @@ export const getProductDetails = (id) => async (dispatch) => {
     dispatch({ type: PRODUCT_DETAILS_REQUEST });
 
     const { data } = await axios.get(
-      `http://localhost:8000/api/v1/product/${id}`
+      `https://flipkart-backend-server.onrender.com/api/v1/product/${id}`
     );
 
     dispatch({
@@ -109,11 +109,11 @@ export const newReview = (reviewData) => async (dispatch) => {
     const config = {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `${token}`,
+        Authorization: token,
       },
     };
     const { data } = await axios.put(
-      "http://localhost:8000/api/v1/review",
+      "https://flipkart-backend-server.onrender.com/api/v1/review",
       reviewData,
       config
     );
@@ -136,7 +136,7 @@ export const getSliderProducts = () => async (dispatch) => {
     dispatch({ type: SLIDER_PRODUCTS_REQUEST });
 
     const { data } = await axios.get(
-      "http://localhost:8000/api/v1/products/all"
+      "https://flipkart-backend-server.onrender.com/api/v1/products/all"
     );
     console.log(data);
     dispatch({
@@ -158,7 +158,7 @@ export const getAdminProducts = () => async (dispatch) => {
     dispatch({ type: ADMIN_PRODUCTS_REQUEST });
 
     const { data } = await axios.get(
-      "http://localhost:8000/api/v1/admin/products"
+      "https://flipkart-backend-server.onrender.com/api/v1/admin/products"
     );
 
     dispatch({
@@ -179,7 +179,7 @@ export const createProduct = (productData) => async (dispatch) => {
     dispatch({ type: NEW_PRODUCT_REQUEST });
     const config = { header: { "Content-Type": "application/json" } };
     const { data } = await axios.post(
-      "http://localhost:8000/api/v1/admin/product/new",
+      "https://flipkart-backend-server.onrender.com/api/v1/admin/product/new",
       productData,
       config
     );
@@ -202,7 +202,7 @@ export const updateProduct = (id, productData) => async (dispatch) => {
     dispatch({ type: UPDATE_PRODUCT_REQUEST });
     const config = { header: { "Content-Type": "application/json" } };
     const { data } = await axios.put(
-      `http://localhost:8000/api/v1/admin/product/${id}`,
+      `https://flipkart-backend-server.onrender.com/api/v1/admin/product/${id}`,
       productData,
       config
     );
@@ -224,7 +224,7 @@ export const deleteProduct = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_PRODUCT_REQUEST });
     const { data } = await axios.delete(
-      `http://localhost:8000/api/v1/admin/product/${id}`
+      `https://flipkart-backend-server.onrender.com/api/v1/admin/product/${id}`
     );
 
     dispatch({
@@ -244,7 +244,7 @@ export const getAllReviews = (id) => async (dispatch) => {
   try {
     dispatch({ type: ALL_REVIEWS_REQUEST });
     const { data } = await axios.get(
-      `http://localhost:8000/api/v1/admin/reviews?id=${id}`
+      `https://flipkart-backend-server.onrender.com/api/v1/admin/reviews?id=${id}`
     );
 
     dispatch({
@@ -264,7 +264,7 @@ export const deleteReview = (reviewId, productId) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_REVIEW_REQUEST });
     const { data } = await axios.delete(
-      `http://localhost:8000/api/v1/admin/reviews?id=${reviewId}&productId=${productId}`
+      `https://flipkart-backend-server.onrender.com/api/v1/admin/reviews?id=${reviewId}&productId=${productId}`
     );
 
     dispatch({
