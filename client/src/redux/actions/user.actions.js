@@ -32,7 +32,7 @@ import {
   DELETE_USER_REQUEST,
   DELETE_USER_SUCCESS,
   DELETE_USER_FAIL,
-   ALL_USERS_FAIL,
+  ALL_USERS_FAIL,
   ALL_USERS_SUCCESS,
   ALL_USERS_REQUEST,
 } from "../actionTypes/user.actionTypes";
@@ -40,7 +40,7 @@ import {
 export const registerUser = (userData) => async (dispatch) => {
   try {
     // console.log("Registering user...");
-    console.log(userData)
+    console.log(userData);
     dispatch({ type: REGISTER_USER_REQUEST });
     const config = {
       headers: {
@@ -48,7 +48,7 @@ export const registerUser = (userData) => async (dispatch) => {
       },
     };
     const { data } = await axios.post(
-      "https://flipkart-backend-server.onrender.com/api/v1/register",
+      "http://localhost:8000/api/v1/register",
       userData,
       config
     );
@@ -57,7 +57,7 @@ export const registerUser = (userData) => async (dispatch) => {
       type: REGISTER_USER_SUCCESS,
       payload: data.user,
     });
-    console.log(data)
+    console.log(data);
   } catch (error) {
     // console.error("Registration failed:", error);
     dispatch({
@@ -77,13 +77,19 @@ export const loginUser = (email, password) => async (dispatch) => {
       },
     };
     const { data } = await axios.post(
-      "https://flipkart-backend-server.onrender.com/api/v1/login",
+      "http://localhost:8000/api/v1/login",
       { email, password },
       config
     );
     const token = data.token;
     // console.log("Login successful. Token:", token);
+    
+    // Store token in Cookies
     Cookies.set("token", token, { expires: 60 });
+
+    // Store user data in localStorage
+    localStorage.setItem("user", JSON.stringify(data.user));
+
     dispatch({
       type: LOGIN_USER_SUCCESS,
       payload: data.user,
@@ -97,13 +103,15 @@ export const loginUser = (email, password) => async (dispatch) => {
   }
 };
 
+
+
 export const getUserDetails = () => async (dispatch) => {
   try {
     // console.log("Fetching user details...");
     dispatch({ type: USER_DETAILS_REQUEST });
     const token = Cookies.get("token");
     // console.log("Token:", token);
-    const { data } = await axios.get("https://flipkart-backend-server.onrender.com/api/v1/me", {
+    const { data } = await axios.get("http://localhost:8000/api/v1/me", {
       headers: {
         "Content-Type": "application/json",
         Authorization: token,
@@ -126,7 +134,9 @@ export const getUserDetails = () => async (dispatch) => {
 export const logoutUser = () => async (dispatch) => {
   try {
     // console.log("Logging out user...");
-    const response = await axios.get("https://flipkart-backend-server.onrender.com/api/v1/logout");
+    const response = await axios.get(
+      "http://localhost:8000/api/v1/logout"
+    );
     // console.log("Logout successful.");
     dispatch({ type: LOGOUT_USER_SUCCESS });
   } catch (error) {
@@ -137,7 +147,6 @@ export const logoutUser = () => async (dispatch) => {
     });
   }
 };
-
 
 // Update User
 export const updateProfile = (userData) => async (dispatch) => {
@@ -151,7 +160,7 @@ export const updateProfile = (userData) => async (dispatch) => {
     };
 
     const { data } = await axios.put(
-      "https://flipkart-backend-server.onrender.com/api/v1/me/update",
+      "http://localhost:8000/api/v1/me/update",
       userData,
       config
     );
@@ -180,7 +189,7 @@ export const updatePassword = (passwords) => async (dispatch) => {
     };
 
     const { data } = await axios.put(
-      "https://flipkart-backend-server.onrender.com/api/v1/password/update",
+      "http://localhost:8000/api/v1/password/update",
       passwords,
       config
     );
@@ -209,7 +218,7 @@ export const forgotPassword = (email) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      "https://flipkart-backend-server.onrender.com/api/v1/password/forgot",
+      "http://localhost:8000/api/v1/password/forgot",
       email,
       config
     );
@@ -238,7 +247,7 @@ export const resetPassword = (token, passwords) => async (dispatch) => {
     };
 
     const { data } = await axios.put(
-      `https://flipkart-backend-server.onrender.com/api/v1/password/reset/${token}`,
+      `http://localhost:8000/api/v1/password/reset/${token}`,
       passwords,
       config
     );
@@ -260,7 +269,7 @@ export const getAllUsers = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_USERS_REQUEST });
     const { data } = await axios.get(
-      "https://flipkart-backend-server.onrender.com/api/v1/admin/users"
+      "http://localhost:8000/api/v1/admin/users"
     );
     dispatch({
       type: ALL_USERS_SUCCESS,
@@ -286,7 +295,7 @@ export const updateUser = (id, userData) => async (dispatch) => {
     };
 
     const { data } = await axios.put(
-      `https://flipkart-backend-server.onrender.com/api/v1/admin/user/${id}`,
+      `http://localhost:8000/api/v1/admin/user/${id}`,
       userData,
       config
     );
@@ -308,7 +317,7 @@ export const deleteUser = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_USER_REQUEST });
     const { data } = await axios.delete(
-      `https://flipkart-backend-server.onrender.com/api/v1/admin/user/${id}`
+      `http://localhost:8000/api/v1/admin/user/${id}`
     );
 
     dispatch({
