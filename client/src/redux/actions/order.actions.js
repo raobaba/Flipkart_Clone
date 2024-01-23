@@ -46,11 +46,9 @@ export const newOrder = (order) => async (dispatch) => {
       type: NEW_ORDER_SUCCESS,
       payload: response.data,
     });
-
     console.log("newOrder API response:", response);
   } catch (error) {
     console.error("Error in newOrder API request:", error);
-
     dispatch({
       type: NEW_ORDER_FAIL,
       payload: error.response

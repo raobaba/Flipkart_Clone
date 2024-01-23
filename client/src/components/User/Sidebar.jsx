@@ -6,20 +6,19 @@ import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import ChatIcon from "@mui/icons-material/Chat";
 import FolderSharedIcon from "@mui/icons-material/FolderShared";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useSnackbar } from "notistack";
 import { logoutUser } from "../../redux/actions/user.actions";
 
 const Sidebar = ({ activeTab }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
 
   const { user } = useSelector((state) => state.user);
-  console.log("User/Sidebar.jsx",user)
+  // console.log("User/Sidebar.jsx",user)
   const handleLogout = async () => {
     dispatch(logoutUser());
-    console.log("Navigate calling");
+    // console.log("Navigate calling");
     enqueueSnackbar("Logout Successfully", { variant: "success" });
   };
 

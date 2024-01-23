@@ -39,9 +39,12 @@ import {
   REMOVE_USER_DETAILS,
 } from "../actionTypes/user.actionTypes";
 
+const storedAuth = JSON.parse(localStorage.getItem('isAuth'));
+const storedUser = JSON.parse(localStorage.getItem('user'));
+
 const initialState = {
-  user: {},
-  isAuthenticated: JSON.parse(localStorage.getItem("isAuth")) || false,
+  user: storedUser || {},
+  isAuthenticated: storedAuth || false,
   loading: false,
   isRegistered: false,
   isLogin: false,
@@ -53,13 +56,12 @@ export const userReducer = (state = initialState, { type, payload }) => {
     case LOGIN_USER_REQUEST:
     case REGISTER_USER_REQUEST:
     case USER_DETAILS_REQUEST:
-      // console.log("Requesting...");
       return {
         ...state,
         loading: true,
       };
+
     case REGISTER_USER_SUCCESS:
-      // console.log("Success:", payload);
       return {
         ...state,
         loading: false,
@@ -67,9 +69,10 @@ export const userReducer = (state = initialState, { type, payload }) => {
         user: payload,
         error: null,
       };
+
     case LOGIN_USER_SUCCESS:
-      // console.log("Success:", payload);
-      localStorage.setItem("isAuth", true);
+      localStorage.setItem('isAuth', true);
+      localStorage.setItem('user', JSON.stringify(payload));
       return {
         ...state,
         loading: false,
@@ -78,9 +81,10 @@ export const userReducer = (state = initialState, { type, payload }) => {
         user: payload,
         error: null,
       };
+
     case LOGOUT_USER_SUCCESS:
-      // console.log("Logout Success");
-      localStorage.setItem("isAuth", false);
+      localStorage.setItem('isAuth', false);
+      localStorage.removeItem('user');
       return {
         ...state,
         loading: false,
@@ -90,12 +94,13 @@ export const userReducer = (state = initialState, { type, payload }) => {
         isRegistered: false,
         error: null,
       };
+
     case LOGIN_USER_FAIL:
     case REGISTER_USER_FAIL:
     case USER_DETAILS_FAIL:
     case LOGOUT_USER_FAIL:
-      // console.error("Error:", payload);
-      localStorage.setItem("isAuth", false);
+      localStorage.setItem('isAuth', false);
+      localStorage.removeItem('user');
       return {
         ...state,
         loading: false,
@@ -105,28 +110,19 @@ export const userReducer = (state = initialState, { type, payload }) => {
         user: null,
         error: payload,
       };
-    case USER_DETAILS_SUCCESS:
-      // console.log("User Details:", payload);
-      return {
-        ...state,
-        loading: false,
-        isLogin: false,
-        user: payload,
-        error: null,
-      };
+
     case CLEAR_ERRORS:
-      // console.log("Clearing Errors");
       return {
         ...state,
         isRegistered: false,
         isLogin: false,
         error: null,
       };
+
     default:
       return state;
   }
 };
-
 export const profileReducer = (state = {}, { type, payload }) => {
   switch (type) {
     case UPDATE_PROFILE_REQUEST:
@@ -248,7 +244,7 @@ export const allUsersReducer = (state = { users: [] }, { type, payload }) => {
   }
 };
 
-export const userDetailsReducer = (state = { user: {} }, { type, payload }) => {
+export const userDetailsReducer = (state = { user:storedUser || {} }, { type, payload }) => {
   switch (type) {
     case USER_DETAILS_REQUEST:
       return {

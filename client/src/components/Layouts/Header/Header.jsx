@@ -6,24 +6,18 @@ import Searchbar from "./Searchbar";
 import logo from "../../../assets/images/logo.png";
 import PrimaryDropDownMenu from "./PrimaryDropDownMenu";
 import SecondaryDropDownMenu from "./SecondaryDropDownMenu";
-import { getUserDetails } from "../../../redux/actions/user.actions";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Header = () => {
-  const dispatch = useDispatch();
 
-  const { isAuthenticated, loading, user } = useSelector((state) => state.user);
+
+  const { isAuthenticated, user } = useSelector((state) => state.user);
   // console.log("There is value", user);
 
   const { cartItems } = useSelector((state) => state.cart);
 
-  console.log("inHeader isAuthenticated at the beginning:", isAuthenticated);
-  useEffect(() => {
-    console.log("inLogin isAuthenticated inside useEffect:", isAuthenticated);
-
-    dispatch(getUserDetails());
-  }, [dispatch]);
+  // console.log("inHeader isAuthenticated at the beginning:", isAuthenticated);
 
   const [togglePrimaryDropDown, setTogglePrimaryDropDown] = useState(false);
   const [toggleSecondaryDropDown, setToggleSecondaryDropDown] = useState(false);
@@ -32,7 +26,7 @@ const Header = () => {
   const secondaryDropdownRef = useRef(null);
 
   useEffect(() => {
-    console.log("inLogin isAuthenticated inside useEffect:", isAuthenticated);
+    // console.log("inLogin isAuthenticated inside useEffect:", isAuthenticated);
     const handleOutsideClick = (event) => {
       if (
         primaryDropdownRef.current &&
@@ -52,7 +46,7 @@ const Header = () => {
     return () => {
       document.removeEventListener("mousedown", handleOutsideClick);
     };
-  }, []);
+  });
 
   return (
     <header className="bg-primary-blue fixed top-0 py-2 w-full z-10">

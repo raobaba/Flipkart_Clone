@@ -20,7 +20,7 @@ const Register = () => {
   const { loading, isRegistered, error } = useSelector(
     (state) => state.user
   );
-  console.log("inSignup isRegistered at the beginning:", isRegistered);
+  // console.log("inSignup isRegistered at the beginning:", isRegistered);
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -79,7 +79,7 @@ const Register = () => {
   };
 
   useEffect(() => {
-    console.log("inSignup isRegistered inside useEffect:", isRegistered);
+    // console.log("inSignup isRegistered inside useEffect:", isRegistered);
     if (error) {
       enqueueSnackbar(error, { variant: "error" });
       dispatch(clearErrors());

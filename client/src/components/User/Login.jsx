@@ -16,9 +16,9 @@ const Login = () => {
   const { loading, isAuthenticated, isLogin, error } = useSelector(
     (state) => state.user
   );
-  console.log("isLogin",isLogin)
+ 
 
-  console.log("inLogin isAuthenticated at the beginning:", isAuthenticated);
+  // console.log("inLogin isAuthenticated at the beginning:", isAuthenticated);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -31,7 +31,7 @@ const Login = () => {
   const redirect = location.search ? location.search.split("=")[1] : "account";
 
   useEffect(() => {
-    console.log("inLogin isAuthenticated inside useEffect:", isAuthenticated);
+    // console.log("inLogin isAuthenticated inside useEffect:", isAuthenticated);
     if (error) {
       enqueueSnackbar(error, { variant: "error" });
       dispatch(clearErrors());

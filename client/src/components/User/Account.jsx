@@ -11,7 +11,7 @@ const Account = () => {
 
   const { user, loading, isAuthenticated } = useSelector((state) => state.user);
   useEffect(() => {
-    console.log("inAccount isAuthenticated inside useEffect:", isAuthenticated);
+    // console.log("inAccount isAuthenticated inside useEffect:", isAuthenticated);
     if (!isAuthenticated) {
       navigate("/login");
     }

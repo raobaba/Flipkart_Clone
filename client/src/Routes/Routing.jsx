@@ -16,7 +16,6 @@ import axios from "axios";
 import { useLocation } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
-import { getUserDetails } from "../redux/actions/user.actions.js";
 import OrderSuccess from "../components/Cart/OrderSuccess.jsx";
 import MyOrders from "../components/Order/MyOrders.jsx";
 import Account from "../components/User/Account.jsx";
@@ -40,7 +39,6 @@ function Routing() {
     setStripeApiKey(data.stripeApiKey);
   }
   useEffect(() => {
-    dispatch(getUserDetails());
     getStripeApiKey();
   }, [dispatch]);
 
