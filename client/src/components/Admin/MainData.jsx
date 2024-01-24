@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import Chart from 'chart.js/auto'
+import Chart from "chart.js/auto";
 import { Doughnut, Line, Pie, Bar } from "react-chartjs-2";
 import { getAdminProducts } from "../../redux/actions/product.actions";
 import { useSelector, useDispatch } from "react-redux";
@@ -11,9 +11,9 @@ import MetaData from "../Layouts/MetaData";
 const MainData = () => {
   const dispatch = useDispatch();
 
-  const { products } = useSelector((state) => state.products);
-  const { orders } = useSelector((state) => state.allOrders);
-  const { users } = useSelector((state) => state.users);
+  const { products = {} } = useSelector((state) => state.products);
+  const { orders = {} } = useSelector((state) => state.allOrders);
+  const { users = {} } = useSelector((state) => state.users);
 
   let outOfStock = 0;
 

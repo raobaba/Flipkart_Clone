@@ -1,3 +1,4 @@
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import EqualizerIcon from "@mui/icons-material/Equalizer";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
@@ -10,7 +11,6 @@ import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import CloseIcon from "@mui/icons-material/Close";
 import Avatar from "@mui/material/Avatar";
 import { useDispatch, useSelector } from "react-redux";
-import "./Sidebar.css";
 import { useSnackbar } from "notistack";
 import { logoutUser } from "../../../redux/actions/user.actions";
 
@@ -61,7 +61,8 @@ const Sidebar = ({ activeTab, setToggleSidebar }) => {
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
 
-  const { user } = useSelector((state) => state.user);
+  // Destructure 'user' with a default value to handle undefined case
+  const { user = {} } = useSelector((state) => state.user);
 
   const handleLogout = () => {
     dispatch(logoutUser());
@@ -73,7 +74,7 @@ const Sidebar = ({ activeTab, setToggleSidebar }) => {
   return (
     <aside className="sidebar z-10 sm:z-0 block min-h-screen fixed left-0 pb-14 max-h-screen w-3/4 sm:w-1/5 bg-gray-800 text-white overflow-x-hidden border-r">
       <div className="flex items-center gap-3 bg-gray-700 p-2 rounded-lg shadow-lg my-4 mx-3.5">
-        <Avatar alt="Avatar" src={user.avatar.url} />
+        <Avatar alt="Avatar" src={user.avatar && user.avatar.url} />
         <div className="flex flex-col gap-0">
           <span className="font-medium text-lg">{user.name}</span>
           <span className="text-gray-300 text-sm">{user.email}</span>
@@ -90,7 +91,7 @@ const Sidebar = ({ activeTab, setToggleSidebar }) => {
         {navMenu.map((item, index) => {
           const { icon, label, ref } = item;
           return (
-            <>
+            <React.Fragment key={index}>
               {label === "Logout" ? (
                 <button
                   onClick={handleLogout}
@@ -110,7 +111,7 @@ const Sidebar = ({ activeTab, setToggleSidebar }) => {
                   <span>{label}</span>
                 </Link>
               )}
-            </>
+            </React.Fragment>
           );
         })}
       </div>

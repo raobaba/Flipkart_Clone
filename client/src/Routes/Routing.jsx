@@ -1,31 +1,42 @@
 import React, { useState, useEffect } from "react";
-import WebFont from "webfontloader";
-import { Routes, Route } from "react-router-dom";
-import Home from "../components/Home/Home.jsx";
-import Login from "../components/User/Login.jsx";
-import Register from "../components/User/Register.jsx";
-import ProductDetails from "../components/ProductDetails/ProductDetails.jsx";
-import Products from "../components/Products/Products.jsx";
-import Cart from "../components/Cart/Cart.jsx";
-import ProtectedRoute from "./ProtectedRoute.js";
-import Shipping from "../components/Cart/Shipping.jsx";
-import OrderConfirm from "../components/Cart/OrderConfirm.jsx";
-import Payment from "../components/Cart/Payment.jsx";
 import { useDispatch } from "react-redux";
-import axios from "axios";
 import { useLocation } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
-import OrderSuccess from "../components/Cart/OrderSuccess.jsx";
-import MyOrders from "../components/Order/MyOrders.jsx";
-import Account from "../components/User/Account.jsx";
-import UpdateProfile from '../components/User/UpdateProfile.jsx';
-import UpdatePassword from '../components/User/UpdatePassword.jsx';
-import ForgotPassword from '../components/User/ForgotPassword.jsx';
-import ResetPassword from '../components/User/ResetPassword.jsx';
-import Wishlist from "../components/Wishlist/Wishlist.jsx";
-import OrderStatus from "../components/Cart/OrderStatus.jsx";
-import OrderDetails from "../components/Order/OrderDetails.jsx";
+import { Routes, Route } from "react-router-dom";
+import axios from "axios";
+import WebFont from "webfontloader";
+import Login from "../components/User/Login";
+import Register from "../components/User/Register";
+import UpdateProfile from "../components/User/UpdateProfile";
+import UpdatePassword from "../components/User/UpdatePassword";
+import ForgotPassword from "../components/User/ForgotPassword";
+import ResetPassword from "../components/User/ResetPassword";
+import Account from "../components/User/Account";
+import ProtectedRoute from "./ProtectedRoute";
+import Home from "../components/Home/Home";
+import ProductDetails from "../components/ProductDetails/ProductDetails";
+import Products from "../components/Products/Products";
+import Cart from "../components/Cart/Cart";
+import Shipping from "../components/Cart/Shipping";
+import OrderConfirm from "../components/Cart/OrderConfirm";
+import Payment from "../components/Cart/Payment";
+import OrderStatus from "../components/Cart/OrderStatus";
+import OrderSuccess from "../components/Cart/OrderSuccess";
+import MyOrders from "../components/Order/MyOrders";
+import OrderDetails from "../components/Order/OrderDetails";
+import Wishlist from "../components/Wishlist/Wishlist";
+import Dashboard from "../components/Admin/Dashboard";
+import MainData from "../components/Admin/MainData";
+import OrderTable from "../components/Admin/OrderTable";
+import UpdateOrder from "../components/Admin/UpdateOrder";
+import ProductTable from "../components/Admin/ProductTable";
+import NewProduct from "../components/Admin/NewProduct";
+import UpdateProduct from "../components/Admin/UpdateProduct";
+import UserTable from "../components/Admin/UserTable";
+import UpdateUser from "../components/Admin/UpdateUser";
+import ReviewsTable from "../components/Admin/ReviewsTable";
+import NotFound from "../components/NotFound";
 
 function Routing() {
   const dispatch = useDispatch();
@@ -146,19 +157,18 @@ function Routing() {
           </ProtectedRoute>
         }
       ></Route>
-              <Route
-          path="/password/update"
-          element={
-            <ProtectedRoute>
-              <UpdatePassword />
-            </ProtectedRoute>
-          }
-        ></Route>
+      <Route
+        path="/password/update"
+        element={
+          <ProtectedRoute>
+            <UpdatePassword />
+          </ProtectedRoute>
+        }
+      ></Route>
 
-        <Route path="/password/forgot" element={<ForgotPassword />} />
+      <Route path="/password/forgot" element={<ForgotPassword />} />
 
-        <Route path="/password/reset/:token" element={<ResetPassword />} />
-
+      <Route path="/password/reset/:token" element={<ResetPassword />} />
 
       <Route
         path="/wishlist"
@@ -168,6 +178,105 @@ function Routing() {
           </ProtectedRoute>
         }
       ></Route>
+      <Route
+        path="/admin/dashboard"
+        element={
+          <ProtectedRoute isAdmin={true}>
+            <Dashboard activeTab={0}>
+              <MainData />
+            </Dashboard>
+          </ProtectedRoute>
+        }
+      ></Route>
+      <Route
+          path="/admin/orders"
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <Dashboard activeTab={1}>
+                <OrderTable />
+              </Dashboard>
+            </ProtectedRoute>
+          }
+        ></Route>
+
+        <Route
+          path="/admin/order/:id"
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <Dashboard activeTab={1}>
+                <UpdateOrder />
+              </Dashboard>
+            </ProtectedRoute>
+          }
+        ></Route>
+
+        <Route
+          path="/admin/products"
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <Dashboard activeTab={2}>
+                <ProductTable />
+              </Dashboard>
+            </ProtectedRoute>
+          }
+        ></Route>
+
+        <Route
+          path="/admin/new_product"
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <Dashboard activeTab={3}>
+                <NewProduct />
+              </Dashboard>
+            </ProtectedRoute>
+          }
+        ></Route>
+
+        <Route
+          path="/admin/product/:id"
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <Dashboard activeTab={2}>
+                <UpdateProduct />
+              </Dashboard>
+            </ProtectedRoute>
+          }
+        ></Route>
+
+        <Route
+          path="/admin/users"
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <Dashboard activeTab={4}>
+                <UserTable />
+              </Dashboard>
+            </ProtectedRoute>
+          }
+        ></Route>
+
+        <Route
+          path="/admin/user/:id"
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <Dashboard activeTab={4}>
+                <UpdateUser />
+              </Dashboard>
+            </ProtectedRoute>
+          }
+        ></Route>
+
+        <Route
+          path="/admin/reviews"
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <Dashboard activeTab={5}>
+                <ReviewsTable />
+              </Dashboard>
+            </ProtectedRoute>
+          }
+        ></Route>
+
+        <Route path="*" element={<NotFound />}></Route>
     </Routes>
   );
 }

@@ -2,7 +2,7 @@ import { useSnackbar } from 'notistack';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import { clearErrors, getUserDetails, updateUser } from '../../redux/actions/user.actions';
+import { clearErrors, updateUser } from '../../redux/actions/user.actions';
 import { UPDATE_USER_RESET, REMOVE_USER_DETAILS } from '../../redux/actionTypes/user.actionTypes';
 import Loading from './Loading';
 import Avatar from '@mui/material/Avatar';
@@ -46,7 +46,7 @@ const UpdateUser = () => {
 
     useEffect(() => {
         if (user && user._id !== userId) {
-            dispatch(getUserDetails(userId));
+           
         } else {
             setName(user.name);
             setEmail(user.email);
