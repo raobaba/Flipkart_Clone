@@ -64,6 +64,7 @@ const getAdminProducts = asyncErrorHandler(async (req, res, next) => {
 
 // Create Product ---ADMIN
 const createProduct = asyncErrorHandler(async (req, res, next) => {
+  console.log(req.body)
   try {
     const brandingLogo = req.files["logo"];
     const productImages = req.files["images"];

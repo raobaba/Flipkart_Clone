@@ -35,6 +35,7 @@ export const cartReducer = (
         cartItems: state.cartItems.filter((el) => el.product !== payload),
       };
     case EMPTY_CART:
+      localStorage.removeItem('cartItems')
       return {
         ...state,
         cartItems: [],

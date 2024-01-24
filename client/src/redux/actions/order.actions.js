@@ -51,9 +51,7 @@ export const newOrder = (order) => async (dispatch) => {
     console.error("Error in newOrder API request:", error);
     dispatch({
       type: NEW_ORDER_FAIL,
-      payload: error.response
-        ? error.response.data.message
-        : "Internal Server Error",
+      payload: error.response.data.message,
     });
   }
 };
@@ -63,21 +61,18 @@ export const myOrders = () => async (dispatch) => {
   try {
     dispatch({ type: MY_ORDERS_REQUEST });
     const token = Cookies.get("token");
-    const { data } = await axios.get(
-      "http://localhost:8000/api/v1/orders/me",
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: token,
-        },
-      }
-    );
+    const { data } = await axios.get("http://localhost:8000/api/v1/orders/me", {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+    });
 
     dispatch({
       type: MY_ORDERS_SUCCESS,
       payload: data.orders,
     });
-    console.log("myOrders",data)
+    console.log("myOrders", data);
   } catch (error) {
     dispatch({
       type: MY_ORDERS_FAIL,

@@ -30,6 +30,7 @@ const Payment = ({ stripeApiKey }) => {
   const order = {
     shippingInfo,
     orderItems: cartItems,
+    user,
     totalPrice,
   };
   console.log("order in Payment.jsx", order);
@@ -51,23 +52,21 @@ const Payment = ({ stripeApiKey }) => {
         body: JSON.stringify(body),
       });
 
-      localStorage.setItem("response", JSON.stringify(response));
-
       const session = await response.json();
 
       const result = stripe.redirectToCheckout({
         sessionId: session.id,
       });
+      console.log("session",session)
 
-      if (result.message === "success") {
-        alert("Hello , I'm going there ");
+      if (session.message === "success") {
         dispatch(newOrder(order));
         dispatch(emptyCart());
       }
 
-      if (result.error) {
-        enqueueSnackbar(result.error.message, { variant: "error" });
-        console.log(result.error);
+      if (error) {
+        enqueueSnackbar(error.message, { variant: "error" });
+        console.log(error);
       }
     } catch (error) {
       console.error("Error making payment:", error);

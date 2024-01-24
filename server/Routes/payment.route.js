@@ -6,6 +6,6 @@ const {
 const paymentRouter = express.Router();
 
 paymentRouter.post("/checkout", processPayment);
-paymentRouter.get("/stripeapikey",  sendStripeApiKey);
+paymentRouter.get("/stripeapikey", sendStripeApiKey);
 
 module.exports = paymentRouter;

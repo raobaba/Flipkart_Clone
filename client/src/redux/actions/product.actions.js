@@ -46,7 +46,6 @@ export const getProducts =
         url = `http://localhost:8000/api/v1/products?keyword=${keyword}&category=${category}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}&page=${currentPage}`;
       }
       const { data } = await axios.get(url);
-      // console.log("getProducts", data);
       dispatch({
         type: ALL_PRODUCTS_SUCCESS,
         payload: data,
