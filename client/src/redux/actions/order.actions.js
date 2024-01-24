@@ -77,6 +77,7 @@ export const myOrders = () => async (dispatch) => {
       type: MY_ORDERS_SUCCESS,
       payload: data.orders,
     });
+    console.log("myOrders",data)
   } catch (error) {
     dispatch({
       type: MY_ORDERS_FAIL,

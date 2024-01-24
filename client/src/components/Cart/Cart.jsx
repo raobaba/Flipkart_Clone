@@ -10,6 +10,7 @@ const Cart = () => {
   const navigate = useNavigate();
   const { cartItems } = useSelector((state) => state.cart);
   const { saveForLaterItems } = useSelector((state) => state.saveForLater);
+  console.log("cartItem on cart.jsx", cartItems);
 
   const placeOrderHandler = () => {
     navigate("/login?redirect=shipping");

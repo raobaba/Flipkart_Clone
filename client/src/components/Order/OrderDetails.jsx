@@ -17,6 +17,7 @@ const OrderDetails = () => {
   const params = useParams();
 
   const { order, error, loading } = useSelector((state) => state.orderDetails);
+  console.log("order_details",order)
 
   useEffect(() => {
     if (error) {

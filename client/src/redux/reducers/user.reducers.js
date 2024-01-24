@@ -38,9 +38,8 @@ import {
   DELETE_USER_FAIL,
   REMOVE_USER_DETAILS,
 } from "../actionTypes/user.actionTypes";
-
-const storedAuth = JSON.parse(localStorage.getItem('isAuth'));
-const storedUser = JSON.parse(localStorage.getItem('user'));
+const storedAuth = JSON.parse(sessionStorage.getItem('isAuth'));
+const storedUser = JSON.parse(sessionStorage.getItem('user'));
 
 const initialState = {
   user: storedUser || {},
@@ -71,8 +70,8 @@ export const userReducer = (state = initialState, { type, payload }) => {
       };
 
     case LOGIN_USER_SUCCESS:
-      localStorage.setItem('isAuth', true);
-      localStorage.setItem('user', JSON.stringify(payload));
+      sessionStorage.setItem('isAuth', true);
+      sessionStorage.setItem('user', JSON.stringify(payload));
       return {
         ...state,
         loading: false,
@@ -83,8 +82,8 @@ export const userReducer = (state = initialState, { type, payload }) => {
       };
 
     case LOGOUT_USER_SUCCESS:
-      localStorage.setItem('isAuth', false);
-      localStorage.removeItem('user');
+      sessionStorage.setItem('isAuth', false);
+      sessionStorage.removeItem('user');
       return {
         ...state,
         loading: false,
@@ -99,8 +98,8 @@ export const userReducer = (state = initialState, { type, payload }) => {
     case REGISTER_USER_FAIL:
     case USER_DETAILS_FAIL:
     case LOGOUT_USER_FAIL:
-      localStorage.setItem('isAuth', false);
-      localStorage.removeItem('user');
+      sessionStorage.setItem('isAuth', false);
+      sessionStorage.removeItem('user');
       return {
         ...state,
         loading: false,
@@ -123,6 +122,7 @@ export const userReducer = (state = initialState, { type, payload }) => {
       return state;
   }
 };
+
 export const profileReducer = (state = {}, { type, payload }) => {
   switch (type) {
     case UPDATE_PROFILE_REQUEST:

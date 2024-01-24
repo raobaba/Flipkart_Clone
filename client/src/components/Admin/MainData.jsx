@@ -11,9 +11,9 @@ import MetaData from "../Layouts/MetaData";
 const MainData = () => {
   const dispatch = useDispatch();
 
-  const { products = {} } = useSelector((state) => state.products);
-  const { orders = {} } = useSelector((state) => state.allOrders);
-  const { users = {} } = useSelector((state) => state.users);
+  const { products } = useSelector((state) => state.products);
+  const { orders } = useSelector((state) => state.allOrders);
+  const { users } = useSelector((state) => state.users);
 
   let outOfStock = 0;
 

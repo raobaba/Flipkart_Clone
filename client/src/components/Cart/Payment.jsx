@@ -60,7 +60,8 @@ const Payment = ({ stripeApiKey }) => {
       });
 
       if (result.message === "success") {
- 
+        alert("Hello , I'm going there ");
+        dispatch(newOrder(order));
         dispatch(emptyCart());
       }
 
@@ -74,7 +75,6 @@ const Payment = ({ stripeApiKey }) => {
   };
 
   useEffect(() => {
-    dispatch(newOrder(order));
     if (error) {
       dispatch(clearErrors());
       enqueueSnackbar(error, { variant: "error" });
