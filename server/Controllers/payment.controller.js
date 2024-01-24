@@ -21,11 +21,20 @@ const processPayment = asyncErrorHandler(async (req, res, next) => {
     mode: "payment",
     success_url: "http://localhost:3000/orders/success",
     cancel_url: "http://localhost:3000/orders/failed",
- 
   });
+
   console.log("session", session);
-  res.json({ id: session.id, payment_status: session.status });
+
+  // Modify the response object to include a success message
+  const response = {
+    id: session.id,
+    payment_status: session.status,
+    message: "success",
+  };
+
+  res.json(response);
 });
+
 
 const sendStripeApiKey = asyncErrorHandler(async (req, res, next) => {
   res.status(200).json({ stripeApiKey: process.env.STRIPE_API_KEY });

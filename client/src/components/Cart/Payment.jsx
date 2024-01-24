@@ -26,7 +26,6 @@ const Payment = ({ stripeApiKey }) => {
     (sum, item) => sum + item.price * item.quantity,
     0
   );
- 
 
   const order = {
     shippingInfo,
@@ -44,28 +43,37 @@ const Payment = ({ stripeApiKey }) => {
     const headers = {
       "Content-Type": "application/json",
     };
-    const response = await fetch("http://localhost:8000/api/v1/checkout", {
-      method: "POST",
-      headers: headers,
-      body: JSON.stringify(body),
-    });
 
-    const session = await response.json();
-    const result = stripe.redirectToCheckout({
-      sessionId: session.id,
-    });
+    try {
+      const response = await fetch("http://localhost:8000/api/v1/checkout", {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify(body),
+      });
 
+      localStorage.setItem("response", JSON.stringify(response));
 
-    dispatch(emptyCart());
+      const session = await response.json();
 
-    if (result.error) {
-      enqueueSnackbar(result.error.message, { variant: "error" });
-      console.log(result.error);
+      const result = stripe.redirectToCheckout({
+        sessionId: session.id,
+      });
+
+      if (result.message === "success") {
+        dispatch(newOrder(order));
+        dispatch(emptyCart());
+      }
+
+      if (result.error) {
+        enqueueSnackbar(result.error.message, { variant: "error" });
+        console.log(result.error);
+      }
+    } catch (error) {
+      console.error("Error making payment:", error);
     }
   };
 
   useEffect(() => {
-    dispatch(newOrder(order));
     if (error) {
       dispatch(clearErrors());
       enqueueSnackbar(error, { variant: "error" });
