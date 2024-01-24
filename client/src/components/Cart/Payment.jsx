@@ -57,15 +57,15 @@ const Payment = ({ stripeApiKey }) => {
       const result = stripe.redirectToCheckout({
         sessionId: session.id,
       });
-      console.log("session",session)
+      console.log("session", session);
 
       if (session.message === "success") {
         dispatch(newOrder(order));
         dispatch(emptyCart());
       }
 
-      if (error) {
-        enqueueSnackbar(error.message, { variant: "error" });
+      if (result.error) {
+        enqueueSnackbar(result.error.message, { variant: "error" });
         console.log(error);
       }
     } catch (error) {
