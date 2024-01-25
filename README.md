@@ -91,33 +91,34 @@ The frontend directory houses the user interface components of the Flipkart clon
 
 #### Project Structure
 
-client/
-|-- node_modules/
-|-- public/
-|   |-- index.html
-|   |-- favicon.ico
-|   |-- manifest.json
-|-- src/
-|   |-- assets/
-|   |   |-- images/
-|   |   |-- styles/
-|   |       |-- App.css
-|   |       |-- index.css
-|   |-- components/
-|   |   |-- Admin
-|   |   |-- Cart
-|   |   |-- Home
-|   |   |-- Layouts
-|   |   |-- Order
-|   |   |-- ProductList
-|   |   |-- Products
-|   |   |-- User
-|   |   |-- NotFound.jsx
-|   |-- App.js
-|   |-- index.js
-|-- .gitignore
-|-- package.json
-|-- README.md
+- client/
+  |-- node_modules/
+  |-- public/
+  |   |-- index.html
+  |   |-- favicon.ico
+  |   |-- manifest.json
+  |-- src/
+  |   |-- assets/
+  |   |   |-- images/
+  |   |   |-- styles/
+  |   |       |-- App.css
+  |   |       |-- index.css
+  |   |-- components/
+  |   |   |-- Admin
+  |   |   |-- Cart
+  |   |   |-- Home
+  |   |   |-- Layouts
+  |   |   |-- Order
+  |   |   |-- ProductList
+  |   |   |-- Products
+  |   |   |-- User
+  |   |   |-- NotFound.jsx
+  |   |-- App.js
+  |   |-- index.js
+  |-- .gitignore
+  |-- package.json
+  |-- README.md
+
 
 
 
