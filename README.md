@@ -28,7 +28,7 @@ Welcome to the documentation for our Flipkart clone! This project aims to replic
 - **Wishlist:** Save and manage your favorite items.
 - **Account Management:** Customize and control your user account.
 - **Ordering:** Place and track your orders seamlessly.
-- **Payment Integration:** Secure payments through Stripe. ```Just fill email(could be any), Cart Number [4242 4242 4242 4242], date and cvv (could be any)
+- **Payment Integration:** Secure payments through Stripe. Just fill Cart Number [4242 4242 4242 4242], and other other could be any date should be future
 - **Live Tracking:** Monitor the status of your orders in real-time.
 
 
