@@ -19,31 +19,17 @@
 - [License](#license)
 
 ## Overview
-Describe your project and its goals. Mention key features and functionalities.
+Welcome to the documentation for our Flipkart clone! This project aims to replicate the key features of the popular e-commerce platform Flipkart. With a focus on providing a seamless shopping experience, our clone includes functionalities such as user authentication, product management, shopping cart, wishlist, account management, ordering, payment integration through Stripe, and live order tracking.
 
 ## Features
-1. **User Authentication:**
-   - Allow users to register and create accounts.
-   - Enable users to log in with their credentials.
-2. **Product Management:**
-   - Search for items using a search bar.
-   - Sort items based on different criteria.
-   - Filter items by various attributes such as category, brand, etc.
-3. **Shopping Cart:**
-   - Add items to the shopping cart.
-   - Remove items from the shopping cart.
-4. **Wishlist:**
-   - Add items to the wishlist.
-   - Remove items from the wishlist.
-5. **Account Management:**
-   - Provide functionality for users to manage their account settings.
-6. **Ordering:**
-   - Allow users to place orders for selected items.
-   - Implement a seamless checkout process.
-7. **Payment Integration:**
-   - Enable secure payments through Stripe or your chosen payment gateway.
-8. **Live Tracking:**
-   - Implement live tracking for users to monitor the status of their orders in real-time.
+- **User Authentication:** Register and log in securely.
+- **Product Management:** Search, sort, and filter items effortlessly.
+- **Shopping Cart:** Add and remove items from the cart.
+- **Wishlist:** Save and manage your favorite items.
+- **Account Management:** Customize and control your user account.
+- **Ordering:** Place and track your orders seamlessly.
+- **Payment Integration:** Secure payments through Stripe.
+- **Live Tracking:** Monitor the status of your orders in real-time.
 
 
 ## Tech Stack
