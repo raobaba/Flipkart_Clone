@@ -17,6 +17,7 @@
 - [Database](#database)
 - [Contributing](#contributing)
 - [License](#license)
+- [Images](#images)
 
 ## Overview
 Welcome to the documentation for our Flipkart clone! This project aims to replicate the key features of the popular e-commerce platform Flipkart. With a focus on providing a seamless shopping experience, our clone includes functionalities such as user authentication, product management, shopping cart, wishlist, account management, ordering, payment integration through Stripe, and live order tracking.
@@ -108,6 +109,8 @@ Please keep in mind that this project is currently managed by a single contribut
 Feel free to connect if you have questions or if you'd like to discuss potential contributions in the future.
 
 Thank you for your support!
+
+## Images
 
 
  
