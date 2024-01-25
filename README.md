@@ -28,7 +28,7 @@ Welcome to the documentation for our Flipkart clone! This project aims to replic
 - **Wishlist:** Save and manage your favorite items.
 - **Account Management:** Customize and control your user account.
 - **Ordering:** Place and track your orders seamlessly.
-- **Payment Integration:** Secure payments through Stripe. Just fill Cart Number [4242 4242 4242 4242], and other other could be any date should be future
+- **Payment Integration:** Secure payments through Stripe. Just fill Cart Number [4242 4242 4242 4242], and other could be any date should be future
 - **Live Tracking:** Monitor the status of your orders in real-time.
 
 
@@ -45,9 +45,36 @@ Provide instructions on how to get a copy of the project up and running on a loc
 - npm or yarn
 - MongoDB
 
-### Installation
-1. Clone the repository
-   ```bash
-   git clone https://github.com/your-username/flipkart-clone.git
-   cd flipkart-clone
-   npm install
+## Installation
+
+### Clone the Repository
+
+1. Clone the repository:
+
+    ```bash
+    git clone https://github.com/your-username/flipkart-clone.git
+    cd flipkart-clone
+    ```
+### Start Frontend
+2. For the frontend, navigate to the client directory:
+
+    ```bash
+    cd client
+    ```
+3. Run the following command to start the frontend:
+
+    ```bash
+    npm start
+    ```
+### Start Backend
+4. For the backend, navigate to the server directory:
+    ```bash
+    cd server
+    ```
+5. Run the following command to start the backend:
+    ```bash
+    npm start
+    ```
+
+
+   
