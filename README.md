@@ -97,6 +97,18 @@ The backend directory contains the server-side logic and APIs for the Flipkart c
 #### Project Structure
 The backend directory structure is organized as follows click above and see
 
+## Contributing
+
+Thank you for your interest in contributing to this project! As the sole contributor at the moment, I appreciate any feedback, suggestions, or bug reports.
+
+If you have ideas for new features or improvements, feel free to reach out via email at [raorajan9576@gmail.com](mailto:raorajan9576@gmail.com). I'm open to collaboration and would love to hear your thoughts.
+
+Please keep in mind that this project is currently managed by a single contributor, and contributions from the community are not actively sought. However, any valuable input or bug reports are always welcome.
+
+Feel free to connect if you have questions or if you'd like to discuss potential contributions in the future.
+
+Thank you for your support!
+
 
  
 
