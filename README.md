@@ -41,3 +41,5 @@ Provide instructions on how to get a copy of the project up and running on a loc
 1. Clone the repository
    ```bash
    git clone https://github.com/your-username/flipkart-clone.git
+   cd flipkart-clone
+   npm install
