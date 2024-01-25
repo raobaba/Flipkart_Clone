@@ -81,45 +81,21 @@ Provide instructions on how to get a copy of the project up and running on a loc
 The project is organized into distinct directories for frontend and backend components.
 
 ### Frontend
-
 The frontend directory houses the user interface components of the Flipkart clone.
-
 #### Technologies Used
-
 - **React.js:** The JavaScript library for building user interfaces.
 - **Redux:** A predictable state container for managing the application's state.
-
 #### Project Structure
+The structure of the frontend directory is organized as follows lick above and see
 
-- client/
-  |-- node_modules/
-  |-- public/
-  |   |-- index.html
-  |   |-- favicon.ico
-  |   |-- manifest.json
-  |-- src/
-  |   |-- assets/
-  |   |   |-- images/
-  |   |   |-- styles/
-  |   |       |-- App.css
-  |   |       |-- index.css
-  |   |-- components/
-  |   |   |-- Admin
-  |   |   |-- Cart
-  |   |   |-- Home
-  |   |   |-- Layouts
-  |   |   |-- Order
-  |   |   |-- ProductList
-  |   |   |-- Products
-  |   |   |-- User
-  |   |   |-- NotFound.jsx
-  |   |-- App.js
-  |   |-- index.js
-  |-- .gitignore
-  |-- package.json
-  |-- README.md
-
-
+### Backend
+The backend directory contains the server-side logic and APIs for the Flipkart clone.
+#### Technologies Used
+- **Node.js:** A JavaScript runtime for executing server-side code.
+- **Express.js:** A web application framework for Node.js, facilitating the creation of robust APIs.
+- **MongoDB:** A NoSQL database used for storing application data.
+#### Project Structure
+The backend directory structure is organized as follows click above and see
 
 
  
