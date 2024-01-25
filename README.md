@@ -76,5 +76,52 @@ Provide instructions on how to get a copy of the project up and running on a loc
     npm start
     ```
 
+## Folder Structure
+
+The project is organized into distinct directories for frontend and backend components.
+
+### Frontend
+
+The frontend directory houses the user interface components of the Flipkart clone.
+
+#### Technologies Used
+
+- **React.js:** The JavaScript library for building user interfaces.
+- **Redux:** A predictable state container for managing the application's state.
+
+#### Project Structure
+
+client/
+|-- node_modules/
+|-- public/
+|   |-- index.html
+|   |-- favicon.ico
+|   |-- manifest.json
+|-- src/
+|   |-- assets/
+|   |   |-- images/
+|   |   |-- styles/
+|   |       |-- App.css
+|   |       |-- index.css
+|   |-- components/
+|   |   |-- Admin
+|   |   |-- Cart
+|   |   |-- Home
+|   |   |-- Layouts
+|   |   |-- Order
+|   |   |-- ProductList
+|   |   |-- Products
+|   |   |-- User
+|   |   |-- NotFound.jsx
+|   |-- App.js
+|   |-- index.js
+|-- .gitignore
+|-- package.json
+|-- README.md
+
+
+
+ 
+
 
    
