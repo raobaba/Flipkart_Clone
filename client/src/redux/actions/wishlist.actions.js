@@ -7,7 +7,7 @@ import {
 // Add To Wishlist
 export const addToWishlist = (id) => async (dispatch, getState) => {
   const { data } = await axios.get(
-    `http://localhost:8000/api/v1/product/${id}`
+    `https://flipkart-pgmw.onrender.com/api/v1/product/${id}`
   );
 
   dispatch({

@@ -33,7 +33,7 @@ export const newOrder = (order) => async (dispatch) => {
     const token = Cookies.get("token");
 
     const response = await axios.post(
-      "http://localhost:8000/api/v1/order/new",
+      "https://flipkart-pgmw.onrender.com/api/v1/order/new",
       order,
       {
         headers: {
@@ -61,7 +61,7 @@ export const myOrders = () => async (dispatch) => {
   try {
     dispatch({ type: MY_ORDERS_REQUEST });
     const token = Cookies.get("token");
-    const { data } = await axios.get("http://localhost:8000/api/v1/orders/me", {
+    const { data } = await axios.get("https://flipkart-pgmw.onrender.com/api/v1/orders/me", {
       headers: {
         "Content-Type": "application/json",
         Authorization: token,
@@ -87,7 +87,7 @@ export const getOrderDetails = (id) => async (dispatch) => {
     dispatch({ type: ORDER_DETAILS_REQUEST });
     const token = Cookies.get("token");
     const { data } = await axios.get(
-      `http://localhost:8000/api/v1/order/${id}`,
+      `https://flipkart-pgmw.onrender.com/api/v1/order/${id}`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -114,7 +114,7 @@ export const getPaymentStatus = (id) => async (dispatch) => {
     dispatch({ type: PAYMENT_STATUS_REQUEST });
     const token = Cookies.get("token");
     const { data } = await axios.get(
-      `http://localhost:8000/api/v1/payment/status/${id}`,
+      `https://flipkart-pgmw.onrender.com/api/v1/payment/status/${id}`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -141,7 +141,7 @@ export const getAllOrders = () => async (dispatch) => {
     dispatch({ type: ALL_ORDERS_REQUEST });
     const token = Cookies.get("token");
     const { data } = await axios.get(
-      "http://localhost:8000/api/v1/admin/orders",
+      "https://flipkart-pgmw.onrender.com/api/v1/admin/orders",
       {
         headers: {
           "Content-Type": "application/json",
@@ -168,7 +168,7 @@ export const updateOrder = (id, order) => async (dispatch) => {
     dispatch({ type: UPDATE_ORDER_REQUEST });
     const token = Cookies.get("token");
     const { data } = await axios.put(
-      `http://localhost:8000/api/v1/admin/order/${id}`,
+      `https://flipkart-pgmw.onrender.com/api/v1/admin/order/${id}`,
       order,
       {
         headers: {
@@ -196,7 +196,7 @@ export const deleteOrder = (id) => async (dispatch) => {
     dispatch({ type: DELETE_ORDER_REQUEST });
     const token = Cookies.get("token");
     const { data } = await axios.delete(
-      `http://localhost:8000/api/v1/admin/order/${id}`,
+      `https://flipkart-pgmw.onrender.com/api/v1/admin/order/${id}`,
       {
         headers: {
           "Content-Type": "application/json",

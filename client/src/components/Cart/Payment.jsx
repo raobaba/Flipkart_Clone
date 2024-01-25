@@ -46,7 +46,7 @@ const Payment = ({ stripeApiKey }) => {
     };
 
     try {
-      const response = await fetch("http://localhost:8000/api/v1/checkout", {
+      const response = await fetch("https://flipkart-pgmw.onrender.com/api/v1/checkout", {
         method: "POST",
         headers: headers,
         body: JSON.stringify(body),
